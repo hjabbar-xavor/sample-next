@@ -1,0 +1,192 @@
+{
+  "/": {
+    "name": "Homepage",
+    "codename": "homepage",
+    "id": "a964c3b5-1fc5-4cd6-b8c9-bae01a35cdb5",
+    "lastModified": "2021-03-08T13:05:30.095Z",
+    "language": "default",
+    "type": "homepage",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/about-us": {
+    "name": "About Us",
+    "codename": "about_us_e2a3843",
+    "id": "e2a38438-2a0c-4513-8a35-fcd28bd59161",
+    "lastModified": "2021-02-19T13:54:11.051Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/features": {
+    "name": "Features",
+    "codename": "features_e0a053c",
+    "id": "e0a053c8-9b46-4d6c-a75e-85325c1610bc",
+    "lastModified": "2021-02-19T13:54:33.230Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/pricing": {
+    "name": "Pricing",
+    "codename": "pricing_72f4135",
+    "id": "72f41350-8ef2-4d3b-b989-2f0506f53a4e",
+    "lastModified": "2021-02-19T10:56:07.696Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/style-guide": {
+    "name": "Style Guide",
+    "codename": "style_guide_ce0f7d5",
+    "id": "ce0f7d54-4354-4c93-874b-6bd968d11beb",
+    "lastModified": "2021-02-19T13:54:24.755Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog": {
+    "name": "Blog",
+    "codename": "blog",
+    "id": "dec7212d-605a-4906-a57f-ec930eef4e38",
+    "lastModified": "2021-02-19T10:54:58.971Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/all-your-benefits-at-one-place": {
+    "name": "All your benefits at one place",
+    "codename": "all_your_benefits_at_one_place",
+    "id": "738de752-616f-4e42-835e-3b9935bd6085",
+    "lastModified": "2021-03-08T12:27:23.644Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/define-your-user-journey": {
+    "name": "Define your user journey",
+    "codename": "define_your_user_journey",
+    "id": "52b0de4c-c5ab-4777-bfe7-bd068adc7127",
+    "lastModified": "2021-03-08T12:28:27.259Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/don-t-be-afraid-to-fail": {
+    "name": "Don't be afraid to fail",
+    "codename": "don_t_be_afraid_to_fail",
+    "id": "16fab252-f9bd-441c-9afb-88f64fc1c880",
+    "lastModified": "2021-03-08T12:27:48.011Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/go-international": {
+    "name": "Go International",
+    "codename": "go_international",
+    "id": "f65c530c-4fa1-4bee-81b6-aaa86bb01ab4",
+    "lastModified": "2021-03-08T12:29:45.909Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/how-to-collaborate": {
+    "name": "How to collaborate",
+    "codename": "how_to_collaborate",
+    "id": "0ff585fd-aa3a-4485-9e44-e78a9e0b16b5",
+    "lastModified": "2021-03-08T12:28:52.566Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/how-to-validate-services": {
+    "name": "How to validate services",
+    "codename": "how_to_validate_services",
+    "id": "b006403b-960d-4856-bf09-61cca0f6af40",
+    "lastModified": "2021-03-08T12:30:49.270Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/keep-your-assets-up-to-speed": {
+    "name": "Keep your assets up to speed",
+    "codename": "keep_your_assets_up_to_speed",
+    "id": "66d62ab5-a1b3-4a96-8998-e24185db7031",
+    "lastModified": "2021-03-08T12:27:41.089Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/5-tips-to-solve-your-problems": {
+    "name": "5 tips to solve your problems",
+    "codename": "n5_tips_to_solve_your_problems",
+    "id": "17ff7084-55e8-4cd4-9662-d85ea51d8646",
+    "lastModified": "2021-03-08T12:26:56.357Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/blog/shape-your-skills": {
+    "name": "Shape your skills",
+    "codename": "shape_your_skills",
+    "id": "9c2b3716-b156-4890-afa8-4365284e1b84",
+    "lastModified": "2021-03-08T12:30:12.810Z",
+    "language": "default",
+    "type": "post",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/sign-up": {
+    "name": "Sign Up",
+    "codename": "sign_up_link",
+    "id": "3aacbf33-2fbf-458f-8a5f-ead85ac6a06f",
+    "lastModified": "2021-03-03T15:53:30.673Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/terms-of-service": {
+    "name": "Terms of Service",
+    "codename": "terms_of_service_dd0ee4c",
+    "id": "dd0ee4cf-affa-42b5-ae48-2f73969677b6",
+    "lastModified": "2021-02-19T10:54:34.759Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/privacy-policy": {
+    "name": "Privacy Policy",
+    "codename": "privacy_policy_3fe581a",
+    "id": "3fe581a0-07a3-4c6c-8ec7-cfc8eb997410",
+    "lastModified": "2021-02-19T13:53:57.871Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  },
+  "/contact": {
+    "name": "Contact",
+    "codename": "contact_9c97353",
+    "id": "9c973536-5563-44b9-872a-15e7201a345a",
+    "lastModified": "2021-02-19T10:54:11.060Z",
+    "language": "default",
+    "type": "navigation_item",
+    "sitemapLocations": [],
+    "collection": "default"
+  }
+}

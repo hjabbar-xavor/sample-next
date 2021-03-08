@@ -1,14 +1,18 @@
 {
-  "name": "with-next-sass",
+  "name": "@kentico/kontent-starter-corporate-js",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@kentico/kontent-delivery": "^10.3.0",
+    "lodash.get": "^4.4.2",
     "next": "latest",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-helmet": "^6.1.0",
+    "rxjs": "^6.6.6",
     "sass": "1.26.3"
   },
   "license": "MIT"
