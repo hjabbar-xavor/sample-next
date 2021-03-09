@@ -1,9 +1,11 @@
-const LandingPage = () => {
+import { Layout } from "../components"
+
+function LandingPage(props) {
   return (
-    <>
+    <Layout {...props}>
       {/* TODO */}
-    Landing page
-    </>
+      {props.page.label.value}
+    </Layout>
   );
 }
 

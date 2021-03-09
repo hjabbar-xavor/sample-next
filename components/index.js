@@ -2,12 +2,16 @@ import Layout from './Layout';
 import UnknownComponent from './UnknownComponent';
 import Header from './Header';
 import Footer from './Footer';
+import Link from './Link';
+import Action from './Action';
 
 export {
   UnknownComponent,
   Layout,
   Header,
   Footer,
+  Link,
+  Action,
 }
 
 export default {
@@ -15,4 +19,6 @@ export default {
   Layout,
   Header,
   Footer,
+  Link,
+  Action,
 }

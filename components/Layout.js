@@ -1,32 +1,16 @@
-import { get } from 'lodash.get'
-import { Helmet } from 'react-helmet';
 import { Footer, Header } from '.';
+import { Button } from '@material-ui/core';
 
-const Layout = (props) => {
-  const title = get(props, 'page.label.value', get(props, 'page.title.value', null)) + ' | ' + get(props, 'data.config.title', null);
-  const font = get(props, 'data.config.base_font', null) || 'nunito-sans';
-
-  if (get(props, 'page.seo__title.value', null)) {
-    title = get(props, 'page.seo__title.value', null);
-  }
-
-
+function Layout(props) {
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        {/* TODO */}
-      </Helmet>
-      <div>
-        <Header {...this.props} />
-        <main>
-          {this.props.children}
-        </main>
-        <Footer {...this.props} />
-      </div>
+      <Header {...props} />
+      <main>
+        {props.children}
+      </main>
+      <Footer {...props} />
     </>
   );
-
 }
 
 export default Layout;
