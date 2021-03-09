@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Link from './Link';
 import Action from './Action';
+import CtaButtons from './CtaButtons';
 
 export {
   UnknownComponent,
@@ -12,6 +13,7 @@ export {
   Footer,
   Link,
   Action,
+  CtaButtons,
 }
 
 export default {
@@ -21,4 +23,5 @@ export default {
   Footer,
   Link,
   Action,
+  CtaButtons,
 }

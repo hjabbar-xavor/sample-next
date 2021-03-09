@@ -2,6 +2,7 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
+// https://material-ui.com/guides/server-rendering/#the-client-side
 // https://github.com/mui-org/material-ui/tree/master/examples/nextjs
 class MyDocument extends Document {
   // `getInitialProps` belongs to `_document` (instead of `_app`),

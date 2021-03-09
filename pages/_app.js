@@ -12,19 +12,25 @@ import '../styles/index.scss'
 function MyApp({ Component, pageProps }) {
 
   const font = get(pageProps, 'data.config.base_font.value[0].font_codename.value', null) || 'nunito-sans';
+  const fontName = font === 'nunito-sans'
+    ? "Nunito Sans"
+    : font === 'fira-sans'
+      ? "Fira Sans"
+      : "Arial";
 
   const title = (get(pageProps, 'page.label.value', null) || get(pageProps, 'page.title.value', null)) + ' | ' + get(pageProps, 'data.config.title.value', null);
   if (get(pageProps, 'page.seo__title.value', null)) {
     title = get(pageProps, 'page.seo__title.value', null);
   }
 
+  // TODO implement pallettes
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: '#556cd6',
+        main: '#F05A22',
       },
       secondary: {
-        main: '#19857b',
+        main: '#B72929',
       },
       error: {
         main: red.A400,
@@ -35,13 +41,14 @@ function MyApp({ Component, pageProps }) {
     },
     typography: {
       fontFamily: [
-        font,
+        fontName,
         'sans-serif'
       ]
-    }
+    },
   });
 
   // https://material-ui.com/guides/server-rendering/#the-client-side
+  // https://github.com/mui-org/material-ui/tree/master/examples/nextjs
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -82,7 +89,6 @@ function MyApp({ Component, pageProps }) {
         ))}
       </Head>
       <ThemeProvider theme={theme}>
-        {/* https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js */}
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>

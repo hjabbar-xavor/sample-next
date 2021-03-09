@@ -8,17 +8,25 @@ function Action(props) {
   const role = get(action, 'role.value[0].codename', null);
   const navigationItem = get(action, 'navigation_item.value[0]', null)
   const href = getUrlFromMapping(mappings, navigationItem.system.codename);
+  const action_options = get(action, 'options.value', []);
+  const new_window = action_options.some(item => item.codename === 'new_window');
+  const no_follow = action_options.some(item => item.codename === 'no_follow');
+  const outlined = action_options.some(item => item.codename === 'outlined');
 
   const config = {};
-
   if (role) {
-    config.variant = "contained",
-      config.color = role
+    config.variant = "contained";
+    config.color = role;
+  }
+  if(outlined) {
+    config.variant = "outlined";
   }
 
+  // TODO finish for all properties (no_follow, ...)
+
   return (
-    <Button {...props} component={Link} underline="none" href={href} {...config}>
-      {navigationItem.label.value}
+    <Button component={Link} underline="none" href={href} {...config} className={props.className}>
+      {action.label.value}
     </Button>
   );
 }

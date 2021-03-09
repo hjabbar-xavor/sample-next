@@ -1,5 +1,4 @@
 import { Footer, Header } from '.';
-import { Button } from '@material-ui/core';
 
 function Layout(props) {
   return (
