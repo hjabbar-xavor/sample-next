@@ -39,7 +39,9 @@ function SimplePage(props) {
             <img width="100%" src={(get(page, 'image.value[0].url', null))} alt={get(page, 'image.value[0].description') || get(page, 'image.value[0].name', null)} />
           </div>
         )}
-        <Typography dangerouslySetInnerHTML={{ __html: get(props, 'page.content.value[0].content.value', null) }} />
+        <Typography component="div">
+          <div dangerouslySetInnerHTML={{ __html: get(props, 'page.content.value[0].content.value', null) }} />
+        </Typography>
       </Container>
     </Layout>
   );

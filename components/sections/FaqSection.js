@@ -42,7 +42,9 @@ function FaqSection(props) {
             </AccordionSummary>
             <AccordionDetails>
               {/* TODO: Create RichText element */}
-              <Typography dangerouslySetInnerHTML={{ __html: get(faqItem, 'answer.value', null) }} />
+              <Typography component="div">
+                <div dangerouslySetInnerHTML={{ __html: get(faqItem, 'answer.value', null) }} />
+              </Typography>
             </AccordionDetails>
           </Accordion>
         ))}
