@@ -8,7 +8,6 @@ function Layout(props) {
       <main>
         {props.children}
       </main>
-      <Divider/>
       <Footer {...props} />
     </>
   );

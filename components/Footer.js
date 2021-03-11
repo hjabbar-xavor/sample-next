@@ -1,6 +1,6 @@
 import Toolbar from '@material-ui/core/Toolbar';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { Box, colors, Container, Grid, Paper } from '@material-ui/core';
+import { Box, colors, Container, Divider, Grid, Paper } from '@material-ui/core';
 import get from "lodash.get";
 import upperFirst from "lodash.upperFirst";
 import camelCase from "lodash.camelCase";
@@ -13,6 +13,11 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.grey[200],
     marginTop: theme.spacing(2)
   },
+  copyright: {
+    margin: 0,
+    padding: theme.spacing(1),
+    textAlign: "center"
+  }
 }));
 
 function Footer(props) {
@@ -48,6 +53,14 @@ function Footer(props) {
               })
               }
             </Grid>
+          )}
+
+          {get(props, 'data.config.copyright.value', null) && (
+            <div className={classes.copyright}>
+              <Divider/>
+              {/* TODO: Create RichText element */}
+              <div dangerouslySetInnerHTML={{ __html: get(props, 'data.config.copyright.value') }} />
+            </div>
           )}
         </footer>
       </Container>
