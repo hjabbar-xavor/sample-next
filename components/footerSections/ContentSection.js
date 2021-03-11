@@ -18,7 +18,7 @@ function ContentSection(props) {
       )}
 
       {get(section, 'image.value[0]', null) && (
-        <div className="cell block-preview">
+        <div>
           {/* TODO use Next Image Component */}
           <img width="100%" src={(get(section, 'image.value[0].url', null))} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)} />
         </div>

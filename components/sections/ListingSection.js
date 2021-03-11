@@ -29,6 +29,7 @@ function ListingSection(props) {
           {get(section, 'title.value', null) && (
             <Typography variant="h2">{get(section, 'title.value', null)}</Typography>
           )}
+          {/* TODO: Create RichText element */}
           {get(section, 'subtitle.value', null) && (
             <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, 'subtitle.value', null) }} />
           )}

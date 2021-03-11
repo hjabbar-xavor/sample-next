@@ -4,8 +4,8 @@ import ReviewsSection from './ReviewsSection';
 import CtaSection from './CtaSection';
 import ListingSection from './ListingSection';
 import ContentSection from './ContentSection';
-// import PricingSection from './PricingSection';
-// import FaqSection from './FaqSection';
+import PricingSection from './PricingSection';
+import FaqSection from './FaqSection';
 // import ContactSection from './ContactSection';
 
 export {
@@ -15,8 +15,8 @@ export {
   CtaSection,
   ListingSection,
   ContentSection,
-  // PricingSection,
-  // FaqSection,
+  PricingSection,
+  FaqSection,
   // ContactSection,
 };
 
@@ -27,7 +27,7 @@ export default {
   CtaSection,
   ListingSection,
   ContentSection,
-  // PricingSection,
-  // FaqSection,
+  PricingSection,
+  FaqSection,
   // ContactSection,
 };
