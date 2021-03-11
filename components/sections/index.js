@@ -1,8 +1,8 @@
 import HeroSection from './HeroSection';
-// import FeaturesSection from './FeaturesSection';
-// import ReviewsSection from './ReviewsSection';
-// import CtaSection from './CtaSection';
-// import ListingSection from './ListingSection';
+import FeaturesSection from './FeaturesSection';
+import ReviewsSection from './ReviewsSection';
+import CtaSection from './CtaSection';
+import ListingSection from './ListingSection';
 // import ContentSection from './ContentSection';
 // import PricingSection from './PricingSection';
 // import FaqSection from './FaqSection';
@@ -10,10 +10,10 @@ import HeroSection from './HeroSection';
 
 export {
   HeroSection,
-  // FeaturesSection,
-  // ReviewsSection,
-  // CtaSection,
-  // ListingSection,
+  FeaturesSection,
+  ReviewsSection,
+  CtaSection,
+  ListingSection,
   // ContentSection,
   // PricingSection,
   // FaqSection,
@@ -22,10 +22,10 @@ export {
 
 export default {
   HeroSection,
-  // FeaturesSection,
-  // ReviewsSection,
-  // CtaSection,
-  // ListingSection,
+  FeaturesSection,
+  ReviewsSection,
+  CtaSection,
+  ListingSection,
   // ContentSection,
   // PricingSection,
   // FaqSection,

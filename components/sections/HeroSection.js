@@ -1,4 +1,4 @@
-import { colors, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { colors, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import get from 'lodash.get';
 import React from 'react'
 import CtaButtons from '../CtaButtons';
@@ -14,11 +14,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.contrastText,
     background: "transparent",
   },
-  headline: {
-    fontSize: theme.spacing(4)
-  },
   content: {
-    fontSize: theme.spacing(2),
+    marginTop: theme.spacing(2),
   },
   actions: {
     paddingTop: theme.spacing(2),
@@ -28,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 function HeroSection(props) {
   const classes = useStyles();
-  const section = props.section;
+  const section = get(props, 'section', null);
 
   return (
     <section id={get(section, 'system.codename', null)} className={classes.section}>
@@ -44,11 +41,11 @@ function HeroSection(props) {
 
           <Grid item xs={12} sm={4} className={classes.column}>
             {get(section, 'title', null) && (
-              <h2 className={classes.headline}>{get(section, 'title.value', null)}</h2>
+              <Typography variant="h2">{get(section, 'title.value', null)}</Typography>
             )}
 
             {/* TODO: Create RichText element */}
-            <div dangerouslySetInnerHTML={{ __html: get(section, 'content.value', null) }} className={classes.content} />
+            <Typography variant="subtitle1" className={classes.content} dangerouslySetInnerHTML={{ __html: get(section, 'content.value', null) }} />
 
             {get(section, 'actions', null) && (
               <div className={classes.actions}>

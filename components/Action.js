@@ -7,7 +7,9 @@ function Action(props) {
   const { action, data: { mappings } } = props;
   const role = get(action, 'role.value[0].codename', null);
   const navigationItem = get(action, 'navigation_item.value[0]', null)
-  const href = getUrlFromMapping(mappings, navigationItem.system.codename);
+  const href = navigationItem.system.type === "external_url"
+    ? get(navigationItem, 'url.value')
+    : getUrlFromMapping(mappings, navigationItem.system.codename);
   const action_options = get(action, 'options.value', []);
   const new_window = action_options.some(item => item.codename === 'new_window');
   const no_follow = action_options.some(item => item.codename === 'no_follow');
@@ -18,14 +20,14 @@ function Action(props) {
     config.variant = "contained";
     config.color = role;
   }
-  if(outlined) {
+  if (outlined) {
     config.variant = "outlined";
   }
 
   // TODO finish for all properties (no_follow, ...)
 
   return (
-    <Button component={Link} underline="none" href={href} {...config} className={props.className}>
+    <Button component={Link} underline="none" size={props.size} href={href} {...config}>
       {action.label.value}
     </Button>
   );

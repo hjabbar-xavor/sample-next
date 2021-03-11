@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Link from './Link';
 import Action from './Action';
 import CtaButtons from './CtaButtons';
+import FormField from './FormField';
 
 export {
   UnknownComponent,
@@ -14,6 +15,7 @@ export {
   Link,
   Action,
   CtaButtons,
+  FormField,
 }
 
 export default {
@@ -24,4 +26,5 @@ export default {
   Link,
   Action,
   CtaButtons,
+  FormField,
 }
