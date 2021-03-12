@@ -23,7 +23,7 @@ export default class Post extends React.Component {
             <div>
               <p>{get(post, 'excerpt.value', null)}</p>
             </div>
-            <footer className="post-meta">
+            <footer>
               <time>{get(post, 'publishing_date.value', null) && new Date(get(post, 'publishing_date.value', null)).toDateString()}</time>
               {get(post, 'author.value[0]', null) &&
                     (', by ' + get(post, 'author.value[0].first_name.value', null) + ' ' + get(post, 'author.value[0].last_name.value', null))}
