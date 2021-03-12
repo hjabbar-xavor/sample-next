@@ -16,10 +16,20 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPage(props) {
   const classes = useStyles();
+  const page = get(props, 'page.content.value[0]', null);
+
+  if (!page) {
+    return (
+      <UnknownComponent>
+        Page {page.system.codename} does not have any content!
+      </UnknownComponent>
+    );
+  }
+
   return (
     <Layout {...props}>
       <Box className={classes.sections}>
-        {get(props, 'page.content.value[0].sections.value', []).map((section, index) => {
+        {get(page, 'sections.value', []).map((section, index) => {
           const contentType = upperFirst(camelCase(get(section, 'system.type', null)));
           const Component = sections[contentType];
 

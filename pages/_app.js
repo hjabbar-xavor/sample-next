@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       ? "Fira Sans"
       : "Arial";
 
-  const title = (get(pageProps, 'page.label.value', null) || get(pageProps, 'page.title.value', null)) + ' | ' + get(pageProps, 'data.config.title.value', null);
+  let title = (get(pageProps, 'page.label.value', null) || get(pageProps, 'page.title.value', null)) + ' | ' + get(pageProps, 'data.config.title.value', null);
   if (get(pageProps, 'page.seo__title.value', null)) {
     title = get(pageProps, 'page.seo__title.value', null);
   }
