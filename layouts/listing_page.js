@@ -1,5 +1,5 @@
 import get from "lodash.get";
-import upperFirst from "lodash.upperFirst";
+import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelCase";
 import { Layout, UnknownComponent } from "../components"
 import { Card, Container, Grid, makeStyles, Paper, Typography } from "@material-ui/core";

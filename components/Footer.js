@@ -2,7 +2,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { Box, colors, Container, Divider, Grid, Paper } from '@material-ui/core';
 import get from "lodash.get";
-import upperFirst from "lodash.upperFirst";
+import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelCase";
 import { UnknownComponent } from "../components"
 import sections from './footerSections';
