@@ -1,6 +1,6 @@
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
-import camelCase from "lodash.camelCase";
+import camelCase from "lodash.camelcase";
 import { Layout, UnknownComponent } from "../components"
 import sections from '../components/sections';
 import { Box, makeStyles } from "@material-ui/core";

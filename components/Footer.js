@@ -3,7 +3,7 @@ import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/sty
 import { Box, colors, Container, Divider, Grid, Paper } from '@material-ui/core';
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
-import camelCase from "lodash.camelCase";
+import camelCase from "lodash.camelcase";
 import { UnknownComponent } from "../components"
 import sections from './footerSections';
 
