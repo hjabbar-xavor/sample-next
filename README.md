@@ -244,6 +244,42 @@ Next.js offers embedded possibility to preview unpublished content - [the previe
 
 > Follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/3) for progress.
 
+## Design
+
+The application is using [Material Design](https://material-ui.com/). The main theme is configured in [_app.js](./pages/_app.js). Components are styled using `makeStyles` method to ensure isolation.
+
+```jsx
+import React from 'react'
+import get from 'lodash.get'
+import { Container, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  section: {
+    background: 'red'
+  }
+}));
+
+function FeaturesSection(props) {
+  const section = get(props, 'section', null);
+  const classes = useStyles();
+
+
+  return (
+    <section id={get(section, 'system.codename', null)} className={classes.section}>
+      <Container>
+        Section: {get(section, 'system.codename', null)}
+      </Container>
+    </section>
+  )
+}
+
+export default FeaturesSection
+```
+
+There are some additional steps done to allow [Server rendering](https://material-ui.com/guides/server-rendering/). The concept of the app was used from [Official Next.js example for material design](https://github.com/mui-org/material-ui/tree/master/examples/nextjs).
+
+> Follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/13) to see how to use configurable theme definition in Next.js app.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
