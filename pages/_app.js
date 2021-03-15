@@ -5,7 +5,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Head from 'next/head';
-import '../styles/index.scss'
 
 
 function MyApp({ Component, pageProps }) {
