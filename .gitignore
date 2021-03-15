@@ -33,3 +33,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Kontent cache files
+# https://github.com/vercel/next.js/issues/10933#issuecomment-598297975
+_mappings.json
+_metadata.json

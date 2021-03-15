@@ -1,12 +1,11 @@
 import { Layout } from ".";
-
-const UnknownComponent = () => {
-  if (this.props.useLayout) {
+function UnknownComponent(props) {
+  if (props.useLayout) {
     return (
-      <Layout {...this.props}>
+      <Layout {...props}>
         <div>
           <h2>UNKNOWN COMPONENT</h2>
-          {this.props.children}
+          {props.children}
         </div>
       </Layout>
     );
@@ -15,7 +14,7 @@ const UnknownComponent = () => {
   return (
     <div>
       <h2>UNKNOWN COMPONENT</h2>
-      {this.props.children}
+      {props.children}
     </div>
   );
 };

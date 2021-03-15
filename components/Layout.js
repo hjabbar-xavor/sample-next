@@ -1,32 +1,33 @@
-import { get } from 'lodash.get'
-import { Helmet } from 'react-helmet';
+import { Divider, Grid, makeStyles } from '@material-ui/core';
 import { Footer, Header } from '.';
 
-const Layout = (props) => {
-  const title = get(props, 'page.label.value', get(props, 'page.title.value', null)) + ' | ' + get(props, 'data.config.title', null);
-  const font = get(props, 'data.config.base_font', null) || 'nunito-sans';
-
-  if (get(props, 'page.seo__title.value', null)) {
-    title = get(props, 'page.seo__title.value', null);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    minHeight: '100vh'
+  },
+  flex: {
+    flexGrow: 1
   }
+}));
 
+function Layout(props) {
+  const classes = useStyles();
 
   return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-        {/* TODO */}
-      </Helmet>
-      <div>
-        <Header {...this.props} />
+    <Grid container direction="column" alignItems="stretch" alignContent="stretch" className={classes.root}>
+      <Grid item>
+        <Header {...props} />
+      </Grid>
+      <Grid item className={classes.flex}>
         <main>
-          {this.props.children}
+          {props.children}
         </main>
-        <Footer {...this.props} />
-      </div>
-    </>
+      </Grid>
+      <Grid item>
+        <Footer {...props} />
+      </Grid>
+    </Grid>
   );
-
 }
 
 export default Layout;
