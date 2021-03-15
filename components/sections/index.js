@@ -6,7 +6,7 @@ import ListingSection from './ListingSection';
 import ContentSection from './ContentSection';
 import PricingSection from './PricingSection';
 import FaqSection from './FaqSection';
-// import ContactSection from './ContactSection';
+import ContactSection from './ContactSection';
 
 export {
   HeroSection,
@@ -17,7 +17,7 @@ export {
   ContentSection,
   PricingSection,
   FaqSection,
-  // ContactSection,
+  ContactSection,
 };
 
 export default {
@@ -29,5 +29,5 @@ export default {
   ContentSection,
   PricingSection,
   FaqSection,
-  // ContactSection,
+  ContactSection,
 };
