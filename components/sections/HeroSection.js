@@ -1,7 +1,8 @@
 import { colors, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import get from 'lodash.get';
 import React from 'react'
-import CtaButtons from '../CtaButtons';
+import { CtaButtons, Image } from '..';
+
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -35,7 +36,7 @@ function HeroSection(props) {
           {get(section, 'image.value[0]', null) && (
             <Grid item xs={12} sm={6} className={classes.column}>
               {/* TODO use Next Image Component */}
-              <img width="100%" src={get(section, 'image.value[0].url', null)} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name')} />
+              <Image asset={get(section, 'image.value[0]', null)} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name')} />
             </Grid>
           )}
 

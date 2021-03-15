@@ -6,6 +6,7 @@ import Link from './Link';
 import Action from './Action';
 import CtaButtons from './CtaButtons';
 import FormField from './FormField';
+import Image from './Image';
 
 export {
   UnknownComponent,
@@ -16,6 +17,7 @@ export {
   Action,
   CtaButtons,
   FormField,
+  Image,
 }
 
 export default {
@@ -27,4 +29,5 @@ export default {
   Action,
   CtaButtons,
   FormField,
+  Image,
 }

@@ -1,9 +1,6 @@
 import get from "lodash.get";
-import upperFirst from "lodash.upperfirst";
-import camelCase from "lodash.camelcase";
-import { Layout, UnknownComponent } from "../components"
-import sections from '../components/sections';
-import { Box, Container, makeStyles, Typography } from "@material-ui/core";
+import { Image, Layout, UnknownComponent } from "../components"
+import { Container, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +33,7 @@ function Post(props) {
         {get(post, 'image.value[0]', null) && (
           <div>
             {/* TODO use Next Image Component */}
-            <img width="100%" src={(get(post, 'image.value[0].url', null))} alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
+            <Image asset={get(post, 'image.value[0]', null)} src={(get(post, 'image.value[0].url', null))} alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
           </div>
         )}
         <Typography component="div">

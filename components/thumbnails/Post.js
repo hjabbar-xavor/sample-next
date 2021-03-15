@@ -1,6 +1,6 @@
 import React from 'react';
 import get from 'lodash.get';
-import { Link } from '..';
+import { Image, Link } from '..';
 
 export default class Post extends React.Component {
   render() {
@@ -13,7 +13,7 @@ export default class Post extends React.Component {
           {get(post, 'image.value[0]', null) && (
             <Link href={postUrl}>
               {/* TODO use Next Image Component */}
-              <img width="100%" src={get(post, 'image.value[0].url', null)} alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
+              <Image asset={(get(post, 'image.value[0]', null))} src={get(post, 'image.value[0].url', null)} alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
             </Link>
           )}
           <div>

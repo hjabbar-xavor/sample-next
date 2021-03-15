@@ -1,7 +1,7 @@
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelcase";
-import { Layout, UnknownComponent } from "../components"
+import { Image, Layout, UnknownComponent } from "../components"
 import sections from '../components/sections';
 import { Box, Container, makeStyles, Typography } from "@material-ui/core";
 
@@ -36,7 +36,7 @@ function SimplePage(props) {
         {get(page, 'image.value[0]', null) && (
           <div>
             {/* TODO use Next Image Component */}
-            <img width="100%" src={(get(page, 'image.value[0].url', null))} alt={get(page, 'image.value[0].description') || get(page, 'image.value[0].name', null)} />
+            <Image asset={(get(page, 'image.value[0]', null))} alt={get(page, 'image.value[0].description') || get(page, 'image.value[0].name', null)} />
           </div>
         )}
         <Typography component="div">
