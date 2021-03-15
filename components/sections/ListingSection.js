@@ -1,7 +1,7 @@
 import React from 'react'
 import get from 'lodash.get'
-import upperFirst from 'lodash.upperFirst'
-import camelCase from 'lodash.camelCase'
+import upperFirst from 'lodash.upperfirst'
+import camelCase from 'lodash.camelcase'
 import { Card, CardContent, Container, Grid, makeStyles, Typography } from '@material-ui/core';
 import thumbnails from '../thumbnails';
 
