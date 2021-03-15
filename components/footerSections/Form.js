@@ -28,22 +28,24 @@ function Form(props) {
       )}
 
       {/* TODO define best practices for forms submissions - API route for handling */}
-      <form
-        name={get(form, 'form_id.value', null)}
-        id={get(form, 'form_id.value', null)}
-        {...(get(form, 'form_action', null) ? ({ action: get(form, 'form_action', null) }) : null)}
-        method="POST"
-        className={classes.form}>
+      { form && (
+        <form
+          name={get(form, 'form_id.value', null)}
+          id={get(form, 'form_id.value', null)}
+          action={get(form, 'form_action.value', null)}
+          method="POST"
+          className={classes.form}>
 
-        {get(form, 'fields.value', []).map((field, field_idx) => (
-          <FormField field={field} form={form} key={field_idx} />
-        ))
-        }
+          {get(form, 'fields.value', []).map((field, field_idx) => (
+            <FormField field={field} key={field_idx} />
+          ))
+          }
 
-        <Button variant="contained" color="primary">
-          {get(form, 'submit_label.value', null)}
-        </Button>
-      </form>
+          <Button variant="contained" color="primary">
+            {get(form, 'submit_label.value', null)}
+          </Button>
+        </form>
+      )}
 
     </section>
   )
