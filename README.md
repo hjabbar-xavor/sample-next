@@ -1,6 +1,7 @@
 # Kontent Starter Corporate - Next.js
 
 [![Build & Export](https://github.com/Kentico/kontent-starter-corporate-next-js/actions/workflows/main.yml/badge.svg)](https://github.com/Kentico/kontent-starter-corporate-next-js/actions/workflows/main.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/04aba7cf-bf6a-462a-969f-e53cbf8fb546/deploy-status)](https://app.netlify.com/sites/kontent-starter-corporate-next-js/deploys)
 
 [![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-FE7A16.svg?style=popout&logo=github)](https://github.com/Kentico/Home/discussions)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
