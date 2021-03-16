@@ -36,6 +36,7 @@ function Header(props) {
             <Link href='/' className={classes.logo}>
               {get(props, 'data.config.header_logo.value[0]')
                 ? (<Image
+                  asset={get(props, 'data.config.header_logo.value[0]')}
                   src={get(props, 'data.config.header_logo.value[0].url')}
                   alt={get(props, 'data.config.title.value', null)}
                   width="200"

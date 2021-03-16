@@ -2,6 +2,7 @@ import React from 'react'
 import get from 'lodash.get'
 import { makeStyles, Typography } from '@material-ui/core';
 import { CtaButtons } from '..';
+import Image from '../Image';
 
 const useStyles = makeStyles((theme) => ({
 }));
@@ -20,7 +21,7 @@ function ContentSection(props) {
       {get(section, 'image.value[0]', null) && (
         <div>
           {/* TODO use Next Image Component */}
-          <img width="100%" src={(get(section, 'image.value[0].url', null))} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)} />
+          <Image asset={(get(section, 'image.value[0]', null))} src={(get(section, 'image.value[0].url', null))} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)} />
         </div>
       )}
 

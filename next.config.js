@@ -1,9 +1,8 @@
 module.exports = {
+  // https://github.com/vercel/next.js/issues/21079
+  // Remove the workaround the issue is fixed
   images: {
-    // TODO: implement custom Kontent loader - https://nextjs.org/docs/basic-features/image-optimization#domains
-    domains: [
-      'preview-assets-us-01.kc-usercontent.com',
-      'assets-us-01.kc-usercontent.com'
-    ],
+    loader: "imgix",
+    path: "",
   },
 }
