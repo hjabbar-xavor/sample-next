@@ -10,7 +10,7 @@ This is a [Next.js](https://nextjs.org) corporate starter site using [Kentico Ko
 
 ## Demo
 
-// TODO
+<https://kontent-starter-corporate-next-js.netlify.app/>
 
 ## Deploy your own
 
