@@ -12,6 +12,8 @@ This is a [Next.js](https://nextjs.org) corporate starter site using [Kentico Ko
 
 <https://kontent-starter-corporate-next-js.netlify.app/>
 
+[![Screenshot](./docs/screenshot.png)](https://kontent-starter-corporate-next-js.netlify.app)
+
 ## Deploy your own
 
 Once you have access to [the environment variables you'll need](#environment-variables), deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
