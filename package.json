@@ -1,5 +1,6 @@
 {
-  "name": "@kentico/kontent-starter-corporate-js",
+  "name": "@kentico/kontent-starter-corporate-next-js",
+  "version": "0.0.1",
   "scripts": {
     "dev": "next",
     "build": "next build",

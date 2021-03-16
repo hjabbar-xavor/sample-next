@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log('Page [[]...slug]].js getStaticProps, params: ', params);
+    console.log('Page [[...slug]].js getStaticProps, params: ', params);
     const pagePath = `/${params.slug ? params.slug.join('/') : ''}`;
     const props = await getPageStaticPropsForPath(pagePath);
     return { props };

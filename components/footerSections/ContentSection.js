@@ -21,7 +21,7 @@ function ContentSection(props) {
       {get(section, 'image.value[0]', null) && (
         <div>
           {/* TODO use Next Image Component */}
-          <Image asset={(get(section, 'image.value[0]', null))} src={(get(section, 'image.value[0].url', null))} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)} />
+          <Image width="160" height="80" asset={(get(section, 'image.value[0]', null))} src={(get(section, 'image.value[0].url', null))} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)} />
         </div>
       )}
 

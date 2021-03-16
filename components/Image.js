@@ -8,9 +8,9 @@ const Image = ({ asset, src, width, height, alt, quality }) => {
   ? kontentImageLoader
   : undefined;
   
-  if (asset && asset.type === "image/svg+xml") {
-    return (<img src={asset.url} width={width || '100%'} height={height} />);
-  }
+  // if (asset && asset.type === "image/svg+xml") {
+  //   return (<img src={asset.url} width={width || '100%'} height={height} />);
+  // }
   
   const theme = useTheme();
 
