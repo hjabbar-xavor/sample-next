@@ -2,7 +2,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container } from '@material-ui/core';
-import { Link } from '.';
+import get from 'lodash.get';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles();
+  const currentPath = '/' + get(props, 'params.slug', []).join('/');
 
   return (
     <div className={classes.root}>
@@ -33,7 +34,6 @@ function Header(props) {
             )}
             <div className={classes.actions}>
               <Button variant="outlined" href="/api/exit-preview">Exit preview</Button>
-              {/* <Button variant="outlined" href={`/api/refresh-mappings?callbackPath=${}`}>Exit preview</Button> */}
             </div>
           </Toolbar>
         </Container>

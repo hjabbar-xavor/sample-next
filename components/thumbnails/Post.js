@@ -5,7 +5,7 @@ import { Image, Link } from '..';
 export default class Post extends React.Component {
   render() {
     let post = get(this.props, 'item', null);
-    let postUrl = '/blog/' + get(post, 'slug.value', '#');
+    let postUrl = `${this.props.preview ? '/preview' : ''}/blog/` + get(post, 'slug.value', '#');
 
     return (
       <article>

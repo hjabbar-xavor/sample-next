@@ -33,7 +33,7 @@ function Header(props) {
       <AppBar color="transparent" position="sticky">
         <Container>
           <Toolbar>
-            <Link href='/' className={classes.logo}>
+            <Link href={props.preview ? '/preview' : ''} className={classes.logo}>
               {get(props, 'data.config.header_logo.value[0]')
                 ? (<Image
                   asset={get(props, 'data.config.header_logo.value[0]')}
