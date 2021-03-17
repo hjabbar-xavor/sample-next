@@ -1,5 +1,5 @@
 import { Divider, Grid, makeStyles } from '@material-ui/core';
-import { Footer, Header } from '.';
+import { Footer, Header, PreviewBar } from '.';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +15,11 @@ function Layout(props) {
 
   return (
     <Grid container direction="column" alignItems="stretch" alignContent="stretch" className={classes.root}>
+      {props.preview && (
+        <Grid item>
+          <PreviewBar {...props} />
+        </Grid>
+      )}
       <Grid item>
         <Header {...props} />
       </Grid>

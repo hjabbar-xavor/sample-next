@@ -26,9 +26,9 @@ function Page(props) {
     return <PageLayout {...props} />;
 }
 
-
-export async function getStaticPaths() {
+export async function getStaticPaths(ctx, ctx2) {
     console.log('Page [[...slug]].js getStaticPaths');
+    console.log(ctx);
     const paths = await getContentPaths()
     return {
         paths,
@@ -36,11 +36,11 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview = false }) {
     console.log('Page [[...slug]].js getStaticProps, params: ', params);
     const pagePath = `/${params.slug ? params.slug.join('/') : ''}`;
-    const props = await getPageStaticPropsForPath(pagePath);
-    return { props };
+    const props = await getPageStaticPropsForPath(pagePath, preview);
+    return { props: { ...props, preview } };
 }
 
 export default Page;
