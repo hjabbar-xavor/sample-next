@@ -215,7 +215,7 @@ To define the sitemap and its mapping to specific content items a method `getCon
 
 For every single route the Next.js is loading data by using `mappings` file to identify content item to load proper content and `metadata` file for reloading layout data and then passed this information to the React components. Data loading happens in `getPageStaticPropsForPath` in [lib/api.js](./lib/api.js).
 
-> It might be possible to store whole content in `mappings` file and do not re-load the data, but [Response size limitations](https://docs.kontent.ai/reference/delivery-api#section/Response-size) might be applied.
+> It might be possible to store whole content in `mappings` file and do not re-load the data, but [Response size limitations](https://docs.kontent.ai/reference/delivery-api#section/Response-size) might be applied. // TODO set the revalidation for specific part of the site to reduce API calls
 
 ### Content types - React components mapping mapping
 

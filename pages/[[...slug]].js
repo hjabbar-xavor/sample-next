@@ -33,7 +33,7 @@ export async function getStaticPaths(ctx) {
     const paths = await getContentPaths()
     return {
         paths,
-        fallback: false
+        fallback: false,
     };
 }
 
