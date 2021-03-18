@@ -41,7 +41,7 @@ export async function getStaticProps({ params, preview = false }) {
     console.log('Page [[...slug]].js getStaticProps, params: ', params);
     previewEnabled = preview;
     const pagePath = `/${params.slug ? params.slug.join('/') : ''}`;
-    const props = await getPageStaticPropsForPath(pagePath, preview);
+    const props = await getPageStaticPropsForPath(pagePath, preview || (params.slug && params.slug.length && params.slug[0] === 'preview'));
     return { props: { ...props, preview, params } };
 }
 
