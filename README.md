@@ -143,11 +143,15 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 
 > Following approach was selected because there is currently now way to pass more information then just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 
-To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js). This method loads items from "homepage" items and traverse down of navigation and content and creates a `_mappings.json` file that is storing the information about mapping 'route'->'content item system information'. Plus it load the information about the configuration stored in "homepage" and store it to the `_metadata.json`. This file is the used for loading layout and configure whole site.
+### Generated files
+
+To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js). This method loads items from "homepage" items and traverse down of navigation and content and generates a `_mappings.json` (and `_mappings.preview.json` for [Preview](#preview)) file that is storing the information about mapping 'route'->'content item system information'. Plus it loads the information about the configuration stored in "homepage" and store it to the `_metadata.json` (and `_metadata.preview.json` for [Preview](#preview)). These `metadata` and `mappings` files are the used for loading layout and configure whole site.
+
+`_mappings.json` (`_mappings.preview.json`)
 
 ```jsonc
 {
-  "/": {
+  "/": { // or /preview for preview version
     "name": "Homepage",
     "codename": "homepage",
     "id": "a964c3b5-1fc5-4cd6-b8c9-bae01a35cdb5",
@@ -157,7 +161,7 @@ To define the sitemap and its mapping to specific content items a method `getCon
     "sitemapLocations": [],
     "collection": "default"
   },
-  "/features": {
+  "/features": { // or /preview/features for preview version
     "name": "Features",
     "codename": "features_e0a053c",
     "id": "e0a053c8-9b46-4d6c-a75e-85325c1610bc",
@@ -170,6 +174,8 @@ To define the sitemap and its mapping to specific content items a method `getCon
   // ...
 }
 ```
+
+`_metadata.json` (`_metadata.preview.json`)
 
 ```jsonc
 {
@@ -207,9 +213,9 @@ To define the sitemap and its mapping to specific content items a method `getCon
 }
 ```
 
-For every single route the Next.js is loading data by using `_mappings.json` to identify content item to load proper content and `_metadata.json` for reloading layout data and then passed this information to the React components. Data loading happens in `getPageStaticPropsForPath` in [lib/api.js](./lib/api.js).
+For every single route the Next.js is loading data by using `mappings` file to identify content item to load proper content and `metadata` file for reloading layout data and then passed this information to the React components. Data loading happens in `getPageStaticPropsForPath` in [lib/api.js](./lib/api.js).
 
-> It might be possible to store whole content in `_mappings.json` and do not re-load the data, but [Response size limitations](https://docs.kontent.ai/reference/delivery-api#section/Response-size) might be applied.
+> It might be possible to store whole content in `mappings` file and do not re-load the data, but [Response size limitations](https://docs.kontent.ai/reference/delivery-api#section/Response-size) might be applied.
 
 ### Content types - React components mapping mapping
 
@@ -245,9 +251,14 @@ Reference:
 
 ## Preview
 
-Next.js offers embedded possibility to preview unpublished content - [the preview mode](https://nextjs.org/docs/advanced-features/preview-mode). If you want to include this capability - follow the linked guide, or jum straight to the [Kontent example](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent) that already includes implementation of the [preview](https://github.com/vercel/next.js/blob/canary/examples/cms-kontent/pages/api/preview.js) and [exit-preview](https://github.com/vercel/next.js/blob/canary/examples/cms-kontent/pages/api/exit-preview.js) API route.
+Next.js offers embedded possibility to preview unpublished content - [the preview mode](https://nextjs.org/docs/advanced-features/preview-mode). This feature is integrated with [Kontent preview](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview) in this starter. The whole preview environment has the same sitemap, but just prefixed with `/preview`. Once the application is [Generating `mappings` and `metadata` files](#generated-files) it is generating two version for them. One for preview (`_mappings.preview.json`, `_metadata_.preview.json`) and one for published content. Once the preview is enabled, whole sitemap is pre-generated and it is using the preview version files.
 
-> Follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/3) for progress.
+
+### Enter the preview
+
+There are two Next API routes - `/api/preview` and `/api/exit-preview` - that works as described in [Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode). To enable the preview with `/api/preview` it is required to know `KONTENT_PREVIEW_SECRET` environment variable. So the enter API route would be `http://localhost:3000/api/preview?secret=<KONTENT_PREVIEW_SECRET>` in development environment.
+
+### Exit the preview
 
 ## Design
 
