@@ -145,7 +145,7 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 
 #### Sitemap construction
 
-To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js). Using `getSitemapMappings` method, it loads "homepage" item and its child items to a specific depth and the traverse down. This process creates mapping between the sitemap (routes) and the content items storing data for the specific route.
+To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js) is used. Using `getSitemapMappings` method, it loads "homepage" item and its child items to the specific depth and then traverse down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
 
 #### Specific route data
 
