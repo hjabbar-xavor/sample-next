@@ -23,6 +23,7 @@
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
         "react/prop-types": "off",  // we don't want to validate props yet
+        "react/display-name": "off",
         "react/react-in-jsx-scope": "off",  // suppress errors for missing 'import React' in files - next.js does it implicitly
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]  // allow jsx syntax in js files (for next.js project)
     }
