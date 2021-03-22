@@ -5,8 +5,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh'
   },
-  flex: {
-    flexGrow: 1
+  main: {
+    flexGrow: 1,
+    paddingBottom: theme.spacing(4)
   }
 }));
 
@@ -23,7 +24,7 @@ function Layout(props) {
       <Grid item>
         <Header {...props} />
       </Grid>
-      <Grid item className={classes.flex}>
+      <Grid item className={classes.main}>
         <main>
           {props.children}
         </main>

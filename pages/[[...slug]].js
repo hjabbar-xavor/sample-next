@@ -35,10 +35,10 @@ export async function getStaticPaths(ctx) {
     };
 }
 
-export async function getStaticProps({ params}) {
+export async function getStaticProps({ params, preview = false }) {
     console.log('Page [[...slug]].js getStaticProps, params: ', params);
-    const props = await getPageStaticPropsForPath(params);
-    return { props: { ...props, params } };
+    const props = await getPageStaticPropsForPath(params, preview);
+    return { props: { ...props, params, preview } };
 }
 
 export default Page;
