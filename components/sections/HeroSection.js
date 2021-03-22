@@ -1,4 +1,4 @@
-import { colors, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Container, Grid, makeStyles, Typography, useTheme } from '@material-ui/core';
 import get from 'lodash.get';
 import React from 'react'
 import { CtaButtons, Image } from '..';
@@ -28,6 +28,9 @@ function HeroSection(props) {
   const classes = useStyles();
   const section = get(props, 'section', null);
 
+  const theme = useTheme();
+  const imageSizes = `(min-width: ${theme.breakpoints.values.sm}px) 40vw, 100vw`;
+
   return (
     <section id={get(section, 'system.codename', null)} className={classes.section}>
       <Container>
@@ -35,8 +38,10 @@ function HeroSection(props) {
 
           {get(section, 'image.value[0]', null) && (
             <Grid item xs={12} sm={6} className={classes.column}>
-              {/* TODO use Next Image Component */}
-              <Image asset={get(section, 'image.value[0]', null)} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name')} />
+              <Image
+                sizes={imageSizes}
+                asset={get(section, 'image.value[0]', null)}
+                alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name')} />
             </Grid>
           )}
 

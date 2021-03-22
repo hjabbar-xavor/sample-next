@@ -57,7 +57,7 @@ function ListingSection(props) {
                 <Grid item md={4} sm={12} key={item_idx}>
                   <Card className={classes.itemCard} >
                     <CardContent>
-                      <ThumbnailLayout key={item_idx} {...props} item={item} />
+                      <ThumbnailLayout key={item_idx} {...props} item={item} columnCount={4}/>
                     </CardContent>
                   </Card>
                 </Grid>

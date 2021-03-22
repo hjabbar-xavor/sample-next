@@ -1,6 +1,6 @@
 import get from "lodash.get";
 import { Image, Layout, UnknownComponent } from "../components"
-import { Container, makeStyles, Typography } from "@material-ui/core";
+import { Container, makeStyles, Typography, useTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +20,9 @@ function Post(props) {
     );
   }
 
+  const theme = useTheme();
+  const imageSizes = `${theme.breakpoints.values.md}px`;
+
   return (
     <Layout {...props}>
       <Container className={classes.root} maxWidth="md">
@@ -32,8 +35,10 @@ function Post(props) {
 
         {get(post, 'image.value[0]', null) && (
           <div>
-            {/* TODO use Next Image Component */}
-            <Image asset={get(post, 'image.value[0]', null)} src={(get(post, 'image.value[0].url', null))} alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
+            <Image
+              sizes={imageSizes}
+              asset={get(post, 'image.value[0]', null)}
+              alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
           </div>
         )}
         <Typography component="div">

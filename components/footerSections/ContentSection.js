@@ -1,16 +1,17 @@
 import React from 'react'
 import get from 'lodash.get'
 import { makeStyles, Typography } from '@material-ui/core';
-import { CtaButtons } from '..';
-import Image from '../Image';
+import { CtaButtons, Image } from '..';
 
 const useStyles = makeStyles((theme) => ({
+  content: {
+    textAlign: 'center'
+  }
 }));
 
 function ContentSection(props) {
   const section = get(props, 'section', null);
   const classes = useStyles();
-
 
   return (
     <section id={get(section, 'system.codename', null)} className={classes.section}>
@@ -21,7 +22,13 @@ function ContentSection(props) {
       {get(section, 'image.value[0]', null) && (
         <div>
           {/* TODO use Next Image Component */}
-          <Image width="160" height="80" asset={(get(section, 'image.value[0]', null))} src={(get(section, 'image.value[0].url', null))} alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)} />
+          <Image
+            width="160"
+            height="80"
+            asset={(get(section, 'image.value[0]', null))}
+            src={(get(section, 'image.value[0].url', null))}
+            alt={get(section, 'image.value[0].description') || get(section, 'image.value[0].name', null)}
+            sizes="160px" />
         </div>
       )}
 
