@@ -154,7 +154,7 @@ For every single route Next.js is loading data the `getPageStaticPropsForPath` m
 > Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
 
-### Content types - React components mapping mapping
+### Content types - React components mapping
 
 Application is using the codename of the content type to load proper react component and render it. If the application does not find the proper component, it fails or display [special UnknownComponent](./components/UnknownComponent.js) in case od development environment.
 
