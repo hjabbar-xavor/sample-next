@@ -149,7 +149,7 @@ To define the sitemap and its mapping to specific content items a method `getCon
 
 #### Specific route data
 
-For every single route Next.js is loading data the `getPageStaticPropsForPath` method is used. Internally, it reloads the site structure via `getSitemapMappings` method and then identify the content items to load tha data. Then loads the data and pass them as the `props` to the react components.
+For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the data and passes them as the `props` to the react components.
 
 > Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
