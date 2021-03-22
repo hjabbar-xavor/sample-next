@@ -1,4 +1,4 @@
-import { Divider, Grid, makeStyles } from '@material-ui/core';
+import { Box, Divider, Grid, makeStyles } from '@material-ui/core';
 import { Footer, Header } from '.';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,19 +14,13 @@ function Layout(props) {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column" alignItems="stretch" alignContent="stretch" className={classes.root}>
-      <Grid item>
-        <Header {...props} />
-      </Grid>
-      <Grid item className={classes.flex}>
-        <main>
-          {props.children}
-        </main>
-      </Grid>
-      <Grid item>
-        <Footer {...props} />
-      </Grid>
-    </Grid>
+    <Box display="flex" flexDirection="column" alignItems="stretch" alignContent="space-between" className={classes.root}>
+      <Header {...props} />
+      <main className={classes.flex}>
+        {props.children}
+      </main>
+      <Footer {...props} />
+    </Box>
   );
 }
 
