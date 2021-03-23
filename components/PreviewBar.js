@@ -1,26 +1,30 @@
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles,  } from '@material-ui/core/styles';
 import { Button, Container } from '@material-ui/core';
-import get from 'lodash.get';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: 'fixed',
+    zIndex: theme.zIndex.appBar + 1,
+    bottom: 0,
   },
   actions: {
     flexGrow: 1,
     display: 'flex',
     justifyContent: 'flex-end',
-    '& a': {
-      margin: theme.spacing(1),
-    }
+    marginLeft: theme.spacing(4),
+  },
+  exitButton: {
+    margin: theme.spacing(1),
+    borderColor: theme.palette.primary.contrastText,
+    color: theme.palette.primary.contrastText
   }
 }));
 
 function Header(props) {
   const classes = useStyles();
-  const currentPath = '/' + get(props, 'params.slug', []).join('/');
 
   return (
     <div className={classes.root}>
@@ -33,7 +37,7 @@ function Header(props) {
               </p>
             )}
             <div className={classes.actions}>
-              <Button variant="outlined" href="/api/exit-preview">Exit preview</Button>
+              <Button className={classes.exitButton} variant="outlined" href="/api/exit-preview">Exit preview</Button>
             </div>
           </Toolbar>
         </Container>

@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     background: theme.palette.grey[200],
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
+    paddingBottom: theme.mixins.toolbar.minHeight
   },
   copyright: {
     margin: 0,
