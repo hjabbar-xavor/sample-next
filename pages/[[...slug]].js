@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 
 import pageLayouts from '../layouts';
-import { getContentPaths, getPageStaticPropsForPath } from '../lib/api';
+import { getSitemapMappings, getPageStaticPropsForPath } from '../lib/api';
 import UnknownComponent from '../components/UnknownComponent';
 
 
@@ -26,21 +26,19 @@ function Page(props) {
     return <PageLayout {...props} />;
 }
 
-
-export async function getStaticPaths() {
-    console.log('Page [[...slug]].js getStaticPaths');
-    const paths = await getContentPaths()
+export async function getStaticPaths(ctx) {
+    console.log('Page [[...slug]].js getStaticPaths', ctx);
+    const paths = await getSitemapMappings();
     return {
         paths,
-        fallback: false
+        fallback: false,
     };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview = false }) {
     console.log('Page [[...slug]].js getStaticProps, params: ', params);
-    const pagePath = `/${params.slug ? params.slug.join('/') : ''}`;
-    const props = await getPageStaticPropsForPath(pagePath);
-    return { props };
+    const props = await getPageStaticPropsForPath(params, preview);
+    return { props: { ...props, params, preview } };
 }
 
 export default Page;

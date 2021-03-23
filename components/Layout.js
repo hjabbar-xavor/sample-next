@@ -1,5 +1,6 @@
 import { Box, Divider, Grid, makeStyles } from '@material-ui/core';
-import { Footer, Header } from '.';
+import { Footer, Header, PreviewBar } from '.';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,12 +16,15 @@ function Layout(props) {
 
   return (
     <Box display="flex" flexDirection="column" alignItems="stretch" alignContent="space-between" className={classes.root}>
+      {props.preview && (
+        <PreviewBar {...props} />
+      )}
       <Header {...props} />
       <main className={classes.flex}>
         {props.children}
       </main>
       <Footer {...props} />
-    </Box>
+    </Grid>
   );
 }
 
