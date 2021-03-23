@@ -145,16 +145,16 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 
 #### Sitemap construction
 
-To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js). Using `getSitemapMappings` method, it loads "homepage" item and its child items to a specific depth and the traverse down. This process creates mapping between the sitemap (routes) and the content items storing data for the specific route.
+To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js) is used. Using `getSitemapMappings` method, it loads "homepage" item and its child items to the specific depth and then traverse down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
 
 #### Specific route data
 
-For every single route Next.js is loading data the `getPageStaticPropsForPath` method is used. Internally, it reloads the site structure via `getSitemapMappings` method and then identify the content items to load tha data. Then loads the data and pass them as the `props` to the react components.
+For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the data and passes them as the `props` to the react components.
 
-> Currently the sitemap is reloaded for every request. Following approach was selected, because there is currently no way to pass more information then just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
+> Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
 
-### Content types - React components mapping mapping
+### Content types - React components mapping
 
 Application is using the codename of the content type to load proper react component and render it. If the application does not find the proper component, it fails or display [special UnknownComponent](./components/UnknownComponent.js) in case od development environment.
 
