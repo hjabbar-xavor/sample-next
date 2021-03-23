@@ -190,15 +190,23 @@ Reference:
 
 Next.js offers embedded possibility to preview unpublished content - [the preview mode](https://nextjs.org/docs/advanced-features/preview-mode). This feature is integrated with [Kontent preview](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview) in this starter. Once the preview is enabled, all api calls are performed to the [Kontent Preview endpoints](https://docs.kontent.ai/reference/delivery-api#section/Production-vs.-Preview).
 
+There are two Next API routes - `/api/preview` and `/api/exit-preview` - that works as described in [Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode).
+
 ### Enter the preview
 
-There are two Next API routes - `/api/preview` and `/api/exit-preview` - that works as described in [Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode). To enable the preview with `/api/preview` it is required to know `KONTENT_PREVIEW_SECRET` environment variable. So the enter API route would be `http://localhost:3000/api/preview?secret=<KONTENT_PREVIEW_SECRET>` in development environment.
+To enter the preview, just access `/api/preview` API route with the preview secret you set in your [environment variables](#environment-variables).
+
+`http://localhost:3000/api/preview?secret=PREVIEW_SECRET`
+
+> If you don't have your `PREVIEW_SECRET`, your preview is not secured and could be accessed by anybody. Read more on [Official Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms).
+
+Once your secret is verified, you will be redirected to home page and you could see non-published content and the toolbar that allow you to exit the preview.
+
+![Preview bar](./docs/preview-bar.png)
 
 ### Exit the preview
 
 Once the preview is enabled a new toolbar pops up on the top of the page. This allows to to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
-
-![Preview bar](./docs/preview-bar.png)
 
 ## Design
 
