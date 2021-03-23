@@ -7,6 +7,7 @@ import Action from './Action';
 import CtaButtons from './CtaButtons';
 import FormField from './FormField';
 import Image from './Image';
+import PreviewBar from './PreviewBar';
 
 export {
   UnknownComponent,
@@ -18,6 +19,7 @@ export {
   CtaButtons,
   FormField,
   Image,
+  PreviewBar
 }
 
 export default {
@@ -30,4 +32,5 @@ export default {
   CtaButtons,
   FormField,
   Image,
+  PreviewBar,
 }

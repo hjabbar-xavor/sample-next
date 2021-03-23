@@ -141,77 +141,20 @@ When you turn on the [Web Spotlight](https://docs.kontent.ai/tutorials/set-up-ko
 
 The application is using Next.js [Catch all route](https://nextjs.org/docs/routing/dynamic-routes#catch-all-routes) to handle all of the routes. The logic in centralized in [`pages/[[...slug]].js`](./src/pages/[[...slug]].js).
 
-> Following approach was selected because there is currently now way to pass more information then just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
+### Data loading
 
-To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js). This method loads items from "homepage" items and traverse down of navigation and content and creates a `_mappings.json` file that is storing the information about mapping 'route'->'content item system information'. Plus it load the information about the configuration stored in "homepage" and store it to the `_metadata.json`. This file is the used for loading layout and configure whole site.
+#### Sitemap construction
 
-```jsonc
-{
-  "/": {
-    "name": "Homepage",
-    "codename": "homepage",
-    "id": "a964c3b5-1fc5-4cd6-b8c9-bae01a35cdb5",
-    "lastModified": "2021-02-19T13:53:27.876Z",
-    "language": "default",
-    "type": "homepage",
-    "sitemapLocations": [],
-    "collection": "default"
-  },
-  "/features": {
-    "name": "Features",
-    "codename": "features_e0a053c",
-    "id": "e0a053c8-9b46-4d6c-a75e-85325c1610bc",
-    "lastModified": "2021-02-19T13:54:33.230Z",
-    "language": "default",
-    "type": "navigation_item",
-    "sitemapLocations": [],
-    "collection": "default"
-  },
-  // ...
-}
-```
+To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js) is used. Using `getSitemapMappings` method, it loads "homepage" item and its child items to the specific depth and then traverse down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
 
-```jsonc
-{
-  // ...
-  "label": {
-    // ...
-    "value": "Home"
-  },
-  "header_logo": {
-    // ...
-    "value": [
-      {
-        // ...
-        "name": "logo.svg",
-        "type": "image/svg+xml",
-        "size": 3833,
-        "description": null,
-        "url": "https://preview-assets-us-01.kc-usercontent.com:443/30151ff3-f65b-003e-5e7a-4fa6460c47b4/391b0c1d-7f2c-447d-a91f-eaac786e166d/logo.svg"
-      }
-    ]
-  },
-  "base_font": {
-    ///
-    "value": [
-      {
-        // ...
-        "font_codename": {
-          // ...
-          "value": "nunito-sans"
-        }
-      }
-    ]
-  }
-  // ...
-}
-```
+#### Specific route data
 
-For every single route the Next.js is loading data by using `_mappings.json` to identify content item to load proper content and `_metadata.json` for reloading layout data and then passed this information to the React components. Data loading happens in `getPageStaticPropsForPath` in [lib/api.js](./lib/api.js).
+For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the data and passes them as the `props` to the react components.
 
-> It might be possible to store whole content in `_mappings.json` and do not re-load the data, but [Response size limitations](https://docs.kontent.ai/reference/delivery-api#section/Response-size) might be applied.
+> Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
+> It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
 
-### Content types - React components mapping mapping
+### Content types - React components mapping
 
 Application is using the codename of the content type to load proper react component and render it. If the application does not find the proper component, it fails or display [special UnknownComponent](./components/UnknownComponent.js) in case od development environment.
 
@@ -245,9 +188,25 @@ Reference:
 
 ## Preview
 
-Next.js offers embedded possibility to preview unpublished content - [the preview mode](https://nextjs.org/docs/advanced-features/preview-mode). If you want to include this capability - follow the linked guide, or jum straight to the [Kontent example](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent) that already includes implementation of the [preview](https://github.com/vercel/next.js/blob/canary/examples/cms-kontent/pages/api/preview.js) and [exit-preview](https://github.com/vercel/next.js/blob/canary/examples/cms-kontent/pages/api/exit-preview.js) API route.
+Next.js offers embedded possibility to preview unpublished content - [the preview mode](https://nextjs.org/docs/advanced-features/preview-mode). This feature is integrated with [Kontent preview](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview) in this starter. Once the preview is enabled, all api calls are performed to the [Kontent Preview endpoints](https://docs.kontent.ai/reference/delivery-api#section/Production-vs.-Preview).
 
-> Follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/3) for progress.
+There are two Next API routes - `/api/preview` and `/api/exit-preview` - that works as described in [Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode).
+
+### Enter the preview
+
+To enter the preview, just access `/api/preview` API route with the preview secret you set in your [environment variables](#environment-variables).
+
+`http://localhost:3000/api/preview?secret=PREVIEW_SECRET`
+
+> If you don't have your `PREVIEW_SECRET`, your preview is not secured and could be accessed by anybody. Read more on [Official Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms).
+
+Once your secret is verified, you will be redirected to home page and you could see non-published content and the toolbar that allow you to exit the preview.
+
+![Preview bar](./docs/preview-bar.png)
+
+### Exit the preview
+
+Once the preview is enabled a new toolbar pops up on the top of the page. This allows to to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
 
 ## Design
 

@@ -24,7 +24,7 @@ const Image = ({ asset, src, width, height, alt, quality }) => {
     alt={alt}
     quality={quality}
     loader={loader}
-    layout={componentWidth && componentHeight ? undefined : "fill"}
+    layout="responsive"
   />
 }
 
