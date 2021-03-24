@@ -24,7 +24,7 @@ function Layout(props) {
         {props.children}
       </main>
       <Footer {...props} />
-    </Grid>
+    </Box>
   );
 }
 
