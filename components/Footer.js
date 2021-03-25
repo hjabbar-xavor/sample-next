@@ -29,7 +29,7 @@ function Footer(props) {
       <Container>
         <footer>
           {footerSections.length > 0 && (
-            <Grid container spacing={2} alignItems="stretch">
+            <Grid container spacing={2} >
               {footerSections.map((section, index) => {
                 const contentType = upperFirst(camelCase(get(section, "system.type", null)));
                 const Component = sections[contentType];
@@ -37,7 +37,7 @@ function Footer(props) {
                 if (process.env.NODE_ENV === "development" && !Component) {
                   console.error(`Unknown section component for section content type: ${contentType}`);
                   return (
-                    <Grid item xs={12} sm={3} key={index} >
+                    <Grid item xs={12} sm={6} md={3} key={index} >
                       <UnknownComponent {...props}>
                         <pre>{JSON.stringify(section.system, undefined, 2)}</pre>
                       </UnknownComponent>
@@ -46,7 +46,7 @@ function Footer(props) {
                 }
 
                 return (
-                  <Grid item xs={12} sm={3} key={index}>
+                  <Grid item xs={12} sm={6} md={3} key={index}>
                     <Component  {...props} section={section} />
                   </Grid>
                 );
