@@ -32,7 +32,6 @@ function ContentSection(props) {
 
           {get(section, 'image.value[0]', null) && (
             <Grid item xs={12} sm={6} className={classes.column}>
-              {/* TODO use Next Image Component */}
               <Image
                 sizes={imageSizes}
                 asset={(get(section, 'image.value[0]', null))}
