@@ -3,7 +3,7 @@ import get from "lodash.get";
 import { makeStyles, Typography } from "@material-ui/core";
 import { CtaButtons, Image } from "..";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((_theme) => ({
   content: {
     textAlign: "center"
   }
@@ -25,7 +25,6 @@ function ContentSection(props) {
             width="160"
             height="80"
             asset={(get(section, "image.value[0]", null))}
-            src={(get(section, "image.value[0].url", null))}
             alt={get(section, "image.value[0].description") || get(section, "image.value[0].name", null)}
             sizes="160px" />
         </div>

@@ -1,5 +1,5 @@
 import get from "lodash.get";
-import { Image, Layout, UnknownComponent } from "../components";
+import { Image, Layout, RichText, UnknownComponent } from "../components";
 import { Container, makeStyles, Typography, useTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +42,10 @@ function SimplePage(props) {
           </div>
         )}
         <Typography component="div">
-          <div dangerouslySetInnerHTML={{ __html: get(props, "page.content.value[0].content.value", null) }} />
+          <RichText 
+            richTextElementValue={get(props, "page.content.value[0].content", null)} 
+            linkedItems={get(props, "linkedItems", [])}
+            mappings={props.data.mappings} />
         </Typography>
       </Container>
     </Layout>

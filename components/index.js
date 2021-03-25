@@ -9,6 +9,7 @@ import FormField from "./FormField";
 import Image from "./Image";
 import PreviewBar from "./PreviewBar";
 import SideDrawer from "./SideDrawer";
+import RichText from "./RichText";
 
 export {
   UnknownComponent,
@@ -21,7 +22,8 @@ export {
   FormField,
   Image,
   PreviewBar,
-  SideDrawer
+  SideDrawer,
+  RichText,
 };
 
 export default {
@@ -36,4 +38,5 @@ export default {
   Image,
   PreviewBar,
   SideDrawer,
+  RichText,
 };
