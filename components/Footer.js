@@ -1,11 +1,10 @@
-import Toolbar from '@material-ui/core/Toolbar';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { Box, colors, Container, Divider, Grid, Paper } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Container, Divider, Grid } from "@material-ui/core";
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelcase";
-import { UnknownComponent } from "../components"
-import sections from './footerSections';
+import { UnknownComponent } from "../components";
+import sections from "./footerSections";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Footer(props) {
-  const footerSections = get(props, 'data.config.footer_sections.value', []);
+  const footerSections = get(props, "data.config.footer_sections.value", []);
   const classes = useStyles();
 
   return (
@@ -32,11 +31,11 @@ function Footer(props) {
           {footerSections.length > 0 && (
             <Grid container spacing={2} alignItems="stretch">
               {footerSections.map((section, index) => {
-                const contentType = upperFirst(camelCase(get(section, 'system.type', null)));
+                const contentType = upperFirst(camelCase(get(section, "system.type", null)));
                 const Component = sections[contentType];
 
-                if (process.env.NODE_ENV === 'development' && !Component) {
-                  console.error(`Unknown section component for section content type: ${contentType}`)
+                if (process.env.NODE_ENV === "development" && !Component) {
+                  console.error(`Unknown section component for section content type: ${contentType}`);
                   return (
                     <Grid item xs={12} sm={3} key={index} >
                       <UnknownComponent {...props}>
@@ -50,23 +49,23 @@ function Footer(props) {
                   <Grid item xs={12} sm={3} key={index}>
                     <Component  {...props} section={section} />
                   </Grid>
-                )
+                );
               })
               }
             </Grid>
           )}
 
-          {get(props, 'data.config.copyright.value', null) && (
+          {get(props, "data.config.copyright.value", null) && (
             <div className={classes.copyright}>
               <Divider/>
               {/* TODO: Create RichText element */}
-              <div dangerouslySetInnerHTML={{ __html: get(props, 'data.config.copyright.value') }} />
+              <div dangerouslySetInnerHTML={{ __html: get(props, "data.config.copyright.value") }} />
             </div>
           )}
         </footer>
       </Container>
     </Box>
   );
-};
+}
 
 export default Footer;

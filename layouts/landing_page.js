@@ -1,13 +1,13 @@
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelcase";
-import { Layout, UnknownComponent } from "../components"
-import sections from '../components/sections';
+import { Layout, UnknownComponent } from "../components";
+import sections from "../components/sections";
 import { Box, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   sections: {
-    '& > section:first-child': {
+    "& > section:first-child": {
       paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(8)
     }
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPage(props) {
   const classes = useStyles();
-  const page = get(props, 'page.content.value[0]', null);
+  const page = get(props, "page.content.value[0]", null);
 
   if (!page) {
     return (
@@ -29,12 +29,12 @@ function LandingPage(props) {
   return (
     <Layout {...props}>
       <Box className={classes.sections}>
-        {get(page, 'sections.value', []).map((section, index) => {
-          const contentType = upperFirst(camelCase(get(section, 'system.type', null)));
+        {get(page, "sections.value", []).map((section, index) => {
+          const contentType = upperFirst(camelCase(get(section, "system.type", null)));
           const Component = sections[contentType];
 
-          if (process.env.NODE_ENV === 'development' && !Component) {
-            console.error(`Unknown section component for section content type: ${contentType}`)
+          if (process.env.NODE_ENV === "development" && !Component) {
+            console.error(`Unknown section component for section content type: ${contentType}`);
             return (
               <UnknownComponent key={index} {...props}>
                 <pre>{JSON.stringify(section, undefined, 2)}</pre>
@@ -44,7 +44,7 @@ function LandingPage(props) {
 
           return (
             <Component key={index} {...props} section={section} site={props} />
-          )
+          );
         })
         }
       </Box>

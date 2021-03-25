@@ -1,9 +1,9 @@
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelcase";
-import { Layout, UnknownComponent } from "../components"
-import { Card, Container, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
-import thumbnailLayouts from '../components/thumbnails'
+import { Layout, UnknownComponent } from "../components";
+import { Container, Grid, makeStyles, Paper } from "@material-ui/core";
+import thumbnailLayouts from "../components/thumbnails";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -12,14 +12,14 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4)
   },
   thumbnailPaper: {
-    height: '100%',
+    height: "100%",
     padding: theme.spacing(2),
   }
 }));
 
 function ListingPage(props) {
   const classes = useStyles();
-  const page = get(props, 'page.content.value[0]', null);
+  const page = get(props, "page.content.value[0]", null);
   if (!page) {
     return (
       <UnknownComponent>
@@ -36,11 +36,11 @@ function ListingPage(props) {
         {relatedItems.length > 0 &&
           <Grid container spacing={4} alignItems="stretch">
             {relatedItems.map((item, item_idx) => {
-              const contentType = upperFirst(camelCase(get(item, 'system.type', null)));
+              const contentType = upperFirst(camelCase(get(item, "system.type", null)));
 
               const ThumbnailLayout = thumbnailLayouts[contentType];
-              if (process.env.NODE_ENV === 'development' && !ThumbnailLayout) {
-                console.error(`Unknown section component for section content type: ${contentType}`)
+              if (process.env.NODE_ENV === "development" && !ThumbnailLayout) {
+                console.error(`Unknown section component for section content type: ${contentType}`);
                 return (
                   <Grid item md={4} sm={12} key={item_idx}>
                     <Paper className={classes.thumbnailPaper}>
@@ -59,7 +59,7 @@ function ListingPage(props) {
                     <ThumbnailLayout  {...props} item={item} site={props} />
                   </Paper>
                 </Grid>
-              )
+              );
             })}
           </Grid>
         }

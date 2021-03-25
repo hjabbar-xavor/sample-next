@@ -17,6 +17,6 @@ function UnknownComponent(props) {
       {props.children}
     </div>
   );
-};
+}
 
 export default UnknownComponent;

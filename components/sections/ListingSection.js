@@ -1,9 +1,10 @@
-import React from 'react'
-import get from 'lodash.get'
-import upperFirst from 'lodash.upperfirst'
-import camelCase from 'lodash.camelcase'
-import { Card, CardContent, Container, Grid, makeStyles, Typography } from '@material-ui/core';
-import thumbnails from '../thumbnails';
+import React from "react";
+import get from "lodash.get";
+import upperFirst from "lodash.upperfirst";
+import camelCase from "lodash.camelcase";
+import { Card, CardContent, Container, Grid, makeStyles, Typography } from "@material-ui/core";
+import thumbnails from "../thumbnails";
+import { UnknownComponent } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -13,36 +14,36 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center"
   },
   itemCard: {
-    height: '100%'
+    height: "100%"
   }
 }));
 
 function ListingSection(props) {
-  const section = get(props, 'section', null);
+  const section = get(props, "section", null);
   const relatedItems = get(props, `related[${section.system.codename}]`, []);
   const classes = useStyles();
 
   return (
-    <section id={get(section, 'system.codename', null)} className={classes.section}>
+    <section id={get(section, "system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, 'title.value', null) && (
-            <Typography variant="h2">{get(section, 'title.value', null)}</Typography>
+          {get(section, "title.value", null) && (
+            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
           {/* TODO: Create RichText element */}
-          {get(section, 'subtitle.value', null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, 'subtitle.value', null) }} />
+          {get(section, "subtitle.value", null) && (
+            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
           )}
         </div>
 
         {relatedItems.length > 0 && (
           <Grid container spacing={2} alignItems="stretch">
             {relatedItems.map((item, item_idx) => {
-              const contentType = upperFirst(camelCase(get(item, 'system.type', null)));
+              const contentType = upperFirst(camelCase(get(item, "system.type", null)));
               const ThumbnailLayout = thumbnails[contentType];
 
-              if (process.env.NODE_ENV === 'development' && !ThumbnailLayout) {
-                console.error(`Unknown section component for section content type: ${contentType}`)
+              if (process.env.NODE_ENV === "development" && !ThumbnailLayout) {
+                console.error(`Unknown section component for section content type: ${contentType}`);
                 return (
                   <Grid item md={4} sm={12} key={item_idx}>
                     <UnknownComponent key={item_idx} {...this.props}>
@@ -67,7 +68,7 @@ function ListingSection(props) {
         )}
       </Container>
     </section>
-  )
+  );
 }
 
-export default ListingSection
+export default ListingSection;

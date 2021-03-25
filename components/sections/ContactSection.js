@@ -1,7 +1,7 @@
-import React from 'react'
-import get from 'lodash.get'
-import { Button, Container, makeStyles, Typography } from '@material-ui/core';
-import { FormField } from '..';
+import React from "react";
+import get from "lodash.get";
+import { Button, Container, makeStyles, Typography } from "@material-ui/core";
+import { FormField } from "..";
 
 const useStyles = makeStyles((theme) => ({
   formSubmission: {
@@ -11,51 +11,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ContactSection(props) {
-  const section = get(props, 'section', null);
-  const form = get(props, 'section.form.value[0]', null);
+  const section = get(props, "section", null);
+  const form = get(props, "section.form.value[0]", null);
   const classes = useStyles();
 
 
   return (
-    <section id={get(section, 'system.codename', null)} className={classes.section}>
+    <section id={get(section, "system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, 'title.value', null) && (
-            <Typography variant="h2">{get(section, 'title.value', null)}</Typography>
+          {get(section, "title.value", null) && (
+            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
           {/* TODO: Create RichText element */}
-          {get(section, 'subtitle.value', null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, 'subtitle.value', null) }} />
+          {get(section, "subtitle.value", null) && (
+            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
           )}
         </div>
 
         <Typography component="div">
-          <div dangerouslySetInnerHTML={{ __html: get(section, 'content.value', null) }} />
+          <div dangerouslySetInnerHTML={{ __html: get(section, "content.value", null) }} />
         </Typography>
 
         {form && (
           <form
-            name={get(form, 'form_id.value', null)}
-            id={get(form, 'form_id.value', null)}
-            action={get(form, 'form_id.form_action.value', null)}
+            name={get(form, "form_id.value", null)}
+            id={get(form, "form_id.value", null)}
+            action={get(form, "form_id.form_action.value", null)}
             method="POST"
 
           >
 
-            {get(form, 'fields.value', []).map((field, field_idx) => (
+            {get(form, "fields.value", []).map((field, field_idx) => (
               <FormField field={field} key={field_idx} />
             ))
             }
 
             <Button variant="contained" color="primary" className={classes.formSubmission}>
-              {get(form, 'submit_label.value', null)}
+              {get(form, "submit_label.value", null)}
             </Button>
           </form>
         )}
 
       </Container>
     </section>
-  )
+  );
 }
 
-export default ContactSection
+export default ContactSection;

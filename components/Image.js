@@ -1,5 +1,6 @@
-import { kontentImageLoader, srcIsKontentAsset } from "../utils"
-import NextImage from 'next/image'
+import { kontentImageLoader, srcIsKontentAsset } from "../utils";
+import NextImage from "next/image";
+import { useTheme } from "@material-ui/core";
 
 
 const Image = (props) => {
@@ -7,6 +8,7 @@ const Image = (props) => {
   const loader = srcIsKontentAsset(src)
     ? kontentImageLoader
     : undefined;
+  const theme = useTheme();
 
   const componentWidth = width || asset.width || theme.breakpoints.values.md;
   const componentHeight = height || (componentWidth / asset.width) * asset.height;
@@ -18,7 +20,7 @@ const Image = (props) => {
     height={componentHeight}
     loader={loader}
     layout="responsive"
-  />
-}
+  />;
+};
 
-export default Image
+export default Image;

@@ -1,21 +1,21 @@
-import React from 'react';
-import _ from 'lodash';
+import React from "react";
+import _ from "lodash";
 
-import pageLayouts from '../layouts';
-import { getSitemapMappings, getPageStaticPropsForPath } from '../lib/api';
-import UnknownComponent from '../components/UnknownComponent';
+import pageLayouts from "../layouts";
+import { getSitemapMappings, getPageStaticPropsForPath } from "../lib/api";
+import UnknownComponent from "../components/UnknownComponent";
 
 
 function Page(props) {
     // every page can have different layout, pick the layout based on content type
-    const contentType = _.get(props, 'page.system.type') === 'post'
-        ? 'post'
-        : _.get(props, 'page.content.value[0].system.type');
+    const contentType = _.get(props, "page.system.type") === "post"
+        ? "post"
+        : _.get(props, "page.content.value[0].system.type");
 
     const PageLayout = pageLayouts[contentType];
 
-    if (process.env.NODE_ENV === 'development' && !PageLayout) {
-        console.error(`Unknown Layout component for page content type: ${contentType}`)
+    if (process.env.NODE_ENV === "development" && !PageLayout) {
+        console.error(`Unknown Layout component for page content type: ${contentType}`);
         return (
             <UnknownComponent {...props} useLayout={true}>
                 <pre>{JSON.stringify(props, undefined, 2)}</pre>
@@ -27,7 +27,7 @@ function Page(props) {
 }
 
 export async function getStaticPaths(ctx) {
-    console.log('Page [[...slug]].js getStaticPaths', ctx);
+    console.log("Page [[...slug]].js getStaticPaths", ctx);
     const paths = await getSitemapMappings();
     return {
         paths,
@@ -36,7 +36,7 @@ export async function getStaticPaths(ctx) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-    console.log('Page [[...slug]].js getStaticProps, params: ', params);
+    console.log("Page [[...slug]].js getStaticProps, params: ", params);
     const props = await getPageStaticPropsForPath(params, preview);
     return { props: { ...props, params, preview } };
 }

@@ -1,5 +1,5 @@
 import get from "lodash.get";
-import { Image, Layout, UnknownComponent } from "../components"
+import { Image, Layout, UnknownComponent } from "../components";
 import { Container, makeStyles, Typography, useTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Post(props) {
   const classes = useStyles();
-  const post = get(props, 'page', null);
+  const post = get(props, "page", null);
 
   if (!post) {
     return (
@@ -26,29 +26,29 @@ function Post(props) {
   return (
     <Layout {...props}>
       <Container className={classes.root} maxWidth="md">
-        {get(post, 'title.value', null) && (
-          <Typography variant="h1">{get(post, 'title.value', null)}</Typography>
+        {get(post, "title.value", null) && (
+          <Typography variant="h1">{get(post, "title.value", null)}</Typography>
         )}
-        {get(post, 'subtitle.value', null) && (
-          <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(post, 'subtitle.value', null) }} />
+        {get(post, "subtitle.value", null) && (
+          <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(post, "subtitle.value", null) }} />
         )}
 
-        {get(post, 'image.value[0]', null) && (
+        {get(post, "image.value[0]", null) && (
           <div>
             <Image
               sizes={imageSizes}
-              asset={get(post, 'image.value[0]', null)}
-              alt={get(post, 'image.value[0].description') || get(post, 'image.value[0].name', null)} />
+              asset={get(post, "image.value[0]", null)}
+              alt={get(post, "image.value[0].description") || get(post, "image.value[0].name", null)} />
           </div>
         )}
         <Typography component="div">
-          <div dangerouslySetInnerHTML={{ __html: get(props, 'page.content.value', null) }} />
+          <div dangerouslySetInnerHTML={{ __html: get(props, "page.content.value", null) }} />
         </Typography>
 
         <footer>
-          <time>{get(post, 'publishing_date.value', null) && new Date(get(post, 'publishing_date.value', null)).toDateString()}</time>
-          {get(post, 'author.value[0]', null) &&
-            (', by ' + get(post, 'author.value[0].first_name.value', null) + ' ' + get(post, 'author.value[0].last_name.value', null))}
+          <time>{get(post, "publishing_date.value", null) && new Date(get(post, "publishing_date.value", null)).toDateString()}</time>
+          {get(post, "author.value[0]", null) &&
+            (", by " + get(post, "author.value[0].first_name.value", null) + " " + get(post, "author.value[0].last_name.value", null))}
         </footer>
       </Container>
     </Layout>
