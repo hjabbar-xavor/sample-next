@@ -21,7 +21,6 @@ function ContentSection(props) {
 
       {get(section, 'image.value[0]', null) && (
         <div>
-          {/* TODO use Next Image Component */}
           <Image
             width="160"
             height="80"
