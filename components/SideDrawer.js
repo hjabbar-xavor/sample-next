@@ -9,9 +9,9 @@ const useStyles = makeStyles({
     width: 250
   },
   linkText: {
-    textDecoration: `none`,
-    textTransform: `uppercase`,
-    color: `black`
+    textDecoration: "none",
+    textTransform: "uppercase",
+    color: "black"
   }
 });
 
