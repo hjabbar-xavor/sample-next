@@ -9,10 +9,10 @@ import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
 
-  const font = get(pageProps, "data.config.base_font.value[0].font_codename.value", null) || "nunito-sans";
-  const fontName = font === "nunito-sans"
+  const font = get(pageProps, "data.config.font.value[0].codename", null);
+  const fontName = font === "nunito_sans"
     ? "Nunito Sans"
-    : font === "fira-sans"
+    : font === "fira_sans"
       ? "Fira Sans"
       : "Arial";
 
@@ -107,7 +107,7 @@ function MyApp({ Component, pageProps }) {
         )}
 
 
-        {(font === "nunito-sans") ? ([
+        {(font === "nunito_sans") ? ([
           <link key="0" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" rel="preload" />,
           <link key="1" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onLoad="this.media='all'" />,
           <noscript key="2">
@@ -116,7 +116,7 @@ function MyApp({ Component, pageProps }) {
               href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
             />
           </noscript>
-        ]) : ((font === "fira-sans") && ([
+        ]) : ((font === "fira_sans") && ([
           <link key="0" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" as="style" rel="preload" />,
           <link key="1" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" media="print" onLoad="this.media='all'" />,
           <noscript key="2">
