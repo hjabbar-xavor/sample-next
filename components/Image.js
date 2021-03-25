@@ -1,28 +1,21 @@
 import { kontentImageLoader, srcIsKontentAsset } from "../utils"
 import NextImage from 'next/image'
-import { useTheme } from "@material-ui/core";
 
 
-const Image = ({ asset, src, width, height, alt, quality }) => {
+const Image = (props) => {
+  const { asset, src, width, height } = props;
   const loader = srcIsKontentAsset(src)
-  ? kontentImageLoader
-  : undefined;
-  
-  // if (asset && asset.type === "image/svg+xml") {
-  //   return (<img src={asset.url} width={width || '100%'} height={height} />);
-  // }
-  
-  const theme = useTheme();
+    ? kontentImageLoader
+    : undefined;
 
-  const componentWidth = width || theme.breakpoints.values.md; // TODO remove the fallback
+  const componentWidth = width || asset.width || theme.breakpoints.values.md;
   const componentHeight = height || (componentWidth / asset.width) * asset.height;
 
   return <NextImage
+    {...props}
     src={asset.url}
     width={componentWidth}
     height={componentHeight}
-    alt={alt}
-    quality={quality}
     loader={loader}
     layout="responsive"
   />

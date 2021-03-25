@@ -1,9 +1,6 @@
 import get from "lodash.get";
-import upperFirst from "lodash.upperfirst";
-import camelCase from "lodash.camelcase";
 import { Image, Layout, UnknownComponent } from "../components"
-import sections from '../components/sections';
-import { Box, Container, makeStyles, Typography } from "@material-ui/core";
+import { Container, makeStyles, Typography, useTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
 function SimplePage(props) {
   const classes = useStyles();
   const page = get(props, 'page.content.value[0]', null);
+
+  const theme = useTheme();
+  const imageSizes = `${theme.breakpoints.values.md}px`;
 
   if (!page) {
     return (
@@ -35,8 +35,10 @@ function SimplePage(props) {
 
         {get(page, 'image.value[0]', null) && (
           <div>
-            {/* TODO use Next Image Component */}
-            <Image asset={(get(page, 'image.value[0]', null))} alt={get(page, 'image.value[0].description') || get(page, 'image.value[0].name', null)} />
+            <Image
+              sizes={imageSizes}
+              asset={(get(page, 'image.value[0]', null))}
+              alt={get(page, 'image.value[0].description') || get(page, 'image.value[0].name', null)} />
           </div>
         )}
         <Typography component="div">

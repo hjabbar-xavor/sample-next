@@ -1,13 +1,13 @@
-import { Divider, Grid, makeStyles } from '@material-ui/core';
+import { Box, Divider, Grid, makeStyles } from '@material-ui/core';
 import { Footer, Header, PreviewBar } from '.';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh'
   },
-  main: {
-    flexGrow: 1,
-    paddingBottom: theme.spacing(4)
+  flex: {
+    flexGrow: 1
   }
 }));
 
@@ -15,24 +15,16 @@ function Layout(props) {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column" alignItems="stretch" alignContent="stretch" className={classes.root}>
+    <Box display="flex" flexDirection="column" alignItems="stretch" alignContent="space-between" className={classes.root}>
       {props.preview && (
-        <Grid item>
-          <PreviewBar {...props} />
-        </Grid>
+        <PreviewBar {...props} />
       )}
-      <Grid item>
-        <Header {...props} />
-      </Grid>
-      <Grid item className={classes.main}>
-        <main>
-          {props.children}
-        </main>
-      </Grid>
-      <Grid item>
-        <Footer {...props} />
-      </Grid>
-    </Grid>
+      <Header {...props} />
+      <main className={classes.flex}>
+        {props.children}
+      </main>
+      <Footer {...props} />
+    </Box>
   );
 }
 

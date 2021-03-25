@@ -1,11 +1,9 @@
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import get from 'lodash.get';
-import { Action, Link } from '.';
-import Image from 'next/image';
+import { Action, Image, Link } from '.';
 import { Container } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
