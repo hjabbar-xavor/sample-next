@@ -1,6 +1,6 @@
 import React from "react";
 import get from "lodash.get";
-import { Card, CardActions, CardContent, Container, Grid, makeStyles, Typography, useTheme } from "@material-ui/core";
+import { Card, CardActions, CardContent, Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import { CtaButtons } from "..";
 
 const useStyles = makeStyles((theme) => ({

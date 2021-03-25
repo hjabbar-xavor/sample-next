@@ -5,7 +5,6 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Head from "next/head";
-import { colors } from "@material-ui/core";
 
 
 function MyApp({ Component, pageProps }) {
@@ -26,7 +25,7 @@ function MyApp({ Component, pageProps }) {
   const colors = {
     primary: "#F05A22",
     secondary: "#B72929"
-  }
+  };
 
   switch (palette) {
     case "blue":
