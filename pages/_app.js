@@ -5,6 +5,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Head from "next/head";
+import { colors } from "@material-ui/core";
 
 
 function MyApp({ Component, pageProps }) {
@@ -21,14 +22,42 @@ function MyApp({ Component, pageProps }) {
     title = get(pageProps, "page.seo__title.value", null);
   }
 
+  const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
+  const colors = {
+    primary: "#F05A22",
+    secondary: "#B72929"
+  }
+
+  switch (palette) {
+    case "blue":
+      colors.primary = "#3553B8";
+      colors.secondary = "#81D4FA";
+      break;
+    case "cyan":
+      colors.primary = "#007C91";
+      colors.secondary = "#5DDEF4";
+      break;
+    case "green":
+      colors.primary = "#2C9E7E";
+      colors.secondary = "#4b830d";
+      break;
+    case "purple":
+      colors.primary = "#7D3F9C";
+      colors.secondary = "#7986cb";
+      break;
+    case "default":
+    default:
+      break;
+  }
+
   // TODO implement pallettes
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: "#F05A22",
+        main: colors.primary,
       },
       secondary: {
-        main: "#B72929",
+        main: colors.secondary,
       },
       background: {
         default: "#FFF",
