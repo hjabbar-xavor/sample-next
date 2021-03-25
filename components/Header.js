@@ -1,10 +1,11 @@
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import get from "lodash.get";
-import { Action, Image, Link } from ".";
-import { Container } from "@material-ui/core";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import get from 'lodash.get';
+import { Action, Image, Link, SideDrawer } from '.';
+import { Container, Hidden } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,11 +44,18 @@ function Header(props) {
                 : (<Typography variant="h6">{get(props, "data.config.title.value", null)}</Typography>)
               }
             </Link>
-            <div className={classes.mainMenu}>
-              {get(props, "data.config.main_menu.value[0].actions.value", []).map((navigationItem, index) => (
-                <Action key={index} action={navigationItem} {...props} />
-              ))}
-            </div>
+            <Hidden smDown>
+              <div className={classes.mainMenu}>
+                {get(props, 'data.config.main_menu.value[0].actions.value', []).map((navigationItem, index) => (
+                  <Action key={index} action={navigationItem} {...props} />
+                ))}
+              </div>
+            </Hidden>
+            <Hidden mdUp>
+              <div className={classes.mainMenu}>
+                <SideDrawer navLinks={get(props, 'data.config.main_menu.value[0].actions.value', [])} {...props} />
+              </div>
+            </Hidden>
           </Toolbar>
         </Container>
       </AppBar>
