@@ -217,7 +217,7 @@ import React from 'react'
 import get from 'lodash.get'
 import { Container, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme) => ({
   section: {
     background: 'red'
   }
