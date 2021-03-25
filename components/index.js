@@ -8,6 +8,7 @@ import CtaButtons from "./CtaButtons";
 import FormField from "./FormField";
 import Image from "./Image";
 import PreviewBar from "./PreviewBar";
+import SideDrawer from "./SideDrawer";
 
 export {
   UnknownComponent,
@@ -19,7 +20,8 @@ export {
   CtaButtons,
   FormField,
   Image,
-  PreviewBar
+  PreviewBar,
+  SideDrawer
 };
 
 export default {
@@ -33,4 +35,5 @@ export default {
   FormField,
   Image,
   PreviewBar,
+  SideDrawer,
 };
