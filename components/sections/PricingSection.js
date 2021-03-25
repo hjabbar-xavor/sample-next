@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   highlight: {
     borderColor: theme.palette.primary.main,
     borderStyle: "solid",
-    borderWidth: "2px"
+    borderWidth: "4px"
   },
   priceCard: {
     height: "100%",
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 function FeaturesSection(props) {
   const section = get(props, "section", null);
   const classes = useStyles();
-
 
   return (
     <section id={get(section, "system.codename", null)} className={classes.section}>

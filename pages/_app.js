@@ -9,10 +9,10 @@ import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
 
-  const font = get(pageProps, "data.config.base_font.value[0].font_codename.value", null) || "nunito-sans";
-  const fontName = font === "nunito-sans"
+  const font = get(pageProps, "data.config.font.value[0].codename", null);
+  const fontName = font === "nunito_sans"
     ? "Nunito Sans"
-    : font === "fira-sans"
+    : font === "fira_sans"
       ? "Fira Sans"
       : "Arial";
 
@@ -21,14 +21,42 @@ function MyApp({ Component, pageProps }) {
     title = get(pageProps, "page.seo__title.value", null);
   }
 
+  const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
+  const colors = {
+    primary: "#F05A22",
+    secondary: "#B72929"
+  };
+
+  switch (palette) {
+    case "blue":
+      colors.primary = "#3553B8";
+      colors.secondary = "#81D4FA";
+      break;
+    case "cyan":
+      colors.primary = "#007C91";
+      colors.secondary = "#5DDEF4";
+      break;
+    case "green":
+      colors.primary = "#2C9E7E";
+      colors.secondary = "#4b830d";
+      break;
+    case "purple":
+      colors.primary = "#7D3F9C";
+      colors.secondary = "#7986cb";
+      break;
+    case "default":
+    default:
+      break;
+  }
+
   // TODO implement pallettes
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: "#F05A22",
+        main: colors.primary,
       },
       secondary: {
-        main: "#B72929",
+        main: colors.secondary,
       },
       background: {
         default: "#FFF",
@@ -79,7 +107,7 @@ function MyApp({ Component, pageProps }) {
         )}
 
 
-        {(font === "nunito-sans") ? ([
+        {(font === "nunito_sans") ? ([
           <link key="0" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" rel="preload" />,
           <link key="1" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onLoad="this.media='all'" />,
           <noscript key="2">
@@ -88,7 +116,7 @@ function MyApp({ Component, pageProps }) {
               href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
             />
           </noscript>
-        ]) : ((font === "fira-sans") && ([
+        ]) : ((font === "fira_sans") && ([
           <link key="0" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" as="style" rel="preload" />,
           <link key="1" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" media="print" onLoad="this.media='all'" />,
           <noscript key="2">
