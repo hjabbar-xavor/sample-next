@@ -1,10 +1,10 @@
-import { Box, Divider, Grid, makeStyles } from '@material-ui/core';
-import { Footer, Header, PreviewBar } from '.';
+import { Box, makeStyles } from "@material-ui/core";
+import { Footer, Header, PreviewBar } from ".";
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    minHeight: '100vh'
+    minHeight: "100vh"
   },
   flex: {
     flexGrow: 1

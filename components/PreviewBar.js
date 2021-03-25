@@ -1,19 +1,19 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles,  } from '@material-ui/core/styles';
-import { Button, Container } from '@material-ui/core';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import { makeStyles,  } from "@material-ui/core/styles";
+import { Button, Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    position: 'fixed',
+    position: "fixed",
     zIndex: theme.zIndex.appBar + 1,
     bottom: 0,
   },
   actions: {
     flexGrow: 1,
-    display: 'flex',
-    justifyContent: 'flex-end',
+    display: "flex",
+    justifyContent: "flex-end",
     marginLeft: theme.spacing(4),
   },
   exitButton: {
@@ -44,6 +44,6 @@ function Header(props) {
       </AppBar>
     </div >
   );
-};
+}
 
 export default Header;

@@ -6,11 +6,11 @@ export default async function preview(req, res) {
   ) {
     return res
       .status(401)
-      .json({ message: 'Invalid token' })
+      .json({ message: "Invalid token" });
   }
 
-  console.log('Entering preview');
+  console.log("Entering preview");
   // Enable Preview Mode by setting the cookies
-  res.setPreviewData({})
-  res.redirect('/')
+  res.setPreviewData({});
+  res.redirect("/");
 }

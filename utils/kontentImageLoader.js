@@ -1,4 +1,4 @@
-import { ImageUrlBuilder, ImageCompressionEnum } from '@kentico/kontent-delivery'
+import { ImageUrlBuilder, ImageCompressionEnum } from "@kentico/kontent-delivery";
 
 
 const kontentImageLoader = ({ src, width, quality }) => {
@@ -7,9 +7,9 @@ const kontentImageLoader = ({ src, width, quality }) => {
     .withWidth(width)
     .withQuality(quality || 75)
     .withCompression(ImageCompressionEnum.Lossless)
-    .withAutomaticFormat()
+    .withAutomaticFormat();
 
-  return builder.getUrl()
-}
+  return builder.getUrl();
+};
 
 export default kontentImageLoader;

@@ -1,29 +1,29 @@
-import React from 'react'
-import get from 'lodash.get'
-import { makeStyles } from '@material-ui/core';
-import { Action } from '..';
+import React from "react";
+import get from "lodash.get";
+import { makeStyles } from "@material-ui/core";
+import { Action } from "..";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   noListStyle: {
-    listStyle: 'none',
+    listStyle: "none",
     padding: 0
   }
 }));
 
 function Menu(props) {
-  const section = get(props, 'section', null);
+  const section = get(props, "section", null);
   const classes = useStyles();
 
 
   return (
-    <section id={get(section, 'system.codename', null)} className={classes.section}>
-      {get(section, 'label', null) && (
-        <h2>{get(section, 'label.value', null)}</h2>
+    <section id={get(section, "system.codename", null)} className={classes.section}>
+      {get(section, "label", null) && (
+        <h2>{get(section, "label.value", null)}</h2>
       )}
 
-      {get(section, 'actions.value[0]', null) && (
+      {get(section, "actions.value[0]", null) && (
         <ul className={classes.noListStyle}>
-          {get(section, 'actions.value', []).map((action, action_idx) => {
+          {get(section, "actions.value", []).map((action, action_idx) => {
             return (
               <li key={action_idx}>
                 <Action {...props} action={action} size="small" />
@@ -34,7 +34,7 @@ function Menu(props) {
       )}
 
     </section>
-  )
+  );
 }
 
-export default Menu
+export default Menu;

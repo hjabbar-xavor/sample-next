@@ -1,6 +1,6 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@material-ui/core/styles";
 
 // https://material-ui.com/guides/server-rendering/#the-client-side
 // https://github.com/mui-org/material-ui/tree/master/examples/nextjs
@@ -46,7 +46,7 @@ class MyDocument extends Document {
       // Styles fragment is rendered after the app and page rendering finish.
       styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
     };
-  };
+  }
 
 
   render() {

@@ -1,6 +1,6 @@
-import ContentSection from './ContentSection';
-import Menu from './Menu';
-import Form from './Form';
+import ContentSection from "./ContentSection";
+import Menu from "./Menu";
+import Form from "./Form";
 
 export {
   ContentSection,

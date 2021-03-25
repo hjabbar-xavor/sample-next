@@ -5,4 +5,4 @@ module.exports = {
     loader: "imgix",
     path: "",
   },
-}
+};
