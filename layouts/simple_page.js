@@ -42,10 +42,10 @@ function SimplePage(props) {
           </div>
         )}
         <Typography component="div">
-          <RichText 
-            richTextElementValue={get(props, "page.content.value[0].content", null)} 
-            linkedItems={get(props, "linkedItems", [])}
-            mappings={props.data.mappings} />
+          <RichText
+            {...props}
+            richTextElementValue={get(props, "page.content.value[0].content", null)}
+          />
         </Typography>
       </Container>
     </Layout>
