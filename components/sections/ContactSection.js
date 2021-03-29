@@ -1,7 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { Button, Container, makeStyles, Typography } from "@material-ui/core";
-import { FormField } from "..";
+import { FormField, RichText } from "..";
 
 const useStyles = makeStyles((theme) => ({
   formSubmission: {
@@ -23,14 +23,21 @@ function ContactSection(props) {
           {get(section, "title.value", null) && (
             <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
-          {/* TODO: Create RichText element */}
           {get(section, "subtitle.value", null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
+            <Typography variant="subtitle1" >
+              <RichText
+                {...props}
+                richTextElement={get(section, "subtitle", null)}
+              />
+            </Typography>
           )}
         </div>
 
         <Typography component="div">
-          <div dangerouslySetInnerHTML={{ __html: get(section, "content.value", null) }} />
+          <RichText
+            {...props}
+            richTextElement={get(section, "content", null)}
+          />
         </Typography>
 
         {form && (

@@ -3,7 +3,7 @@ import get from "lodash.get";
 import { makeStyles } from "@material-ui/core";
 import { Action } from "..";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((_theme) => ({
   noListStyle: {
     listStyle: "none",
     padding: 0

@@ -1,6 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { Card, CardContent, Container, Grid, makeStyles, Typography } from "@material-ui/core";
+import { RichText } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -26,9 +27,13 @@ function ReviewsSection(props) {
           {get(section, "title.value", null) && (
             <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
-          {/* TODO: Create RichText element */}
           {get(section, "subtitle.value", null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
+            <Typography variant="subtitle1" >
+              <RichText
+                {...props}
+                richTextElement={get(section, "subtitle", null)}
+              />
+            </Typography>
           )}
         </div>
 
@@ -41,7 +46,12 @@ function ReviewsSection(props) {
                 <Grid item md={4} sm={12} className={classes.review} key={index}>
                   <Card className={classes.reviewCard} >
                     <CardContent>
-                      <blockquote dangerouslySetInnerHTML={{ __html: get(review, "content.value", null) }} />
+                      <Typography component="blockquote">
+                        <RichText
+                          {...props}
+                          richTextElement={get(review, "content", null)}
+                        />
+                      </Typography>
                       <Typography component="cite">{get(author, "first_name.value")} {get(author, "last_name.value")}</Typography>
                     </CardContent>
                   </Card>

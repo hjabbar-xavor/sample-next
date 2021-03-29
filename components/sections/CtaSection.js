@@ -1,7 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
-import { Action } from "..";
+import { Action, RichText } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -27,7 +27,12 @@ function CtaSection(props) {
                 <Typography variant="h2">{get(section, "title.value", null)}</Typography>
               )}
               {get(section, "subtitle.value", null) && (
-                <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
+                <Typography variant="subtitle1" className={classes.content}>
+                  <RichText
+                    {...props}
+                    richTextElement={get(section, "subtitle", null)}
+                  />
+                </Typography>
               )}
             </div>
           </Grid>

@@ -3,7 +3,7 @@ import { Box, Container, Divider, Grid } from "@material-ui/core";
 import get from "lodash.get";
 import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelcase";
-import { UnknownComponent } from "../components";
+import { RichText, UnknownComponent } from "../components";
 import sections from "./footerSections";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,9 +57,11 @@ function Footer(props) {
 
           {get(props, "data.config.copyright.value", null) && (
             <div className={classes.copyright}>
-              <Divider/>
-              {/* TODO: Create RichText element */}
-              <div dangerouslySetInnerHTML={{ __html: get(props, "data.config.copyright.value") }} />
+              <Divider />
+              <RichText
+                {...props}
+                richTextElement={get(props, "data.config.copyright")}
+              />
             </div>
           )}
         </footer>

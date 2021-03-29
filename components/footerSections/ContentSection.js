@@ -1,9 +1,9 @@
 import React from "react";
 import get from "lodash.get";
 import { makeStyles, Typography } from "@material-ui/core";
-import { CtaButtons, Image } from "..";
+import { CtaButtons, Image, RichText } from "..";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((_theme) => ({
   content: {
     textAlign: "center"
   }
@@ -25,15 +25,18 @@ function ContentSection(props) {
             width="160"
             height="80"
             asset={(get(section, "image.value[0]", null))}
-            src={(get(section, "image.value[0].url", null))}
             alt={get(section, "image.value[0].description") || get(section, "image.value[0].name", null)}
             sizes="160px" />
         </div>
       )}
 
-      {/* TODO: Create RichText element */}
       {get(section, "content.value", null) && (
-        <div className={classes.content} dangerouslySetInnerHTML={{ __html: get(section, "content.value", null) }} />
+        <Typography component="div" className={classes.content} >
+          <RichText
+            {...props}
+            richTextElement={get(section, "content", null)}
+          />
+        </Typography>
       )}
 
       {get(section, "actions", null) && (

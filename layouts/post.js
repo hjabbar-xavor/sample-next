@@ -1,5 +1,5 @@
 import get from "lodash.get";
-import { Image, Layout, UnknownComponent } from "../components";
+import { Image, Layout, RichText, UnknownComponent } from "../components";
 import { Container, makeStyles, Typography, useTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,12 @@ function Post(props) {
           <Typography variant="h1">{get(post, "title.value", null)}</Typography>
         )}
         {get(post, "subtitle.value", null) && (
-          <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(post, "subtitle.value", null) }} />
+          <Typography variant="subtitle1" >
+            <RichText
+              {...props}
+              richTextElement={get(post, "subtitle", null)}
+            />
+          </Typography>
         )}
 
         {get(post, "image.value[0]", null) && (
@@ -42,7 +47,10 @@ function Post(props) {
           </div>
         )}
         <Typography component="div">
-          <div dangerouslySetInnerHTML={{ __html: get(props, "page.content.value", null) }} />
+          <RichText
+            {...props}
+            richTextElement={get(props, "page.content", null)}
+          />
         </Typography>
 
         <footer>

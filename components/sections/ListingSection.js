@@ -4,7 +4,7 @@ import upperFirst from "lodash.upperfirst";
 import camelCase from "lodash.camelcase";
 import { Card, CardContent, Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import thumbnails from "../thumbnails";
-import { UnknownComponent } from "..";
+import { RichText, UnknownComponent } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -30,9 +30,13 @@ function ListingSection(props) {
           {get(section, "title.value", null) && (
             <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
-          {/* TODO: Create RichText element */}
           {get(section, "subtitle.value", null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
+            <Typography variant="subtitle1">
+              <RichText
+                {...props}
+                richTextElement={get(section, "subtitle", null)}
+              />
+            </Typography>
           )}
         </div>
 
@@ -58,7 +62,7 @@ function ListingSection(props) {
                 <Grid item md={4} sm={12} key={item_idx}>
                   <Card className={classes.itemCard} >
                     <CardContent>
-                      <ThumbnailLayout key={item_idx} {...props} item={item} columnCount={4}/>
+                      <ThumbnailLayout key={item_idx} {...props} item={item} columnCount={3} />
                     </CardContent>
                   </Card>
                 </Grid>

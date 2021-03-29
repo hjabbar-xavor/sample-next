@@ -2,7 +2,7 @@ import { Box, makeStyles } from "@material-ui/core";
 import { Footer, Header, PreviewBar } from ".";
 
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((_theme) => ({
   root: {
     minHeight: "100vh"
   },
