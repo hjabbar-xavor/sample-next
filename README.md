@@ -210,10 +210,34 @@ Once the preview is enabled a new toolbar pops up on the top of the page. This a
 
 ## Rich text element resolution
 
-[Rich text element](https://docs.kontent.ai/reference/delivery-api#section/Rich-text-element) could carry more then just a text. It could contain links, images, components and inline linked items. The starter offers a `/style-guide` section to showcase the options to resolve complex structure into the React components.
+A [Rich text element](https://docs.kontent.ai/reference/delivery-api#section/Rich-text-element) could carry more than just a text. It could contain links, images, components, and inline linked items. The starter offers a `/style-guide` section to showcase the options to resolve complex structure into the React components.
 
-The `/style-guide` is a page based on `simple_page` layout containing title, sub, and the content in a form of a rich text element. This rich text element contains a showcase of various typographical examples (headlines, lists, tables) and also images, components and a links to another content items. To parse and resolve them, there is a pair of components. The first one is  `RichTextComponent` containing the parsing logic (using [`html-react-parser`](https://www.npmjs.com/package/html-react-parser) library) and offering the possibility to implement the resolution. And the second one defining the resolution logic from rich text blocks to React Components - the `RichText` component.
+The `/style-guide` is a page based on the `simple_page` layout containing title, sub, and the content in a form of a rich text element. This rich text element contains a showcase of various typographical examples (headlines, lists, tables) and also images, components, and links to other content items. To parse and resolve them, there is a pair of components. The first one is  `RichTextComponent` containing the parsing logic (using [`html-react-parser`](https://www.npmjs.com/package/html-react-parser) library) and offering the possibility to implement the resolution. And the second one defining the resolution logic from rich text blocks to React Components - the `RichText` component.
 
+The usage is simple. To resolve the rich text element, you place the `RichText` component and provide a rich text element object and then propagate all other props used to load appropriate data (linked items data, information about mapping to be able to resolve URL to specific content item).
+
+```jsx
+<RichText
+  {...props} // Used to load mappings and linked items data
+  richTextElement={get(props, "page.content.value[0].content", null)}
+/>
+```
+
+In `/style-guide`, you can see these results.
+
+Rich Text Component
+
+![Rich text component resolution](docs/rich-text-component.png)
+
+Rich Text Image
+
+![Rich text image resolution](docs/rich-text-inline-image.png)
+
+Rich Text Component
+
+![Rich text link resolution](docs/rich-text-links.png)
+
+>💡 You could use a different approach to resolve the rich text element blocks. It is possible to use the [embedded support in Javascript SDK](https://docs.kontent.ai/tutorials/develop-apps/get-content/structured-rich-text?tech=javascript) that allows resolving blocks into the `string` objects and then utilize library [`react-jsx-parser`]([react-jsx-parser](https://www.npmjs.com/package/react-jsx-parser)) to transform this string representation to React components This approach however requires the recreation of the model classes when you need them from the JSON object form because Next.js/React does not allow passing class objects via `props` of a React Component. If you want to get more detailed information about this topic, feel free to raise the question issue.
 
 ## Design
 
