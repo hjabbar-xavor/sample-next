@@ -282,7 +282,7 @@ There are some additional steps done to allow [Server rendering](https://materia
 To learn more about Next.js, take a look at the following resources:
 
 * [Kontent + Next.js blog example](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme) - complex sample project setup including i.e. preview functionality, listing, Tailwind CSS, ...
-* [Kontent + Next.js boilerplate](hhttps://github.com/Kentico/kontent-boilerplate-next-js#readme) - Simple boilerplate showcases Next.js static generation feature using Kentico Kontent as the data source.
+* [Kontent + Next.js boilerplate](https://github.com/Kentico/kontent-boilerplate-next-js#readme) - Simple boilerplate showcases Next.js static generation feature using Kentico Kontent as the data source.
 * [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 * [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 * [This Mission: Next.js from the Ground Up](https://explorers.netlify.com/learn/nextjs)
