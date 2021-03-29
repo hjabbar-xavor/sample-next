@@ -1,4 +1,4 @@
-import { makeStyles, useTheme } from "@material-ui/core";
+import { makeStyles, Typography, useTheme } from "@material-ui/core";
 import get from "lodash.get";
 import { Image, Link } from ".";
 import { getUrlFromMapping } from "../utils";
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function RichText(props) {
-  const richTextElementValue = get(props, "richTextElementValue", "");
+  const richTextElement = get(props, "richTextElement", "");
   const linkedItems = get(props, "linkedItems", []);
   const mappings = get(props, 'data.mappings');
 
@@ -49,7 +49,7 @@ function RichText(props) {
   return (
     <RichTextComponent
       className={classes.richText}
-      richTextElementValue={richTextElementValue}
+      richTextElement={richTextElement}
       linkedItems={linkedItems}
       mappings={mappings}
       resolveLinkedItem={(linkedItem, domNode, domToReact) => {
@@ -62,8 +62,12 @@ function RichText(props) {
             );
           case "code_block":
             return (
-              <div className={classes.code} dangerouslySetInnerHTML={{ __html: linkedItem.code.value }}>
-              </div>
+              <Typography component="div" className={classes.code}>
+                <RichText
+                  {...props}
+                  richTextElement={get(linkedItem, "code", null)}
+                />
+              </Typography>
             );
           default:
             return domToReact([domNode]);

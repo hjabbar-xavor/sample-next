@@ -1,6 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { Accordion, AccordionDetails, AccordionSummary, Container, makeStyles, Typography } from "@material-ui/core";
+import { RichText } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -26,10 +27,13 @@ function FaqSection(props) {
           {get(section, "title.value", null) && (
             <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
-          {/* TODO: Create RichText element */}
           {get(section, "subtitle.value", null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
-          )}
+            <Typography variant="subtitle1">
+              <RichText
+                {...props}
+                richTextElement={get(section, "subtitle", null)}
+              />
+            </Typography>)}
         </div>
 
         {get(section, "faq_items.value", []).map((faqItem, faqItem_idx) => (
@@ -41,9 +45,12 @@ function FaqSection(props) {
               <Typography variant="h6">{get(faqItem, "question.value", null)}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {/* TODO: Create RichText element */}
               <Typography component="div">
-                <div dangerouslySetInnerHTML={{ __html: get(faqItem, "answer.value", null) }} />
+
+                <RichText
+                  {...props}
+                  richTextElement={get(faqItem, "answer", null)}
+                />
               </Typography>
             </AccordionDetails>
           </Accordion>

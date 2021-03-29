@@ -1,7 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { Card, CardActions, CardContent, Container, Grid, makeStyles, Typography } from "@material-ui/core";
-import { CtaButtons } from "..";
+import { CtaButtons, RichText } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -42,10 +42,13 @@ function FeaturesSection(props) {
           {get(section, "title.value", null) && (
             <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
-          {/* TODO: Create RichText element */}
           {get(section, "subtitle.value", null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
-          )}
+            <Typography variant="subtitle1">
+              <RichText
+                {...props}
+                richTextElement={get(section, "subtitle", null)}
+              />
+            </Typography>)}
         </div>
 
         {get(section, "pricing_plans.value[0]", null) && (
@@ -66,9 +69,12 @@ function FeaturesSection(props) {
                       {get(plan, "price.value", null) && (
                         <Typography variant="h4" >{get(plan, "price.value", null)}</Typography>
                       )}
-                      {/* TODO: Create RichText element */}
                       {get(plan, "details.value", null) && (
-                        <div dangerouslySetInnerHTML={{ __html: get(plan, "details.value", null) }} />
+                        <RichText
+                          component="div"
+                          {...props}
+                          richTextElement={get(plan, "details", null)}
+                        />
                       )}
                     </CardContent>
                     <CardActions className={classes.cardActions}>

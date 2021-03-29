@@ -56,7 +56,7 @@ function ListingPage(props) {
               return (
                 <Grid variant="inbound" item md={4} sm={12} key={item_idx}>
                   <Paper className={classes.thumbnailPaper}>
-                    <ThumbnailLayout  {...props} item={item} site={props} />
+                    <ThumbnailLayout  {...props} item={item} site={props} columnCount={3}/>
                   </Paper>
                 </Grid>
               );

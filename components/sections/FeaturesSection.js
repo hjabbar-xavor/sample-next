@@ -1,7 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { Container, Grid, makeStyles, Typography, useTheme } from "@material-ui/core";
-import { CtaButtons, Image } from "..";
+import { CtaButtons, Image, RichText } from "..";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -37,10 +37,14 @@ function FeaturesSection(props) {
           {get(section, "title.value", null) && (
             <Typography variant="h2">{get(section, "title.value", null)}</Typography>
           )}
-          {/* TODO: Create RichText element */}
+
           {get(section, "subtitle.value", null) && (
-            <Typography variant="subtitle1" dangerouslySetInnerHTML={{ __html: get(section, "subtitle.value", null) }} />
-          )}
+            <Typography variant="subtitle1">
+              <RichText
+                {...props}
+                richTextElement={get(section, "subtitle", null)}
+              />
+            </Typography>)}
         </div>
 
         {get(section, "features.value[0]", null) && (
@@ -57,7 +61,13 @@ function FeaturesSection(props) {
 
               <Grid item xs={12} sm={4} className={`${classes.column} ${index % 2 ? classes.alignRight : undefined}`}>
                 <Typography variant="h3">{get(feature, "title.value", null)}</Typography>
-                <div dangerouslySetInnerHTML={{ __html: get(feature, "content.value", null) }} />
+
+                <RichText
+                  component="div"
+                  {...props}
+                  richTextElement={get(feature, "content", null)}
+                />
+
                 {
                   get(feature, "actions.value[0]", null) && (
                     <CtaButtons {...props} actions={get(feature, "actions.value", null)} />

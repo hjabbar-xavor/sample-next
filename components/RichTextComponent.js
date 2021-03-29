@@ -15,9 +15,9 @@ function isLink(domNode) {
   return domNode.name === "a" && typeof domNode.attribs?.[LINKED_ITEM_ID_ATTRIBUTE_IDENTIFIER] !== "undefined";
 }
 
-function replaceNode(domNode, richTextElementValue, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode) {
+function replaceNode(domNode, richTextElement, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode) {
 
-  const { images, links } = richTextElementValue;
+  const { images, links } = richTextElement;
   if (resolveLinkedItem && linkedItems) {
     if (isLinkedItem(domNode)) {
       const codeName = domNode.attribs?.["data-codename"];
@@ -47,9 +47,10 @@ function replaceNode(domNode, richTextElementValue, linkedItems, mappings, resol
   }
 }
 
-function RichTextComponent({ richTextElementValue, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode, className }) {
-  const result = parseHTML(richTextElementValue.value, {
-    replace: (domNode) => replaceNode(domNode, richTextElementValue, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode),
+function RichTextComponent({ richTextElement, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode, className }) {
+  const cleanedValue = richTextElement.value.replace(/(\n|\r)+/, '');
+  const result = parseHTML(cleanedValue, {
+    replace: (domNode) => replaceNode(domNode, richTextElement, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode),
   });
 
   return (

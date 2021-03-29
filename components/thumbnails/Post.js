@@ -9,7 +9,7 @@ function Post(props) {
   let postUrl = "/blog/" + get(post, "slug.value", "#");
 
   const theme = useTheme();
-  const imageSizes = `(min-width: ${theme.breakpoints.values.sm}px) ${Math.floor(100 / columnCount)}vw, 100vw`;
+  const imageSizes = `(min-width: ${theme.breakpoints.values.md}px) ${Math.floor(100 / columnCount)}vw, 100vw`;
 
   return (
     <article>
