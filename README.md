@@ -208,6 +208,13 @@ Once your secret is verified, you will be redirected to home page and you could 
 
 Once the preview is enabled a new toolbar pops up on the top of the page. This allows to to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
 
+## Rich text element resolution
+
+[Rich text element](https://docs.kontent.ai/reference/delivery-api#section/Rich-text-element) could carry more then just a text. It could contain links, images, components and inline linked items. The starter offers a `/style-guide` section to showcase the options to resolve complex structure into the React components.
+
+The `/style-guide` is a page based on `simple_page` layout containing title, sub, and the content in a form of a rich text element. This rich text element contains a showcase of various typographical examples (headlines, lists, tables) and also images, components and a links to another content items. To parse and resolve them, there is a pair of components. The first one is  `RichTextComponent` containing the parsing logic (using [`html-react-parser`](https://www.npmjs.com/package/html-react-parser) library) and offering the possibility to implement the resolution. And the second one defining the resolution logic from rich text blocks to React Components - the `RichText` component.
+
+
 ## Design
 
 The application is using [Material Design](https://material-ui.com/). The main theme is configured in [_app.js](./pages/_app.js). Components are styled using `makeStyles` method to ensure isolation.
@@ -243,6 +250,8 @@ export default FeaturesSection
 There are some additional steps done to allow [Server rendering](https://material-ui.com/guides/server-rendering/). The concept of the app was used from [Official Next.js example for material design](https://github.com/mui-org/material-ui/tree/master/examples/nextjs).
 
 > Follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/13) to see how to use configurable theme definition in Next.js app.
+
+
 
 ## Learn More
 
