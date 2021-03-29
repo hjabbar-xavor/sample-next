@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function RichText(props) {
   const richTextElement = get(props, "richTextElement", "");
   const linkedItems = get(props, "linkedItems", []);
-  const mappings = get(props, 'data.mappings');
+  const mappings = get(props, "data.mappings");
 
   const classes = useStyles();
   const theme = useTheme();
