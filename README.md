@@ -118,7 +118,9 @@ The structure of the model is defined by linked items element called "Subpages"
 
 ### SEO
 
-SEO information is [modeled as a content type snippet called "SEO"](https://docs.kontent.ai/tutorials/develop-apps/optimize-your-app/seo-friendly-content#a-metadata-in-caas). This snippet is then placed as a part of [structural types](#structural-types). Every sitemap entry (the content item based on structural type)  allows specifying SEO metadata. This metadata is used in a [custom App components (`_app`)](https://nextjs.org/docs/advanced-features/custom-app) component to be rendered on the page.
+SEO information is [modeled as a content type snippet called "SEO"](https://docs.kontent.ai/tutorials/develop-apps/optimize-your-app/seo-friendly-content#a-metadata-in-caas).
+
+This snippet is placed as a part of [structural types](#structural-types). Every sitemap entry (the content item based on structural types and a `post`) allows specifying SEO metadata. This metadata is used in a [custom App components (`_app`)](https://nextjs.org/docs/advanced-features/custom-app) component to be rendered on the page.
 
 ### Layout types
 
