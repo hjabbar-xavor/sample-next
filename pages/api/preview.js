@@ -19,7 +19,7 @@ export default async function preview(req, res) {
   const redirectItemCodename = req.query.redirectItemCodename;
   if (redirectItemCodename) {
     const mappings = await getSitemapMappings();
-    const redirectTo = getUrlFromMapping(mappings, redirectItemCodename)
+    const redirectTo = getUrlFromMapping(mappings, redirectItemCodename);
     res.redirect(redirectTo);
     return;
   }

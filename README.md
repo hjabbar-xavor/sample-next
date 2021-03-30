@@ -210,6 +210,16 @@ Once your secret is verified, you will be redirected to home page and you could 
 
 ![Preview bar](./docs/preview-bar.png)
 
+#### Preview URLs
+
+Kentico Kontent [offers a possibility to set te preview URLs for the content types](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview#a-set-up-content-preview-in-your-project). The starter (`/api/preview` route) is already prepared to consume this preview URLs for [structural types](#structural-types) and for the `Post` content type.
+
+To allow that for your project, just set the Preview URLs for `Navigation item`, `Homepage`, and `Post` content type to (fill values in angle brackets):
+
+```plain
+https://<YOUR-HOST-DOMAIN>/api/preview?secret=<PREVIEW_SECRET>&redirectItemCodename={Codename}
+```
+
 ### Exit the preview
 
 Once the preview is enabled a new toolbar pops up on the top of the page. This allows to to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
