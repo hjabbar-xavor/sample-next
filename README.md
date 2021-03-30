@@ -275,8 +275,6 @@ There are some additional steps done to allow [Server rendering](https://materia
 
 > Follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/13) to see how to use configurable theme definition in Next.js app.
 
-
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
