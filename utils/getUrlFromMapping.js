@@ -1,6 +1,3 @@
-
-
-
 export default function getUrlFromMapping(mappings, codename) {
   const mapping = mappings.find(mapping => mapping.params.info.codename === codename);
 
