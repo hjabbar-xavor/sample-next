@@ -40,9 +40,13 @@ function Page(props) {
 export async function getStaticPaths(ctx) {
     console.log("Page [[...slug]].js getStaticPaths", ctx);
     const paths = await getSitemapMappings();
+
+    const usingGitHubActions = process.env.GITHUB_ACTIONS;
+
     return {
         paths,
-        fallback: false, // Set to false when exporting to static site
+        // Set to false when exporting to static site (during GitHub action CI process)
+        fallback: usingGitHubActions ? false : true, 
     };
 }
 
