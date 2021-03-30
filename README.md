@@ -116,6 +116,10 @@ The structure of the model is defined by linked items element called "Subpages"
 * Homepage - also stores configuration data like color palette, font specification, site logo, or social networks information
   * Navigation Item - mainly for defining the sitemap structure with the slugs.
 
+### SEO
+
+SEO information is [modeled as a content type snippet called "SEO"](https://docs.kontent.ai/tutorials/develop-apps/optimize-your-app/seo-friendly-content#a-metadata-in-caas). This snippet is then placed as a part of [structural types](#structural-types). Every sitemap entry (the content item based on structural type)  allows specifying SEO metadata. This metadata is used in a [custom App components (`_app`)](https://nextjs.org/docs/advanced-features/custom-app) component to be rendered on the page.
+
 ### Layout types
 
 Content for these structural wrappers is defined by linked items element called "Content" with limitation to exactly one item of the type:
