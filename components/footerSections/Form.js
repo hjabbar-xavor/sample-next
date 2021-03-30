@@ -27,7 +27,7 @@ function Form(props) {
         <div>{get(form, "content.value", null)}</div>
       )}
 
-      {/* TODO define best practices for forms submissions - API route for handling */}
+      {/* TODO #15 */}
       { form && (
         <form
           name={get(form, "form_id.value", null)}

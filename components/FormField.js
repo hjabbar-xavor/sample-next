@@ -23,7 +23,7 @@ function FormField(props) {
   let fieldComponent;
 
   if (field.system.type === "base_form_field") {
-    // TODO finish all types (esp. checkbox)
+
     const isTextArea = get(field, "type.value[0].codename") === "textarea";
     const isCheckbox = get(field, "type.value[0].codename") === "checkbox";
     if (isCheckbox) {
