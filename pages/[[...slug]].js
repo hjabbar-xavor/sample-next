@@ -38,7 +38,19 @@ export async function getStaticPaths(ctx) {
 export async function getStaticProps({ params, preview = false }) {
     console.log("Page [[...slug]].js getStaticProps, params: ", params);
     const props = await getPageStaticPropsForPath(params, preview);
-    return { props: { ...props, params, preview } };
+    return {
+        props:
+        {
+            ...props,
+            params,
+            preview,
+        },
+        // Next.js will attempt to re-generate the page:
+        // https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
+        // - When a request comes in
+        // - At most once every 5 second
+        revalidate: 5, // In seconds
+    };
 }
 
 export default Page;
