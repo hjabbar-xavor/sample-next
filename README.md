@@ -210,6 +210,16 @@ Once your secret is verified, you will be redirected to home page and you could 
 
 ![Preview bar](./docs/preview-bar.png)
 
+#### Preview URLs
+
+Kentico Kontent [offers a possibility to set te preview URLs for the content types](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview#a-set-up-content-preview-in-your-project). The starter (`/api/preview` route) is already prepared to consume this preview URLs for [structural types](#structural-types) and for the `Post` content type.
+
+To allow that for your project, just set the Preview URLs for `Navigation item`, `Homepage`, and `Post` content type to (fill values in angle brackets):
+
+```plain
+https://<YOUR-HOST-DOMAIN>/api/preview?secret=<PREVIEW_SECRET>&redirectItemCodename={Codename}
+```
+
 ### Exit the preview
 
 Once the preview is enabled a new toolbar pops up on the top of the page. This allows to to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
@@ -235,11 +245,12 @@ yarn start
 
 It is possible to pre-generate all site and deploy it right to the CDN without the necessity to have a place to run Node.js code (lambda function/server). This removes the option of having the content up-to-date out-of-the-box when your content changes as well as preview functionality. You need to set up the webhooks and their handlers, that regenerate the site and re-deploy the generated content to your CDN for both released and preview content.
 
-To generate the site locally, run fun following commands:
+⚠ To be able to run the export, the site has to be build [without fallback pages](https://nextjs.org/docs/messages/ssg-fallback-true-export). The starter is turning the fallback pages on unless the `STATIC_EXPORT` environment variable set to `true`.
+
+To generate the site locally, run fun following command:
 
 ```sh
-yarn build
-yarn export
+yarn static-export
 ```
 
 > It is also possible to use this starter for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), it requires you to implement `getServerSideProps` in `[[...slug]].js` component, but as the Next.js documentation states - "You should use getServerSideProps only if you need to pre-render a page whose data must be fetched at request time" - and that is not the primary requirement for this starter and the ISR server better for up-to-date content.
