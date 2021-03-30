@@ -245,11 +245,12 @@ yarn start
 
 It is possible to pre-generate all site and deploy it right to the CDN without the necessity to have a place to run Node.js code (lambda function/server). This removes the option of having the content up-to-date out-of-the-box when your content changes as well as preview functionality. You need to set up the webhooks and their handlers, that regenerate the site and re-deploy the generated content to your CDN for both released and preview content.
 
+⚠ To be able to run the export, the site has to be build [without fallback pages](https://nextjs.org/docs/messages/ssg-fallback-true-export). The starter is turning the fallback pages on unless the `STATIC_EXPORT` environment variable set to `true`.
+
 To generate the site locally, run fun following commands:
 
 ```sh
-yarn build
-yarn export
+yarn static-export
 ```
 
 > It is also possible to use this starter for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), it requires you to implement `getServerSideProps` in `[[...slug]].js` component, but as the Next.js documentation states - "You should use getServerSideProps only if you need to pre-render a page whose data must be fetched at request time" - and that is not the primary requirement for this starter and the ISR server better for up-to-date content.

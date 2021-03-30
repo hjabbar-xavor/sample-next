@@ -41,12 +41,13 @@ export async function getStaticPaths(ctx) {
     console.log("Page [[...slug]].js getStaticPaths", ctx);
     const paths = await getSitemapMappings();
 
-    const usingGitHubActions = process.env.GITHUB_ACTIONS;
+    // https://nextjs.org/docs/messages/ssg-fallback-true-export
+    const fallback = Boolean(process.env.STATIC_EXPORT) ? false : true;
 
     return {
         paths,
-        // Set to false when exporting to static site (during GitHub action CI process)
-        fallback: usingGitHubActions ? false : true,
+        // Set to false when exporting to static site
+        fallback
     };
 }
 
