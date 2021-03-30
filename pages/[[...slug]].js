@@ -42,7 +42,7 @@ export async function getStaticPaths(ctx) {
     const paths = await getSitemapMappings();
 
     // https://nextjs.org/docs/messages/ssg-fallback-true-export
-    const fallback = Boolean(process.env.STATIC_EXPORT) ? false : true;
+    const fallback = process.env.STATIC_EXPORT ? false : true;
 
     return {
         paths,
