@@ -16,10 +16,13 @@ function MyApp({ Component, pageProps }) {
       ? "Fira Sans"
       : "Arial";
 
-  let title = (get(pageProps, "page.label.value", null) || get(pageProps, "page.title.value", null)) + " | " + get(pageProps, "data.config.title.value", null);
-  if (get(pageProps, "page.seo__title.value", null)) {
-    title = get(pageProps, "page.seo__title.value", null);
+  let title = get(pageProps, "data.config.title.value", "");
+  if (title) {
+    title += " | ";
   }
+
+  title += get(pageProps, "page.seo__title.value", null) || get(pageProps, "page.label.value", null);
+
 
   const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
   const colors = {
@@ -49,7 +52,6 @@ function MyApp({ Component, pageProps }) {
       break;
   }
 
-  // TODO implement pallettes
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -89,6 +91,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="google" content="notranslate" />
 
         <meta name="description" content={get(pageProps, "page.seo__description.value", null)} />
+
         {get(pageProps, "data.config.favicon.value[0]", null) && (
           <link rel="icon" href={get(pageProps, "data.config.favicon.value[0].url", null)} />
         )}
