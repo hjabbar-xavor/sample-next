@@ -5,6 +5,7 @@ import pageLayouts from "../layouts";
 import { getSitemapMappings, getPageStaticPropsForPath } from "../lib/api";
 import UnknownComponent from "../components/UnknownComponent";
 import { useRouter } from "next/router";
+import Error from "next/error";
 
 
 function Page(props) {
@@ -41,13 +42,18 @@ export async function getStaticPaths(ctx) {
     const paths = await getSitemapMappings();
     return {
         paths,
-        fallback: true,
+        fallback: false, // Set to false when exporting to static site
     };
 }
 
 export async function getStaticProps({ params, preview = false }) {
     console.log("Page [[...slug]].js getStaticProps, params: ", params);
     const props = await getPageStaticPropsForPath(params, preview);
+
+    if (props === undefined) {
+        return <Error statusCode={errorCode} />
+    }
+
     return {
         props:
         {
