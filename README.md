@@ -247,7 +247,7 @@ It is possible to pre-generate all site and deploy it right to the CDN without t
 
 ⚠ To be able to run the export, the site has to be build [without fallback pages](https://nextjs.org/docs/messages/ssg-fallback-true-export). The starter is turning the fallback pages on unless the `STATIC_EXPORT` environment variable set to `true`.
 
-To generate the site locally, run fun following commands:
+To generate the site locally, run fun following command:
 
 ```sh
 yarn static-export
