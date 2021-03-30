@@ -46,7 +46,7 @@ export async function getStaticPaths(ctx) {
     return {
         paths,
         // Set to false when exporting to static site (during GitHub action CI process)
-        fallback: usingGitHubActions ? false : true, 
+        fallback: usingGitHubActions ? false : true,
     };
 }
 
@@ -55,7 +55,9 @@ export async function getStaticProps({ params, preview = false }) {
     const props = await getPageStaticPropsForPath(params, preview);
 
     if (props === undefined) {
-        return <Error statusCode={errorCode} />
+        return (
+            <Error statusCode={404} />
+        );
     }
 
     return {
