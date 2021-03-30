@@ -31,7 +31,7 @@ export async function getStaticPaths(ctx) {
     const paths = await getSitemapMappings();
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 }
 
