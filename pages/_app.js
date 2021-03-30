@@ -20,9 +20,7 @@ function MyApp({ Component, pageProps }) {
   if (title) {
     title += " | ";
   }
-
   title += get(pageProps, "page.seo__title.value", null) || get(pageProps, "page.label.value", null);
-
 
   const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
   const colors = {
@@ -90,11 +88,11 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google" content="notranslate" />
 
-        <meta name="description" content={get(pageProps, "page.seo__description.value", null)} />
-
         {get(pageProps, "data.config.favicon.value[0]", null) && (
           <link rel="icon" href={get(pageProps, "data.config.favicon.value[0].url", null)} />
         )}
+
+        <meta name="description" content={get(pageProps, "page.seo__description.value", null)} />
         {get(pageProps, "page.seo__keywords.value", null) && (
           <meta name="keywords" content={get(pageProps, "page.seo__keywords.value", null)} />
         )}
@@ -108,8 +106,6 @@ function MyApp({ Component, pageProps }) {
         {(font !== "system-sans") && (
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         )}
-
-
         {(font === "nunito_sans") ? ([
           <link key="0" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" rel="preload" />,
           <link key="1" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onLoad="this.media='all'" />,
@@ -129,7 +125,6 @@ function MyApp({ Component, pageProps }) {
             />
           </noscript>
         ]))}
-
 
       </Head>
       <ThemeProvider theme={theme}>
