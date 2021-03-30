@@ -4,9 +4,19 @@ import _ from "lodash";
 import pageLayouts from "../layouts";
 import { getSitemapMappings, getPageStaticPropsForPath } from "../lib/api";
 import UnknownComponent from "../components/UnknownComponent";
+import { useRouter } from "next/router";
 
 
 function Page(props) {
+    const router = useRouter();
+    // If the page is not yet generated, this will be displayed
+    // initially until getStaticProps() finishes running
+    if (router.isFallback) {
+        return (
+            <div>Loading...</div>
+        );
+    }
+
     // every page can have different layout, pick the layout based on content type
     const contentType = _.get(props, "page.system.type") === "post"
         ? "post"
