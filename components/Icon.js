@@ -3,10 +3,10 @@ import get from "lodash.get";
 import React from "react";
 import UnknownComponent from ".";
 
+// It is possible to use Icon component, but it would increase the bundle size https://material-ui.com/components/icons/#icon-font-icons
 function Icon(props) {
   let icon = get(props, "icon.icon.value[0].codename", null);
 
-  console.log(icon);
   switch (icon) {
     case "arrow_left":
       return <ArrowLeft />;
