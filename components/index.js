@@ -10,6 +10,8 @@ import Image from "./Image";
 import PreviewBar from "./PreviewBar";
 import SideDrawer from "./SideDrawer";
 import RichText from "./RichText";
+import Icon from "./Icon";
+
 
 export {
   UnknownComponent,
@@ -24,6 +26,7 @@ export {
   PreviewBar,
   SideDrawer,
   RichText,
+  Icon
 };
 
 export default {
@@ -39,4 +42,5 @@ export default {
   PreviewBar,
   SideDrawer,
   RichText,
+  Icon
 };
