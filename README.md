@@ -8,8 +8,6 @@
 
 This is a [Next.js](https://nextjs.org) corporate starter site using [Kentico Kontent](https://kontent.ai) as a [CMS](https://en.wikipedia.org/wiki/Content_management_system).
 
-> ⚠ This repository is still in the concept phase. There is [a bunch of tasks to be done](https://github.com/Kentico/kontent-starter-corporate-next-js/issues), but if you have any feedback to any part of the code, feel free to raise and issue and let's discuss your ideas.
-
 ## Demo
 
 <https://kontent-starter-corporate-next-js.netlify.app/>
