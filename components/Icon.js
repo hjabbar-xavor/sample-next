@@ -1,10 +1,10 @@
-import { ArrowLeft, ArrowRight, Email, Facebook, GitHub, Instagram, LinkedIn, Twitter, YouTube } from '@material-ui/icons';
-import get from 'lodash.get'
-import React from 'react'
-import UnknownComponent from '.';
+import { ArrowLeft, ArrowRight, Email, Facebook, GitHub, Instagram, LinkedIn, Twitter, YouTube } from "@material-ui/icons";
+import get from "lodash.get";
+import React from "react";
+import UnknownComponent from ".";
 
 function Icon(props) {
-  let icon = get(props, 'icon.icon.value[0].codename', null);
+  let icon = get(props, "icon.icon.value[0].codename", null);
 
   console.log(icon);
   switch (icon) {
@@ -33,4 +33,4 @@ function Icon(props) {
   }
 }
 
-export default Icon
+export default Icon;

@@ -26,13 +26,13 @@ function Action(props) {
   const new_window = action_options.some(item => item.codename === "new_window");
   const no_follow = action_options.some(item => item.codename === "no_follow");
   const icon = get(action, "icon.value[0]", null);
-  const iconPosition = get(icon, 'icon_position.value[0].codename', null);
+  const iconPosition = get(icon, "icon_position.value[0].codename", null);
   const options = {
-    target: new_window ? '_blank' : undefined,
+    target: new_window ? "_blank" : undefined,
     rel: new_window || no_follow
-      ? `${new_window ? 'noopener' : ''} ${no_follow ? 'nofollow' : ''}`
+      ? `${new_window ? "noopener" : ""} ${no_follow ? "nofollow" : ""}`
       : undefined,
-  }
+  };
 
   return (
     <Button
