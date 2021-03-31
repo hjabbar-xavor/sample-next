@@ -9,6 +9,7 @@ function Action(props) {
   const href = navigationItem.system.type === "external_url"
   ? get(navigationItem, "url.value")
   : getUrlFromMapping(mappings, navigationItem.system.codename);
+  const action_options = get(action, "options.value", []);
   
   
   const role = get(action, "role.value[0].codename", null);
@@ -22,7 +23,6 @@ function Action(props) {
     config.variant = "outlined";
   }
 
-  const action_options = get(action, "options.value", []);
   const new_window = action_options.some(item => item.codename === "new_window");
   const no_follow = action_options.some(item => item.codename === "no_follow");
   const icon = get(action, "icon.value[0]", null);
