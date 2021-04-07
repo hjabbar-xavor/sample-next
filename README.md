@@ -202,7 +202,7 @@ To enter the preview, just access `/api/preview` API route with the preview secr
 
 `http://localhost:3000/api/preview?secret=PREVIEW_SECRET`
 
-> If you don't have your `PREVIEW_SECRET`, your preview is not secured and could be accessed by anybody. Read more on [Official Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms).
+> If you don't have your `PREVIEW_SECRET` [environment variable](#environment-variables) set, your preview is not secured and could be accessed by anybody. Read more on [Official Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms).
 
 Once your secret is verified, you will be redirected to home page and you could see non-published content and the toolbar that allow you to exit the preview.
 
