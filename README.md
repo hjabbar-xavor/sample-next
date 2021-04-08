@@ -8,8 +8,6 @@
 
 This is a [Next.js](https://nextjs.org) corporate starter site using [Kentico Kontent](https://kontent.ai) as a [CMS](https://en.wikipedia.org/wiki/Content_management_system).
 
-> ⚠ This repository is still in the concept phase. There is [a bunch of tasks to be done](https://github.com/Kentico/kontent-starter-corporate-next-js/issues), but if you have any feedback to any part of the code, feel free to raise and issue and let's discuss your ideas.
-
 ## Demo
 
 <https://kontent-starter-corporate-next-js.netlify.app/>
@@ -63,7 +61,7 @@ yarn create next-app --example https://github.com/Kentico/kontent-starter-corpor
 3. Go to the "Project Settings", select API keys and copy the following keys for further reference
     * Project ID
     * Management API key
-4. Use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import) for importing the content from [`kontent-backup.zip`](./kontent-backup.zip) file and API keys from previous step. Check *Publish language variants after import* option before import.
+4. Use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import) for importing the content from [`kontent-backup.zip`](./kontent-backup.zip) file and API keys from the previous step. Check *Publish language variants after import* option before import.
 
     > Alternatively, you can use the [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to the newly created project from [`kontent-backup.zip`](./kontent-backup.zip) file via command line:
     >
@@ -81,7 +79,7 @@ yarn create next-app --example https://github.com/Kentico/kontent-starter-corpor
 
 1. Set env variables on `.env`:
     * `KONTENT_PROJECT_ID` - Should be the Project ID in `Project settings` > `API keys`.
-    * `KONTENT_PREVIEW_API_KEY` - Should be the Preview API key in `Project settings` > `API keys`. Set this value if you want to see non-published content. If you need more complex setup, jump to the [Preview section](#Preview).
+    * `KONTENT_PREVIEW_API_KEY` - Should be the Preview API key in `Project settings` > `API keys`. Set this value if you want to see non-published content. If you need a more complex setup, jump to the [Preview section](#Preview).
 
 ## Content editing development
 
@@ -99,15 +97,15 @@ You can start editing the page by modifying content in Kentico Kontent project. 
 
 ## About
 
-This section describes the application from data modeling point of view as well as application architecture approach.
+This section describes the application from the data modeling point of view as well as application architecture approach.
 
 ### Content model
 
-Content is modelled to be ready for being used in the [Web Spotlight](webspotlight.kontent.ai). Web spotlight is not turned on by default intentionally, because this starters should also serve to to users without the feature on.
+Content is modeled to be ready for being used in the [Web Spotlight](webspotlight.kontent.ai). Web spotlight is not turned on by default intentionally, because this starter should also serve to the users without the feature on.
 
 ![Content structure](./docs/content-structure.png)
 
-> The screen was taken from [Relations UI](https://docs.kontent.ai/tutorials/write-and-collaborate/structure-your-content/link-related-content-together#a-see-how-your-content-is-linked-together). For better idea, check out the [content type relationships graph](./docs/content-types-relations.png).
+> The screen was taken from [Relations UI](https://docs.kontent.ai/tutorials/write-and-collaborate/structure-your-content/link-related-content-together#a-see-how-your-content-is-linked-together). For a better idea, check out the [content type relationships graph](./docs/content-types-relations.png).
 
 ### Structural types
 
@@ -139,19 +137,19 @@ When you turn on the [Web Spotlight](https://docs.kontent.ai/tutorials/set-up-ko
 * Remove the Page content type, because its responsibilities are handled by "Navigation Item" content type.
 * Transfer content model structure from "old" homepage content type to newly created one. The only difference is the "Subpages" elements that will be modeled by [Subpages](https://docs.kontent.ai/tutorials/set-up-kontent/content-modeling/what-is-content-modeling#a-subpages) element type. It is important to keep the codenames of the element the same
 * Transfer the data from old "homepage"
-* Remove the the "old" homepage content item and the "old" content type and set the new homepage content item codename to "homepage".
+* Remove the "old" homepage content item and the "old" content type and set the new homepage content item codename to "homepage".
 
-> This step are easily scriptable by creating a migration using [Kontent CLI](https://github.com/Kentico/kontent-cli). To see the progress of including it to this starter, follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/4).
+> These steps are easily scriptable by creating a migration using [Kontent CLI](https://github.com/Kentico/kontent-cli). To see the progress of including it to this starter, follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/4).
 
 ## Code
 
-The application is using Next.js [Catch all route](https://nextjs.org/docs/routing/dynamic-routes#catch-all-routes) to handle all of the routes. The logic in centralized in [`pages/[[...slug]].js`](./src/pages/[[...slug]].js).
+The application is using Next.js [Catch all route](https://nextjs.org/docs/routing/dynamic-routes#catch-all-routes) to handle all of the routes. The logic is centralized in [`pages/[[...slug]].js`](./src/pages/[[...slug]].js).
 
 ### Data loading
 
 #### Sitemap construction
 
-To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js) is used. Using `getSitemapMappings` method, it loads "homepage" item and its child items to the specific depth and then traverse down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
+To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js) is used. Using `getSitemapMappings` method, it loads "homepage" item and its child items to the specific depth and then traverses down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
 
 #### Specific route data
 
@@ -162,7 +160,7 @@ For every single route, Next.js is loading data using the `getPageStaticPropsFor
 
 ### Content types - React components mapping
 
-Application is using the codename of the content type to load proper react component and render it. If the application does not find the proper component, it fails or display [special UnknownComponent](./components/UnknownComponent.js) in case od development environment.
+Application is using the codename of the content type to load proper react component and render it. If the application does not find the proper component, it fails or displays [special UnknownComponent](./components/UnknownComponent.js) in case of development environment.
 
 ```jsx
 const componentName = upperFirst(
@@ -204,15 +202,15 @@ To enter the preview, just access `/api/preview` API route with the preview secr
 
 `http://localhost:3000/api/preview?secret=PREVIEW_SECRET`
 
-> If you don't have your `PREVIEW_SECRET`, your preview is not secured and could be accessed by anybody. Read more on [Official Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms).
+> If you don't have your `PREVIEW_SECRET` [environment variable](#environment-variables) set, your preview is not secured and could be accessed by anybody. Read more on [Official Next.js docs](https://nextjs.org/docs/advanced-features/preview-mode#securely-accessing-it-from-your-headless-cms).
 
-Once your secret is verified, you will be redirected to home page and you could see non-published content and the toolbar that allow you to exit the preview.
+Once your secret is verified, you will be redirected to home page and you could see non-published content and the toolbar that allows you to exit the preview.
 
 ![Preview bar](./docs/preview-bar.png)
 
 #### Preview URLs
 
-Kentico Kontent [offers a possibility to set te preview URLs for the content types](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview#a-set-up-content-preview-in-your-project). The starter (`/api/preview` route) is already prepared to consume this preview URLs for [structural types](#structural-types) and for the `Post` content type.
+Kentico Kontent [offers a possibility to set the preview URLs for the content types](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-preview#a-set-up-content-preview-in-your-project). The starter (`/api/preview` route) is already prepared to consume this preview URLs for [structural types](#structural-types) and for the `Post` content type.
 
 To allow that for your project, just set the Preview URLs for `Navigation item`, `Homepage`, and `Post` content type to (fill values in angle brackets):
 
@@ -222,7 +220,7 @@ https://<YOUR-HOST-DOMAIN>/api/preview?secret=<PREVIEW_SECRET>&redirectItemCoden
 
 ### Exit the preview
 
-Once the preview is enabled a new toolbar pops up on the top of the page. This allows to to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
+Once the preview is enabled a new toolbar pops up on the top of the page. This allows to close the preview (the "EXIT PREVIEW" button leads to the `/api/exit-preview` API route).
 
 ## Publish process and data fetching
 
@@ -232,9 +230,9 @@ Next.js provides [multiple ways to fetch the data](https://nextjs.org/docs/basic
 
 This approach serves well for most of the use cases. Application is generated as static HTML and then re-hydrating React components with JSON data objects. It supports [Preview](#preview) functionality. The publishing process with [incremental static regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration) ensures that the new content is propagated in the background and once it is ready, the application starts to serve it instead of the stale content. Revalidation period is set to 5s as you can see on `getStaticProps` method in `[[...slug]].js` component.
 
-This deployment requires a place to run Node.js code. Since the starter target configuration is set to `serverless` (see [`next.config.js` file information](https://nextjs.org/docs/api-reference/next.config.js/introduction)), it is possible to use lambda functions to run this server code. This fits the Next.js recommended provider [Vercel](https://vercel.com/). But you could use i.e. [Netlify](https://www.netlify.com/) in combination with the [netlify-plugin-next-js](https://github.com/netlify/netlify-plugin-nextjs#readme), or any other cloud provider and configure lambdas the same way as the netlify plugin does. The second option is to switch the target to the `server` and use a Node.js server deployed to any of your cloud providers.
+This deployment requires a place to run Node.js code. Since the starter target configuration is set to `serverless` (see [`next.config.js` file information](https://nextjs.org/docs/api-reference/next.config.js/introduction)), it is possible to use lambda functions to run this server code. This fits the Next.js recommended provider [Vercel](https://vercel.com/). But you could use i.e. [Netlify](https://www.netlify.com/) in combination with the [netlify-plugin-next-js](https://github.com/netlify/netlify-plugin-nextjs#readme), or any other cloud provider and configure lambdas the same way as Netlify plugin does. The second option is to switch the target to the `server` and use a Node.js server deployed to any of your cloud providers.
 
-To run this locally, run fun following commands:
+To run this locally, run following commands:
 
 ```sh
 yarn build
@@ -245,7 +243,7 @@ yarn start
 
 It is possible to pre-generate all site and deploy it right to the CDN without the necessity to have a place to run Node.js code (lambda function/server). This removes the option of having the content up-to-date out-of-the-box when your content changes as well as preview functionality. You need to set up the webhooks and their handlers, that regenerate the site and re-deploy the generated content to your CDN for both released and preview content.
 
-⚠ To be able to run the export, the site has to be build [without fallback pages](https://nextjs.org/docs/messages/ssg-fallback-true-export). The starter is turning the fallback pages on unless the `STATIC_EXPORT` environment variable set to `true`.
+⚠ To be able to run the export, the site has to be built [without fallback pages](https://nextjs.org/docs/messages/ssg-fallback-true-export). The starter is turning the fallback pages on unless the `STATIC_EXPORT` environment variable is set to `true`.
 
 To generate the site locally, run fun following command:
 
