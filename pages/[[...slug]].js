@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+import get from "lodash.get";
 
 import pageLayouts from "../layouts";
 import { getSitemapMappings, getPageStaticPropsForPath } from "../lib/api";
@@ -19,7 +19,7 @@ function Page(props) {
     }
 
     // every page can have different layout, pick the layout based on content type
-    const contentType = _.get(props, "page.system.type");
+    const contentType = get(props, "page.system.type");
 
     const PageLayout = pageLayouts[contentType];
 
