@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
   if (title) {
     title += " | ";
   }
-  title += get(pageProps, "page.seo__title.value", null) || get(pageProps, "page.label.value", null);
+  title += get(pageProps, "seo.title", null) || get(pageProps, "page.label.value", null);
 
   const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
   const colors = {
@@ -92,14 +92,14 @@ function MyApp({ Component, pageProps }) {
           <link rel="icon" href={get(pageProps, "data.config.favicon.value[0].url", null)} />
         )}
 
-        <meta name="description" content={get(pageProps, "page.seo__description.value", null)} />
-        {get(pageProps, "page.seo__keywords.value", null) && (
-          <meta name="keywords" content={get(pageProps, "page.seo__keywords.value", null)} />
+        <meta name="description" content={get(pageProps, "seo.description", null)} />
+        {get(pageProps, "seo.keywords", null) && (
+          <meta name="keywords" content={get(pageProps, "seo.keywords", null)} />
         )}
-        {get(pageProps, "page.seo__canonical_url.value", null) ?? (
-          <link rel="canonical" href={get(pageProps, "page.seo__canonical_url.value", null)} />
+        {get(pageProps, "seo.canonicalUrl", null) ?? (
+          <link rel="canonical" href={get(pageProps, "seo.canonicalUrl", null)} />
         )}
-        {get(pageProps, "page.seo__options.value", []).some(item => item.codename == "no_index") && (
+        {get(pageProps, "seo.noIndex", null) && (
           <meta name="robots" content="noindex,follow" />
         )}
 
