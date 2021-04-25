@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SimplePage(props) {
   const classes = useStyles();
-  const page = get(props, "page", null);
+  const page = get(props, "pageObject.item", null);
 
   const theme = useTheme();
   const imageSizes = `${theme.breakpoints.values.md}px`;
@@ -18,7 +18,7 @@ function SimplePage(props) {
   if (!page) {
     return (
       <UnknownComponent>
-        Page {page.system.codename} does not have any content!
+        Page {get(page, "system.codename", null)} does not have any content!
       </UnknownComponent>
     );
   }

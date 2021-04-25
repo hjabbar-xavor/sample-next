@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ListingSection(props) {
   const section = get(props, "section", null);
-  const relatedItems = get(props, `related[${section.system.codename}]`, []);
+  const relatedItemsData = get(props, `listingSections[${section.system.codename}]`, []);
   const classes = useStyles();
 
   return (
@@ -40,9 +40,9 @@ function ListingSection(props) {
           )}
         </div>
 
-        {relatedItems.length > 0 && (
+        {relatedItemsData.items.length > 0 && (
           <Grid container spacing={2} alignItems="stretch">
-            {relatedItems.map((item, item_idx) => {
+            {relatedItemsData.items.map((item, item_idx) => {
               const contentType = upperFirst(camelCase(get(item, "system.type", null)));
               const ThumbnailLayout = thumbnails[contentType];
 

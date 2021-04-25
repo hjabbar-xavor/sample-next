@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Post(props) {
   const classes = useStyles();
-  const post = get(props, "page", null);
+  const post = get(props, "pageObject.item", null);
 
   if (!post) {
     return (
@@ -49,7 +49,7 @@ function Post(props) {
         <Typography component="div">
           <RichText
             {...props}
-            richTextElement={get(props, "page.content", null)}
+            richTextElement={get(post, "content", null)}
           />
         </Typography>
 
