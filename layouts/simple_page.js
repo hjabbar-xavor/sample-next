@@ -31,10 +31,7 @@ function SimplePage(props) {
         )}
         {get(page, "subtitle.value", null) && (
           <Typography variant="subtitle1" >
-            <RichText
-              {...props}
-              richTextElement={get(page, "subtitle", null)}
-            />
+            {get(page, "subtitle.value")}
           </Typography>
         )}
 
@@ -49,7 +46,7 @@ function SimplePage(props) {
         <Typography component="div">
           <RichText
             {...props}
-            richTextElement={get(props, "page.content.value[0].content", null)}
+            richTextElement={get(page, "content", null)}
           />
         </Typography>
       </Container>
