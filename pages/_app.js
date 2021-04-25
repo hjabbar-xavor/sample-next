@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
   if (title) {
     title += " | ";
   }
-  title += get(pageProps, "seo.title", null) || get(pageProps, "page.label.value", null);
+  title += get(pageProps, "seo.title", null);
 
   const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
   const colors = {

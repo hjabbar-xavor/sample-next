@@ -19,9 +19,7 @@ function Page(props) {
     }
 
     // every page can have different layout, pick the layout based on content type
-    const contentType = _.get(props, "page.system.type") === "post"
-        ? "post"
-        : _.get(props, "page.content.value[0].system.type");
+    const contentType = _.get(props, "page.system.type");
 
     const PageLayout = pageLayouts[contentType];
 

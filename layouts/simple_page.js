@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SimplePage(props) {
   const classes = useStyles();
-  const page = get(props, "page.content.value[0]", null);
+  const page = get(props, "page", null);
 
   const theme = useTheme();
   const imageSizes = `${theme.breakpoints.values.md}px`;

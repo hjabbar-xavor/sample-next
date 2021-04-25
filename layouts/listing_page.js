@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ListingPage(props) {
   const classes = useStyles();
-  const page = get(props, "page.content.value[0]", null);
+  const page = get(props, "page", null);
   if (!page) {
     return (
       <UnknownComponent>
