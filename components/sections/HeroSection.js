@@ -41,7 +41,8 @@ function HeroSection(props) {
               <Image
                 sizes={imageSizes}
                 asset={get(section, "image.value[0]", null)}
-                alt={get(section, "image.value[0].description") || get(section, "image.value[0].name")} />
+                alt={get(section, "image.value[0].description") || get(section, "image.value[0].name")}
+                loading="eager" />
             </Grid>
           )}
 
