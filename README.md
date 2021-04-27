@@ -147,13 +147,72 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 
 ### Data loading
 
+![Data fetching structure](./docs/data-fetching.png)
+
 #### Sitemap construction
 
-To define the sitemap and its mapping to specific content items a method `getContentPaths` in [lib/api.js](./lib/api.js) is used. Using `getSitemapMappings` method, it loads "homepage" item and its child items to the specific depth and then traverses down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
+To define the sitemap and its mapping to specific content items there is `getContentPaths` method in [lib/api.js](./lib/api.js). Internally it uses `getSitemapMappings` method which loads "homepage" item and its child items to the specific depth and then traverses down. This process creates a mapping between the sitemap (routes) and the content items storing data for the specific route.
+
+One example item from the sitemap mappings:
+
+```js
+{
+  params: {
+    slug: ["about", "more_information"],
+    navigationItem: {
+      id: "ABC",
+      codename: "lorem",
+      type: "navigation_item",
+      language: "default",
+      collection: "default",
+      // whole system information
+    },
+    contentItem: { // could be same i.e. for blog posts
+      id: "XYZ",
+      codename: "ipsum",
+      type: "simple_page",
+      language: "default",
+      collection: "default",
+      // whole system information
+    },
+  }
+}
+```
 
 #### Specific route data
 
-For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the data and passes them as the `props` to the react components.
+For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the raw data using Delivery client and `getRawKontentItemSingleResult/getRawKontentItemListingResult` methods and passes them as the **static** `props` to the Next.js processing.
+
+Static props returned from `getPageStaticPropsForPath`:
+
+```js
+{
+  // seo title, description, ....
+  seo, 
+  // URL -> CONTENT ITEM mapping from above
+  mappings, 
+
+ // RAW DATA FROM KONTENT
+  data: {
+    // data for layout (font, header logo, color palette, ...)
+    config,
+    // main content of the page
+    page,
+    // if the `page` is a `listing_page` type - linked items are passed in this item
+    listingItems,
+    // if any section of the page is a `listing_section` related items are stored there in the dictionary under the codename of the listing section content item
+    listingSections 
+  },
+};
+
+```
+
+The data passed as **static** `props` are then transformed in `_app.js` by `hydrateContentItemSingleResponse/hydrateContentItemListingResponse` methods into the Kontent Javascript SDK `ContentItem` objects and then passed down as the React props:
+
+* `configObject` - data for layout (font, header logo, color palette, ...)
+* `pageObject` - main content of the page
+* `listingItems` - if the page is a `listing_page` - linked items are passed in this item
+* `listingSections` - it any section of the page is a `listing_section` related items are stored there in the dictionary under the codename of the listing section content item
 
 > Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
@@ -264,7 +323,7 @@ The usage is simple. To resolve the rich text element, you place the `RichText` 
 ```jsx
 <RichText
   {...props} // Used to load mappings and linked items data
-  richTextElement={get(props, "page.content.value[0].content", null)}
+  richTextElement={get(page, "content", null)}
 />
 ```
 
