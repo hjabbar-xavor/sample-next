@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SimplePage(props) {
   const classes = useStyles();
-  const page = get(props, "page.content.value[0]", null);
+  const page = get(props, "pageObject.item", null);
 
   const theme = useTheme();
   const imageSizes = `${theme.breakpoints.values.md}px`;
@@ -18,7 +18,7 @@ function SimplePage(props) {
   if (!page) {
     return (
       <UnknownComponent>
-        Page {page.system.codename} does not have any content!
+        Page {get(page, "system.codename", null)} does not have any content!
       </UnknownComponent>
     );
   }
@@ -31,10 +31,7 @@ function SimplePage(props) {
         )}
         {get(page, "subtitle.value", null) && (
           <Typography variant="subtitle1" >
-            <RichText
-              {...props}
-              richTextElement={get(page, "subtitle", null)}
-            />
+            {get(page, "subtitle.value")}
           </Typography>
         )}
 
@@ -49,7 +46,7 @@ function SimplePage(props) {
         <Typography component="div">
           <RichText
             {...props}
-            richTextElement={get(props, "page.content.value[0].content", null)}
+            richTextElement={get(page, "content", null)}
           />
         </Typography>
       </Container>

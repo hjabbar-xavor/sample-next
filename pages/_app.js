@@ -5,24 +5,37 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Head from "next/head";
+import { hydrateContentItemListingResponse, hydrateContentItemSingleResponse } from "../lib/api";
 
 
 function MyApp({ Component, pageProps }) {
 
-  const font = get(pageProps, "data.config.font.value[0].codename", null);
+  const configObject = get(pageProps, "data.config") && hydrateContentItemSingleResponse(pageProps.data.config);
+  const pageObject = get(pageProps, "data.page") && hydrateContentItemSingleResponse(pageProps.data.page);
+  const listingSections = get(pageProps, "data.listingSections") && Object.fromEntries(
+    Object.entries(pageProps.data.listingSections)
+      .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
+  );
+  const listingItems = get(pageProps, "data.listingItems") && Object.fromEntries(
+    Object.entries(pageProps.data.listingItems)
+      .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
+  );
+
+
+  const font = get(configObject, "item.font.value[0].codename", null);
   const fontName = font === "nunito_sans"
     ? "Nunito Sans"
     : font === "fira_sans"
       ? "Fira Sans"
       : "Arial";
 
-  let title = get(pageProps, "data.config.title.value", "");
+  let title = get(configObject, "item.title.value", "");
   if (title) {
     title += " | ";
   }
-  title += get(pageProps, "page.seo__title.value", null) || get(pageProps, "page.label.value", null);
+  title += get(pageProps, "seo.title", null);
 
-  const palette = (get(pageProps, "data.config.palette.value[0].codename", null));
+  const palette = (get(configObject, "item.palette.value[0].codename", null));
   const colors = {
     primary: "#F05A22",
     secondary: "#B72929"
@@ -88,18 +101,18 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google" content="notranslate" />
 
-        {get(pageProps, "data.config.favicon.value[0]", null) && (
-          <link rel="icon" href={get(pageProps, "data.config.favicon.value[0].url", null)} />
+        {get(configObject, "item.favicon.value[0]", null) && (
+          <link rel="icon" href={get(configObject, "item.favicon.value[0].url", null)} />
         )}
 
-        <meta name="description" content={get(pageProps, "page.seo__description.value", null)} />
-        {get(pageProps, "page.seo__keywords.value", null) && (
-          <meta name="keywords" content={get(pageProps, "page.seo__keywords.value", null)} />
+        <meta name="description" content={get(pageProps, "seo.description", null)} />
+        {get(pageProps, "seo.keywords", null) && (
+          <meta name="keywords" content={get(pageProps, "seo.keywords", null)} />
         )}
-        {get(pageProps, "page.seo__canonical_url.value", null) ?? (
-          <link rel="canonical" href={get(pageProps, "page.seo__canonical_url.value", null)} />
+        {get(pageProps, "seo.canonicalUrl", null) ?? (
+          <link rel="canonical" href={get(pageProps, "seo.canonicalUrl", null)} />
         )}
-        {get(pageProps, "page.seo__options.value", []).some(item => item.codename == "no_index") && (
+        {get(pageProps, "seo.noIndex", null) && (
           <meta name="robots" content="noindex,follow" />
         )}
 
@@ -129,7 +142,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Component {...pageProps} configObject={configObject} pageObject={pageObject} listingSections={listingSections} listingItems={listingItems} />
       </ThemeProvider>
     </>
   );

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ListingPage(props) {
   const classes = useStyles();
-  const page = get(props, "page.content.value[0]", null);
+  const page = get(props, "pageObject.item", null);
   if (!page) {
     return (
       <UnknownComponent>
@@ -28,14 +28,14 @@ function ListingPage(props) {
     );
   }
 
-  const relatedItems = get(props, `related[${page.system.codename}]`, []);
+  const relatedItemsData = get(props, `listingItems[${page.system.codename}]`, []);
 
   return (
     <Layout {...props}>
       <Container className={classes.root}>
-        {relatedItems.length > 0 &&
+        {relatedItemsData.items.length > 0 &&
           <Grid container spacing={4} alignItems="stretch">
-            {relatedItems.map((item, item_idx) => {
+            {relatedItemsData.items.map((item, item_idx) => {
               const contentType = upperFirst(camelCase(get(item, "system.type", null)));
 
               const ThumbnailLayout = thumbnailLayouts[contentType];
