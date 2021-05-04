@@ -207,12 +207,34 @@ Static props returned from `getPageStaticPropsForPath`:
 
 ```
 
-The data passed as **static** `props` are then transformed in `_app.js` by `hydrateContentItemSingleResponse/hydrateContentItemListingResponse` methods into the Kontent Javascript SDK `ContentItem` objects and then passed down as the React props:
+The data passed as **static Next.js** `props` are then transformed in `_app.js` by `hydrateContentItemSingleResponse/hydrateContentItemListingResponse` methods into the Kontent Javascript SDK `ContentItem` objects and then passed down as the React props:
 
-* `configObject` - data for layout (font, header logo, color palette, ...)
-* `pageObject` - main content of the page
-* `listingItems` - if the page is a `listing_page` - linked items are passed in this item
-* `listingSections` - it any section of the page is a `listing_section` related items are stored there in the dictionary under the codename of the listing section content item
+```jsx
+const configObject = hydrateContentItemSingleResponse(pageProps.data.config);
+const pageObject = hydrateContentItemSingleResponse(pageProps.data.page);
+const listingSections = Object.fromEntries(
+  Object.entries(pageProps.data.listingSections)
+    .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
+);
+const listingItems = Object.fromEntries(
+  Object.entries(pageProps.data.listingItems)
+    .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
+);
+
+// ...
+
+<Component 
+  {...pageProps} 
+  configObject={configObject} 
+  pageObject={pageObject} 
+  listingSections={listingSections} 
+  listingItems={listingItems} />
+```
+
+* `configObject: ContentItem` - data for layout (font, header logo, color palette, ...) stored in [HomePage content type](#structural-types)
+* `pageObject: ContentItem` - **main content of the page** - item based on one of the [Layout types](#layout-types) linked in "Content" linked item element in Home page/Navigation item.
+* `listingItems: ContentItem[]` - if the `pageObject` is a `listing_page` - this object linked items are configured to be displayed (via `content_type`, `order` and `limit` element stored in the listing page item)
+* `listingSections: { [listing_section_codename] : ContentItem[] }` - if the `pageObject` is a `landing_page` and contains `listing_section` section(s) - this object contains linked items configured to be displayed in the `listing_section` (via `content_type`, `order` and `limit` element stored in the listing section item).
 
 > Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
