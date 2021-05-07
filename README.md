@@ -33,53 +33,61 @@ yarn create next-app --example https://github.com/Kentico/kontent-starter-corpor
 ### Environment variables
 
 1. Set up environment variables
-    * Copy the `.env.template` file in this directory to `.env` (which will be ignored by Git):
 
-        ```sh
-        cp .env.template .env
-        ```
+   - Copy the `.env.template` file in this directory to `.env` (which will be ignored by Git):
 
-1. Run the development server
+     ```sh
+     cp .env.template .env
+     ```
 
-    ```sh
-    npm run dev
-    # or
-    yarn dev
-    ```
+2. Run the development server
+
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
 
 🎉 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 > By default, the content is loaded from a shared Kentico Kontent project. If you want to use your own clone of the project so that you can customize it and experiment with Kontent, continue to the next section.
+
+|        Variable         | Required | Description                                                                                                                                            |
+| :---------------------: | :------: | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   KONTENT_PROJECT_ID    |   YES    | Project identification described in the [Setup section](#connect-kontent-project-with-code-base)                                                      |
+| KONTENT_PREVIEW_API_KEY |    NO    | Project key allowing to load non-published content described in the [Setup](#connect-kontent-project-with-code-base) and [Preview](#preview) sections |
+|     PREVIEW_SECRET      |    NO    | A key securing the preview content access via application described in [Preview entering section](#enter-the-preview)                                   |
+|      STATIC_EXPORT      |    NO    | If you choose to [Static export of your site](#static)                                                                                                 |
 
 ## Create your own data source project in Kontent
 
 ### Create Kontent project
 
 1. Create an account on Kontent
-    * [Create an account on Kontent.ai](https://app.kontent.ai/sign-up?utm_source=nextjs_boilerplate_example&utm_medium=devrel).
+   - [Create an account on Kontent.ai](https://app.kontent.ai/sign-up?utm_source=nextjs_boilerplate_example&utm_medium=devrel).
 2. After signing up, [create an empty project](https://docs.kontent.ai/tutorials/set-up-kontent/projects/manage-projects#a-creating-projects).
 3. Go to the "Project Settings", select API keys and copy the following keys for further reference
-    * Project ID
-    * Management API key
-4. Use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import) for importing the content from [`kontent-backup.zip`](./kontent-backup.zip) file and API keys from the previous step. Check *Publish language variants after import* option before import.
+   - Project ID
+   - Management API key
+4. Use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import) for importing the content from [`kontent-backup.zip`](./kontent-backup.zip) file and API keys from the previous step. Check _Publish language variants after import_ option before import.
 
-    > Alternatively, you can use the [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to the newly created project from [`kontent-backup.zip`](./kontent-backup.zip) file via command line:
-    >
-    >   ```sh
-    >    npm i -g @kentico/kontent-backup-manager
-    >    # or
-    >    yarn global add @kentico/kontent-backup-manager
-    >
-    >    kbm --action=restore --projectId=<Project ID> --apiKey=<Management API key> --zipFilename=kontent-backup
-    >    ```
-    >
-    > Go to your Kontent project and [publish the imported items](https://docs.kontent.ai/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
+   > Alternatively, you can use the [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to the newly created project from [`kontent-backup.zip`](./kontent-backup.zip) file via command line:
+   >
+   > ```sh
+   >  npm i -g @kentico/kontent-backup-manager
+   >  # or
+   >  yarn global add @kentico/kontent-backup-manager
+   >
+   >  kbm --action=restore --projectId=<Project ID> --apiKey=<Management API key> --zipFilename=kontent-backup
+   > ```
+   >
+   > Go to your Kontent project and [publish the imported items](https://docs.kontent.ai/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
 
 ### Connect Kontent project with code base
 
 1. Set env variables on `.env`:
-    * `KONTENT_PROJECT_ID` - Should be the Project ID in `Project settings` > `API keys`.
-    * `KONTENT_PREVIEW_API_KEY` - Should be the Preview API key in `Project settings` > `API keys`. Set this value if you want to see non-published content. If you need a more complex setup, jump to the [Preview section](#Preview).
+   - `KONTENT_PROJECT_ID` - Should be the Project ID in `Project settings` > `API keys`.
+   - `KONTENT_PREVIEW_API_KEY` - Should be the Preview API key in `Project settings` > `API keys`. Set this value if you want to see non-published content. If you need a more complex setup, jump to the [Preview section](#Preview).
 
 ## Content editing development
 
@@ -111,8 +119,8 @@ Content is modeled to be ready for being used in the [Web Spotlight](webspotligh
 
 The structure of the model is defined by linked items element called "Subpages"
 
-* Homepage - also stores configuration data like color palette, font specification, site logo, or social networks information
-  * Navigation Item - mainly for defining the sitemap structure with the slugs.
+- Homepage - also stores configuration data like color palette, font specification, site logo, or social networks information
+  - Navigation Item - mainly for defining the sitemap structure with the slugs.
 
 ### SEO
 
@@ -124,9 +132,9 @@ This snippet is placed as a part of [structural types](#structural-types). Every
 
 Content for these structural wrappers is defined by linked items element called "Content" with limitation to exactly one item of the type:
 
-* **Simple page** - This content type is mapped to the [simple_page.js](./layouts/simple_page.js). It is a simple page, containing title, subtitle, image and content.
-* **Landing page** - This content type is mapped to the [landing_page.js](./layouts/landing_page.js). The more complex page consists of sections (see [/components/sections](./components/sections)).
-* **Listing page** - This content type is mapped to the [listing_page.js](./src/layouts/listing_page.js). This page allows to specify which content types should be listed under it. Currently, the only supported in Post content type.
+- **Simple page** - This content type is mapped to the [simple_page.js](./layouts/simple_page.js). It is a simple page, containing title, subtitle, image and content.
+- **Landing page** - This content type is mapped to the [landing_page.js](./layouts/landing_page.js). The more complex page consists of sections (see [/components/sections](./components/sections)).
+- **Listing page** - This content type is mapped to the [listing_page.js](./src/layouts/listing_page.js). This page allows to specify which content types should be listed under it. Currently, the only supported in Post content type.
 
 > These types are then using specific layouts for rendering.
 
@@ -134,10 +142,10 @@ Content for these structural wrappers is defined by linked items element called 
 
 When you turn on the [Web Spotlight](https://docs.kontent.ai/tutorials/set-up-kontent/set-up-your-project/web-spotlight). New content types ["Homepage" and "Page"](https://docs.kontent.ai/tutorials/set-up-kontent/set-up-your-project/web-spotlight#a-how-web-spotlight-works) will be generated. In order to accommodate the content types, it is required to:
 
-* Remove the Page content type, because its responsibilities are handled by "Navigation Item" content type.
-* Transfer content model structure from "old" homepage content type to newly created one. The only difference is the "Subpages" elements that will be modeled by [Subpages](https://docs.kontent.ai/tutorials/set-up-kontent/content-modeling/what-is-content-modeling#a-subpages) element type. It is important to keep the codenames of the element the same
-* Transfer the data from old "homepage"
-* Remove the "old" homepage content item and the "old" content type and set the new homepage content item codename to "homepage".
+- Remove the Page content type, because its responsibilities are handled by "Navigation Item" content type.
+- Transfer content model structure from "old" homepage content type to newly created one. The only difference is the "Subpages" elements that will be modeled by [Subpages](https://docs.kontent.ai/tutorials/set-up-kontent/content-modeling/what-is-content-modeling#a-subpages) element type. It is important to keep the codenames of the element the same
+- Transfer the data from old "homepage"
+- Remove the "old" homepage content item and the "old" content type and set the new homepage content item codename to "homepage".
 
 > These steps are easily scriptable by creating a migration using [Kontent CLI](https://github.com/Kentico/kontent-cli). To see the progress of including it to this starter, follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/4).
 
@@ -188,9 +196,9 @@ Static props returned from `getPageStaticPropsForPath`:
 ```js
 {
   // seo title, description, ....
-  seo, 
+  seo,
   // URL -> CONTENT ITEM mapping from above
-  mappings, 
+  mappings,
 
  // RAW DATA FROM KONTENT
   data: {
@@ -201,7 +209,7 @@ Static props returned from `getPageStaticPropsForPath`:
     // if the `page` is a `listing_page` type - linked items are passed in this item
     listingItems,
     // if any section of the page is a `listing_section` related items are stored there in the dictionary under the codename of the listing section content item
-    listingSections 
+    listingSections
   },
 };
 
@@ -213,28 +221,33 @@ The data passed as **static Next.js** `props` are then transformed in `_app.js` 
 const configObject = hydrateContentItemSingleResponse(pageProps.data.config);
 const pageObject = hydrateContentItemSingleResponse(pageProps.data.page);
 const listingSections = Object.fromEntries(
-  Object.entries(pageProps.data.listingSections)
-    .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
+  Object.entries(pageProps.data.listingSections).map(([key, value]) => [
+    key,
+    hydrateContentItemListingResponse(value),
+  ])
 );
 const listingItems = Object.fromEntries(
-  Object.entries(pageProps.data.listingItems)
-    .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
+  Object.entries(pageProps.data.listingItems).map(([key, value]) => [
+    key,
+    hydrateContentItemListingResponse(value),
+  ])
 );
 
 // ...
 
-<Component 
-  {...pageProps} 
-  configObject={configObject} 
-  pageObject={pageObject} 
-  listingSections={listingSections} 
-  listingItems={listingItems} />
+<Component
+  {...pageProps}
+  configObject={configObject}
+  pageObject={pageObject}
+  listingSections={listingSections}
+  listingItems={listingItems}
+/>;
 ```
 
-* `configObject: ContentItem` - data for layout (font, header logo, color palette, ...) stored in [HomePage content type](#structural-types)
-* `pageObject: ContentItem` - **main content of the page** - item based on one of the [Layout types](#layout-types) linked in "Content" linked item element in Home page/Navigation item.
-* `listingItems: ContentItem[]` - if the `pageObject` is a `listing_page` - this object linked items are configured to be displayed (via `content_type`, `order` and `limit` element stored in the listing page item)
-* `listingSections: { [listing_section_codename] : ContentItem[] }` - if the `pageObject` is a `landing_page` and contains `listing_section` section(s) - this object contains linked items configured to be displayed in the `listing_section` (via `content_type`, `order` and `limit` element stored in the listing section item).
+- `configObject: ContentItem` - data for layout (font, header logo, color palette, ...) stored in [HomePage content type](#structural-types)
+- `pageObject: ContentItem` - **main content of the page** - item based on one of the [Layout types](#layout-types) linked in "Content" linked item element in Home page/Navigation item.
+- `listingItems: ContentItem[]` - if the `pageObject` is a `listing_page` - this object linked items are configured to be displayed (via `content_type`, `order` and `limit` element stored in the listing page item)
+- `listingSections: { [listing_section_codename] : ContentItem[] }` - if the `pageObject` is a `landing_page` and contains `listing_section` section(s) - this object contains linked items configured to be displayed in the `listing_section` (via `content_type`, `order` and `limit` element stored in the listing section item).
 
 > Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
@@ -244,32 +257,30 @@ const listingItems = Object.fromEntries(
 Application is using the codename of the content type to load proper react component and render it. If the application does not find the proper component, it fails or displays [special UnknownComponent](./components/UnknownComponent.js) in case of development environment.
 
 ```jsx
-const componentName = upperFirst(
-    camelCase(
-        get(section, 'system.type', null)
-    )
-);
+const componentName = upperFirst(camelCase(get(section, "system.type", null)));
 
 const Component = sections[componentName];
 
-if (process.env.NODE_ENV === 'development' && !Component) {
-    console.error(`Unknown section component for section content type: ${contentType}`)
-    return (
-        <UnknownComponent key={section_idx} {...this.props}>
-            <pre>{JSON.stringify(section, undefined, 2)}</pre>
-        </UnknownComponent>
-    );
+if (process.env.NODE_ENV === "development" && !Component) {
+  console.error(
+    `Unknown section component for section content type: ${contentType}`
+  );
+  return (
+    <UnknownComponent key={section_idx} {...this.props}>
+      <pre>{JSON.stringify(section, undefined, 2)}</pre>
+    </UnknownComponent>
+  );
 }
 
-return <Component key={section_idx} {...props} section={section} />
+return <Component key={section_idx} {...props} section={section} />;
 ```
 
 Reference:
 
-* [Layout mapping](./pages/[[...slug]].js)
-* [Landing page sections mapping](./layouts/landing_page.js)
-* [Footer sections mapping](./components/Footer.js)
-* [Thumbnail mapping](./layouts/listing_page.js)
+- [Layout mapping](./pages/[[...slug]].js)
+- [Landing page sections mapping](./layouts/landing_page.js)
+- [Footer sections mapping](./components/Footer.js)
+- [Thumbnail mapping](./layouts/listing_page.js)
 
 ## Preview
 
@@ -338,7 +349,7 @@ yarn static-export
 
 A [Rich text element](https://docs.kontent.ai/reference/delivery-api#section/Rich-text-element) could carry more than just a text. It could contain links, images, components, and inline linked items. The starter offers a `/style-guide` section to showcase the options to resolve complex structure into the React components.
 
-The `/style-guide` is a page based on the `simple_page` layout containing title, sub, and the content in a form of a rich text element. This rich text element contains a showcase of various typographical examples (headlines, lists, tables) and also images, components, and links to other content items. To parse and resolve them, there is a pair of components. The first one is  `RichTextComponent` containing the parsing logic (using [`html-react-parser`](https://www.npmjs.com/package/html-react-parser) library) and offering the possibility to implement the resolution. And the second one defining the resolution logic from rich text blocks to React Components - the `RichText` component.
+The `/style-guide` is a page based on the `simple_page` layout containing title, sub, and the content in a form of a rich text element. This rich text element contains a showcase of various typographical examples (headlines, lists, tables) and also images, components, and links to other content items. To parse and resolve them, there is a pair of components. The first one is `RichTextComponent` containing the parsing logic (using [`html-react-parser`](https://www.npmjs.com/package/html-react-parser) library) and offering the possibility to implement the resolution. And the second one defining the resolution logic from rich text blocks to React Components - the `RichText` component.
 
 The usage is simple. To resolve the rich text element, you place the `RichText` component and provide a rich text element object and then propagate all other props used to load appropriate data (linked items data, information about mapping to be able to resolve URL to specific content item).
 
@@ -363,38 +374,38 @@ Rich Text Component
 
 ![Rich text link resolution](docs/rich-text-links.png)
 
->💡 You could use a different approach to resolve the rich text element blocks. It is possible to use the [embedded support in Javascript SDK](https://docs.kontent.ai/tutorials/develop-apps/get-content/structured-rich-text?tech=javascript) that allows resolving blocks into the `string` objects and then utilize library [`react-jsx-parser`]([react-jsx-parser](https://www.npmjs.com/package/react-jsx-parser)) to transform this string representation to React components This approach however requires the recreation of the model classes when you need them from the JSON object form because Next.js/React does not allow passing class objects via `props` of a React Component. If you want to get more detailed information about this topic, feel free to raise the question issue.
+> 💡 You could use a different approach to resolve the rich text element blocks. It is possible to use the [embedded support in Javascript SDK](https://docs.kontent.ai/tutorials/develop-apps/get-content/structured-rich-text?tech=javascript) that allows resolving blocks into the `string` objects and then utilize library [`react-jsx-parser`](<[react-jsx-parser](https://www.npmjs.com/package/react-jsx-parser)>) to transform this string representation to React components This approach however requires the recreation of the model classes when you need them from the JSON object form because Next.js/React does not allow passing class objects via `props` of a React Component. If you want to get more detailed information about this topic, feel free to raise the question issue.
 
 ## Design
 
-The application is using [Material Design](https://material-ui.com/). The main theme is configured in [_app.js](./pages/_app.js). Components are styled using `makeStyles` method to ensure isolation.
+The application is using [Material Design](https://material-ui.com/). The main theme is configured in [\_app.js](./pages/_app.js). Components are styled using `makeStyles` method to ensure isolation.
 
 ```jsx
-import React from 'react'
-import get from 'lodash.get'
-import { Container, makeStyles } from '@material-ui/core';
+import React from "react";
+import get from "lodash.get";
+import { Container, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((_theme) => ({
   section: {
-    background: 'red'
-  }
+    background: "red",
+  },
 }));
 
 function FeaturesSection(props) {
-  const section = get(props, 'section', null);
+  const section = get(props, "section", null);
   const classes = useStyles();
 
-
   return (
-    <section id={get(section, 'system.codename', null)} className={classes.section}>
-      <Container>
-        Section: {get(section, 'system.codename', null)}
-      </Container>
+    <section
+      id={get(section, "system.codename", null)}
+      className={classes.section}
+    >
+      <Container>Section: {get(section, "system.codename", null)}</Container>
     </section>
-  )
+  );
 }
 
-export default FeaturesSection
+export default FeaturesSection;
 ```
 
 There are some additional steps done to allow [Server rendering](https://material-ui.com/guides/server-rendering/). The concept of the app was used from [Official Next.js example for material design](https://github.com/mui-org/material-ui/tree/master/examples/nextjs).
@@ -405,13 +416,13 @@ There are some additional steps done to allow [Server rendering](https://materia
 
 To learn more about Next.js, take a look at the following resources:
 
-* [Kontent + Next.js blog example](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme) - complex sample project setup including i.e. preview functionality, listing, Tailwind CSS, ...
-* [Kontent + Next.js boilerplate](https://github.com/Kentico/kontent-boilerplate-next-js#readme) - Simple boilerplate showcases Next.js static generation feature using Kentico Kontent as the data source.
-* [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-* [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-* [This Mission: Next.js from the Ground Up](https://explorers.netlify.com/learn/nextjs)
+- [Kontent + Next.js blog example](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme) - complex sample project setup including i.e. preview functionality, listing, Tailwind CSS, ...
+- [Kontent + Next.js boilerplate](https://github.com/Kentico/kontent-boilerplate-next-js#readme) - Simple boilerplate showcases Next.js static generation feature using Kentico Kontent as the data source.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [This Mission: Next.js from the Ground Up](https://explorers.netlify.com/learn/nextjs)
 
 ### Related content
 
-* [Using the Next image component with Kentico Kontent assets](https://meeg.dev/blog/using-the-next-image-component-with-kentico-kontent-assets) by [Chris Meagher](https://github.com/CMeeg)
-* [Using Azure Pipelines to build and deploy a Next.js app to Azure app services](https://meeg.dev/blog/using-azure-pipelines-to-build-and-deploy-a-next-js-app-to-azure-app-services) by [Chris Meagher](https://github.com/CMeeg)
+- [Using the Next image component with Kentico Kontent assets](https://meeg.dev/blog/using-the-next-image-component-with-kentico-kontent-assets) by [Chris Meagher](https://github.com/CMeeg)
+- [Using Azure Pipelines to build and deploy a Next.js app to Azure app services](https://meeg.dev/blog/using-azure-pipelines-to-build-and-deploy-a-next-js-app-to-azure-app-services) by [Chris Meagher](https://github.com/CMeeg)
