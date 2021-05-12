@@ -88,9 +88,9 @@ function RichText(props) {
         const url = getUrlFromMapping(mappings, link.codename);
         if (url) {
           return (
-            <Link href={url}>
-              {domNode.children[0].data}
-            </Link>
+            <Link href={url}> 
+                {domToReact(domNode.children)}
+             </Link>
           );
         }
         else {
