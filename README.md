@@ -143,8 +143,8 @@ Content for these structural wrappers is defined by linked items element called 
 When you turn on the [Web Spotlight](https://docs.kontent.ai/tutorials/set-up-kontent/set-up-your-project/web-spotlight). New content types ["Homepage" and "Page"](https://docs.kontent.ai/tutorials/set-up-kontent/set-up-your-project/web-spotlight#a-how-web-spotlight-works) will be generated. In order to accommodate the content types, it is required to:
 
 - Remove the Page content type, because its responsibilities are handled by "Navigation Item" content type.
-- Transfer content model structure from "old" homepage content type to newly created one. The only difference is the "Subpages" elements that will be modeled by [Subpages](https://docs.kontent.ai/tutorials/set-up-kontent/content-modeling/what-is-content-modeling#a-subpages) element type. It is important to keep the codenames of the element the same
-- Transfer the data from old "homepage"
+- Transfer content model structure from "old" homepage content type to newly created one. The only difference is the "Subpages" element that will be modeled by [Subpages](https://docs.kontent.ai/tutorials/set-up-kontent/content-modeling/what-is-content-modeling#a-subpages) element type. It is important to keep the codenames of the element the same.
+- Transfer the data from old "homepage".
 - Remove the "old" homepage content item and the "old" content type and set the new homepage content item codename to "homepage".
 
 > These steps are easily scriptable by creating a migration using [Kontent CLI](https://github.com/Kentico/kontent-cli). To see the progress of including it to this starter, follow [this issue](https://github.com/Kentico/kontent-starter-corporate-next-js/issues/4).
@@ -156,6 +156,22 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 ### Data loading
 
 ![Data fetching structure](./docs/data-fetching.png)
+
+> #### ⚠ Benefits and drawbacks
+>
+> ##### Benefits
+>
+> Described [sitemap construction](#sitemap-construction) and [configuration loading from Home Page structural type](#structural-types) suits better for projects being built from scratch. In these situations, you need to have the sitemap and configuration (pallette, font, etc.) flexible and easy manage from the headless CMS without necessity to change the code. This gives you flexibility to spin up the website and configure the project with no Code.
+>
+> [![How to Spin Up a Next.js Project with No Code](https://img.youtube.com/vi/_scByZaQjic/0.jpg)](https://www.headlesscreator.com/how-to-spin-up-a-nextjs-project-with-no-code)
+>
+> ![Preview initial configuration](./docs/preview-configuration.gif)
+>
+> ##### Drawbacks
+>
+> This approach requires to make 2 requests per route to reload `Mappings` and `Config` objects. This additional work takes a couple of seconds for the development environment to spin up. For the production build, the results are still fast enough.
+>
+> If you already know the configuration values and the sitemap structure, it is better to use [Next.js dynamic routes](https://nextjs.org/docs/routing/dynamic-routes) showcased in [This repository](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme), but the approach taken for [RichText links resolution](#rich-text-element-resolution), [Preview URLs](#preview-urls) and [Web Spotlight setup](#turn-on-web-spotlight) has to be modified to respect this new way of routing.
 
 #### Sitemap construction
 
@@ -343,7 +359,12 @@ To generate the site locally, run fun following command:
 yarn static-export
 ```
 
-> It is also possible to use this starter for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), it requires you to implement `getServerSideProps` in `[[...slug]].js` component, but as the Next.js documentation states - "You should use getServerSideProps only if you need to pre-render a page whose data must be fetched at request time" - and that is not the primary requirement for this starter and the ISR server better for up-to-date content.
+### *Server-side rendering*
+
+> It is also possible to use this starter for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), it requires you to implement `getServerSideProps` in [Next.js Page](https://nextjs.org/docs/basic-features/pages) component, but as the Next.js documentation states - "You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time" - and that is not the primary requirement for this starter and the ISR server better for up-to-date content.
+>
+> If you want to see the example checkout [What’s the best place to host Next.js site?
+](https://kontent.ai/blog/comparison-of-jamstack-hosting-platforms-for-next-js) by [Ondřej Polesný](https://github.cpm/@ondrabus).
 
 ## Rich text element resolution
 
@@ -426,3 +447,4 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Using the Next image component with Kentico Kontent assets](https://meeg.dev/blog/using-the-next-image-component-with-kentico-kontent-assets) by [Chris Meagher](https://github.com/CMeeg)
 - [Using Azure Pipelines to build and deploy a Next.js app to Azure app services](https://meeg.dev/blog/using-azure-pipelines-to-build-and-deploy-a-next-js-app-to-azure-app-services) by [Chris Meagher](https://github.com/CMeeg)
+- // TODO add Dev.to article.
