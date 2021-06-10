@@ -171,7 +171,7 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 >
 > This approach requires to make 2 requests per route to reload `Mappings` and `Config` objects. This additional work takes a couple of seconds for the development environment to spin up. For the production build, the results are still fast enough.
 >
-> If you already know the configuration values and the sitemap structure, it is better to use [Next.js dynamic routes](https://nextjs.org/docs/routing/dynamic-routes) showcased in [This repository](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme), but the approach taken for [RichText links resolution](#rich-text-element-resolution), [Preview URLs](#preview-urls) and [Web Spotlight setup](#turn-on-web-spotlight) has to be modified to respect this new way of routing.
+> If you already know the configuration values and the sitemap structure, it is better to use [Next.js dynamic routes](https://nextjs.org/docs/routing/dynamic-routes) showcased in [Next.js Kontent blog repository](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme), but the approach used for [RichText links resolution](#rich-text-element-resolution), [Preview URLs](#preview-urls) and [Web Spotlight setup](#turn-on-web-spotlight) has to be adjusted to respect this new way of routing.
 
 #### Sitemap construction
 
