@@ -437,7 +437,7 @@ There are some additional steps done to allow [Server rendering](https://materia
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Static site or server-rendered? Next.js enables both](https://kontent.ai/technologies/nextjs) - landing page dedicated to Kentico Kontent and Next.js capabilities by [Kontent](https://kontent.ai)
+- [Static site or server-rendered? Next.js enables both](https://kontent.ai/technologies/nextjs) - the landing page describing Kentico Kontent and Next.js capabilities by [Kontent](https://kontent.ai)
 - [Kontent + Next.js blog example](https://github.com/vercel/next.js/tree/canary/examples/cms-kontent#readme) - complex sample project setup including i.e. preview functionality, listing, Tailwind CSS, ...
 - [Kontent + Next.js boilerplate](https://github.com/Kentico/kontent-boilerplate-next-js#readme) - Simple boilerplate showcases Next.js static generation feature using Kentico Kontent as the data source.
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
@@ -449,3 +449,6 @@ To learn more about Next.js, take a look at the following resources:
 - [Using the Next image component with Kentico Kontent assets](https://meeg.dev/blog/using-the-next-image-component-with-kentico-kontent-assets) by [Chris Meagher](https://github.com/CMeeg)
 - [Using Azure Pipelines to build and deploy a Next.js app to Azure app services](https://meeg.dev/blog/using-azure-pipelines-to-build-and-deploy-a-next-js-app-to-azure-app-services) by [Chris Meagher](https://github.com/CMeeg)
 - [Build and Deploy a Next.js Blog with Kentico Kontent and Vercel](https://dev.to/kentico-kontent/build-and-deploy-a-next-js-blog-with-kentico-kontent-and-vercel-5cp4) by [Ondřej Chrastina](https://github.com/Simply007)
+- [Dynamic routing with Kentico Kontent and NextJS](https://unplatform.io/stories/dynamic-routing-with-kentico-kontent-and-nextjs) by [Unplatform](https://unplatform.io/)
+- [Solving content preview with Next.js Preview Mode](https://rshackleton.co.uk/articles/solving-content-preview-with-next-js-preview-mode) by [Richard Shackleton](https://rshackleton.co.uk/)
+- [How to use Highlight.js on a Next.js site](https://dev.to/kentico-kontent/how-to-use-highlight-js-on-a-next-js-site-f9) by [Ondřej Polesný](https://github.com/ondrabus)
