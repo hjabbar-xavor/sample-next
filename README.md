@@ -161,7 +161,7 @@ The application is using Next.js [Catch all route](https://nextjs.org/docs/routi
 >
 > ##### Benefits
 >
-> Described [sitemap construction](#sitemap-construction) and [configuration loading from Home Page structural type](#structural-types) suits better for projects being built from scratch. In these situations, you need to have the sitemap and configuration (pallette, font, etc.) flexible and easy manage from the headless CMS without necessity to change the code. This gives you flexibility to spin up the website and configure the project with no Code.
+> Described [sitemap construction](#sitemap-construction) and [configuration loading from Home Page structural type](#structural-types) suits better for projects being built from scratch. In these situations, you need to have the sitemap and configuration (pallette, font, etc.) flexible and easily manageable from the headless CMS without necessity to change the code. This gives you flexibility to spin up the website and configure the project with No Code.
 >
 > [![How to Spin Up a Next.js Project with No Code](https://img.youtube.com/vi/_scByZaQjic/0.jpg)](https://www.headlesscreator.com/how-to-spin-up-a-nextjs-project-with-no-code)
 >
@@ -361,7 +361,7 @@ yarn static-export
 
 ### *Server-side rendering*
 
-> It is also possible to use this starter for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), it requires you to implement `getServerSideProps` in [Next.js Page](https://nextjs.org/docs/basic-features/pages) component, but as the Next.js documentation states - "You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time" - and that is not the primary requirement for this starter and the ISR server better for up-to-date content.
+> It is also possible to use this starter for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), it requires you to implement `getServerSideProps` in [Next.js Page component](https://nextjs.org/docs/basic-features/pages), but as the Next.js [documentation states](https://nextjs.org/docs/basic-features/data-fetching#when-should-i-use-getserversideprops) - *"You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time" - and that is not the primary requirement for this starter and the ISR server better for up-to-date content.*
 >
 > If you want to see the example checkout [What’s the best place to host Next.js site?
 ](https://kontent.ai/blog/comparison-of-jamstack-hosting-platforms-for-next-js) by [Ondřej Polesný](https://github.cpm/@ondrabus).
