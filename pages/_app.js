@@ -1,7 +1,7 @@
 import React from "react";
 import get from "lodash.get";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Head from "next/head";
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
       break;
   }
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       primary: {
         main: colors.primary,
