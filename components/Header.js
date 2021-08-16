@@ -36,7 +36,6 @@ function Header(props) {
               {get(props, "configObject.item.header_logo.value[0]")
                 ? (<Image
                   asset={get(props, "configObject.item.header_logo.value[0]")}
-                  src={get(props, "configObject.item.header_logo.value[0].url")}
                   alt={get(props, "configObject.item.title.value", null)}
                   width="200"
                   height="60"
