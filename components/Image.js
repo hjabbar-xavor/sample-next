@@ -13,6 +13,8 @@ const Image = (props) => {
   const componentWidth = width || asset.width || theme.breakpoints.values.md;
   const componentHeight = height || (componentWidth / asset.width) * asset.height;
 
+  console.log(`Asset: ${asset.url} has loader ${loader ? "set" : "unset"}`);
+
   return <NextImage
     {...props}
     src={asset.url}
