@@ -4,8 +4,8 @@ import { useTheme } from "@material-ui/core";
 
 
 const Image = (props) => {
-  const { asset, src, width, height } = props;
-  const loader = srcIsKontentAsset(src)
+  const { asset, width, height } = props;
+  const loader = srcIsKontentAsset(asset.url)
     ? kontentImageLoader
     : undefined;
   const theme = useTheme();
