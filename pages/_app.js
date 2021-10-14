@@ -5,13 +5,11 @@ import { createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Head from "next/head";
-import { hydrateContentItemListingResponse, hydrateContentItemSingleResponse } from "../lib/api";
-
 
 function MyApp({ Component, pageProps }) {
 
-  const configObject = get(pageProps, "data.config") && hydrateContentItemSingleResponse(pageProps.data.config);
-  const pageObject = get(pageProps, "data.page") && hydrateContentItemSingleResponse(pageProps.data.page);
+  const configObject = get(pageProps, "data.config", null);
+  const pageObject = get(pageProps, "data.page", null)
   const listingSections = get(pageProps, "data.listingSections") && Object.fromEntries(
     Object.entries(pageProps.data.listingSections)
       .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
