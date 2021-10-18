@@ -7,11 +7,10 @@ function Action(props) {
   const { action, mappings } = props;
   const navigationItem = get(action, "elements.navigation_item.linkedItems[0]", null);
   const href = navigationItem.system.type === "external_url"
-  ? get(navigationItem, "elements.url.value")
-  : getUrlFromMapping(mappings, navigationItem.system.codename);
+    ? get(navigationItem, "elements.url.value")
+    : getUrlFromMapping(mappings, navigationItem.system.codename);
   const action_options = get(action, "elements.options.value", []);
-  
-  debugger;
+
   const role = get(action, "elements.role.value[0].codename", null);
   const outlined = action_options.some(item => item.codename === "outlined");
   const config = {};

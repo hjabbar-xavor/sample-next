@@ -57,7 +57,7 @@ function RichText(props) {
           case "quote":
             return (
               <blockquote className={classes.quote}>
-                &ldquo;{linkedItem.quote_text.value}&rdquo;
+                &ldquo;{linkedItem.elements.quote_text.value}&rdquo;
               </blockquote>
             );
           case "code_block":
@@ -65,7 +65,7 @@ function RichText(props) {
               <Typography component="div" className={classes.code}>
                 <RichText
                   {...props}
-                  richTextElement={get(linkedItem, "code", null)}
+                  richTextElement={get(linkedItem, "elements.code", null)}
                 />
               </Typography>
             );
