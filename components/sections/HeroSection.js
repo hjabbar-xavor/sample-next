@@ -36,31 +36,31 @@ function HeroSection(props) {
       <Container>
         <Grid container spacing={2} alignItems="stretch" direction="row-reverse">
 
-          {get(section, "image.value[0]", null) && (
+          {get(section, "elements.image.value[0]", null) && (
             <Grid item xs={12} sm={6} className={classes.column}>
               <Image
                 sizes={imageSizes}
-                asset={get(section, "image.value[0]", null)}
-                alt={get(section, "image.value[0].description") || get(section, "image.value[0].name")}
+                asset={get(section, "elements.image.value[0]", null)}
+                alt={get(section, "elements.image.value[0].description") || get(section, "elements.image.value[0].name")}
                 loading="eager" />
             </Grid>
           )}
 
           <Grid item xs={12} sm={4} className={classes.column}>
-            {get(section, "title", null) && (
-              <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+            {get(section, "elements.title", null) && (
+              <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
             )}
 
             <Typography variant="subtitle1" className={classes.content}>
               <RichText
                 {...props}
-                richTextElement={get(section, "content", null)}
+                richTextElement={get(section, "elements.content", null)}
               />
             </Typography>
 
-            {get(section, "actions", null) && (
+            {get(section, "elements.actions.linkedItems", []).length > 0 && (
               <div className={classes.actions}>
-                <CtaButtons {...props} actions={get(section, "actions.value", null)} />
+                <CtaButtons {...props} actions={get(section, "elements.actions.linkedItems", null)} />
               </div>
             )}
           </Grid>

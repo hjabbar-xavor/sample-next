@@ -21,27 +21,27 @@ function ReviewsSection(props) {
 
 
   return (
-    <section id={get(section, "system.codename", null)} className={classes.section}>
+    <section id={get(section, "elements.system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, "title.value", null) && (
-            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+          {get(section, "elements.title.value", null) && (
+            <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
           )}
-          {get(section, "subtitle.value", null) && (
+          {get(section, "elements.subtitle.value", null) && (
             <Typography variant="subtitle1" >
               <RichText
                 {...props}
-                richTextElement={get(section, "subtitle", null)}
+                richTextElement={get(section, "elements.subtitle", null)}
               />
             </Typography>
           )}
         </div>
 
 
-        {get(section, "reviews.value[0]", null) && (
+        {get(section, "elements.reviews.linkedItems[0]", null) && (
           <Grid container spacing={2} alignItems="stretch">
-            {get(section, "reviews.value", []).map((review, index) => {
-              const author = get(review, "author.value[0]");
+            {get(section, "elements.reviews.linkedItems", []).map((review, index) => {
+              const author = get(review, "elements.author.linkedItems[0]");
               return (
                 <Grid item md={4} sm={12} className={classes.review} key={index}>
                   <Card className={classes.reviewCard} >
@@ -49,10 +49,10 @@ function ReviewsSection(props) {
                       <Typography component="blockquote">
                         <RichText
                           {...props}
-                          richTextElement={get(review, "content", null)}
+                          richTextElement={get(review, "elements.content", null)}
                         />
                       </Typography>
-                      <Typography component="cite">{get(author, "first_name.value")} {get(author, "last_name.value")}</Typography>
+                      <Typography component="cite">{get(author, "elements.first_name.value")} {get(author, "elements.last_name.value")}</Typography>
                     </CardContent>
                   </Card>
                 </Grid>

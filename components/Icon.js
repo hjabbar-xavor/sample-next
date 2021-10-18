@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
 
 // It is possible to use Icon component, but it would increase the bundle size https://material-ui.com/components/icons/#icon-font-icons
 function Icon(props) {
-  const icon = get(props, "icon.icon.value[0].codename", null) || get(props, "iconCodename", null);
+  debugger;
+  const icon = get(props, "icon.elements.icon.value[0].codename", null) || get(props, "iconCodename", null);
   const classes = useStyles();
 
   switch (icon) {

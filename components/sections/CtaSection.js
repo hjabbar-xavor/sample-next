@@ -23,21 +23,21 @@ function CtaSection(props) {
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} sm={6}>
             <div className={classes.intro}>
-              {get(section, "title.value", null) && (
-                <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+              {get(section, "elements.title.value", null) && (
+                <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
               )}
-              {get(section, "subtitle.value", null) && (
+              {get(section, "elements.subtitle.value", null) && (
                 <Typography variant="subtitle1" className={classes.content}>
                   <RichText
                     {...props}
-                    richTextElement={get(section, "subtitle", null)}
+                    richTextElement={get(section, "elements.subtitle", null)}
                   />
                 </Typography>
               )}
             </div>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Action {...props} action={get(section, "action.value[0]")} />
+            <Action {...props} action={get(section, "elements.action.linkedItems[0]")} />
           </Grid>
         </Grid>
 

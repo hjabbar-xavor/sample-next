@@ -29,7 +29,7 @@ function LandingPage(props) {
   return (
     <Layout {...props}>
       <Box className={classes.sections}>
-        {get(page, "sections.value", []).map((section, index) => {
+        {get(page, "elements.sections.linkedItems", []).map((section, index) => {
           const contentType = upperFirst(camelCase(get(section, "system.type", null)));
           const Component = sections[contentType];
 
