@@ -37,8 +37,7 @@ function Page(props) {
 }
 
 export async function getStaticPaths(ctx) {
-    debugger;
-    console.log("Page [[...slug]].js getStaticPaths", ctx);
+        console.log("Page [[...slug]].js getStaticPaths", ctx);
     const paths = await getSitemapMappings();
 
     // https://nextjs.org/docs/messages/ssg-fallback-true-export
@@ -52,8 +51,7 @@ export async function getStaticPaths(ctx) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-    debugger;
-    console.log("Page [[...slug]].js getStaticProps, params: ", params);
+        console.log("Page [[...slug]].js getStaticProps, params: ", params);
     const props = await getPageStaticPropsForPath(params, preview);
 
     if (props === undefined) {

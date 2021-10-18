@@ -4,8 +4,7 @@ import { Button } from "@material-ui/core";
 import { Link, Icon } from ".";
 
 function Action(props) {
-  debugger;
-  const { action, mappings } = props;
+    const { action, mappings } = props;
   const navigationItem = get(action, "elements.navigation_item.linkedItems[0]", null);
   const href = navigationItem.system.type === "external_url"
   ? get(navigationItem, "elements.url.value")

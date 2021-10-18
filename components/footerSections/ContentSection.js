@@ -13,8 +13,7 @@ function ContentSection(props) {
   const section = get(props, "section", null);
   const classes = useStyles();
 
-  debugger;
-  return (
+    return (
     <section id={get(section, "system.codename", null)} className={classes.section}>
       {get(section, "elements.title", null) && (
         <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
