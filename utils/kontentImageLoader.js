@@ -1,4 +1,4 @@
-import { transformImageUrl, ImageCompressionEnum } from "@kentico/kontent-delivery";
+import { transformImageUrl } from "@kentico/kontent-delivery";
 
 
 const kontentImageLoader = ({ src, width, quality }) => {
@@ -6,7 +6,7 @@ const kontentImageLoader = ({ src, width, quality }) => {
   const builder =  transformImageUrl(src)
     .withWidth(width)
     .withQuality(quality || 75)
-    .withCompression('lossless')
+    .withCompression("lossless")
     .withAutomaticFormat();
 
   return builder.getUrl();
