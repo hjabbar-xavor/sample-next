@@ -202,7 +202,7 @@ One example item from the sitemap mappings:
 
 #### Specific route data
 
-For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the raw data using Delivery client and `getRawKontentItemSingleResult/getRawKontentItemListingResult` methods and passes them as the **static** `props` to the Next.js processing.
+For every single route, Next.js is loading data using the `getPageStaticPropsForPath` method. Internally, it reloads the site structure via `getSitemapMappings` method and then identifies the content items to load the data. Then loads the data using Delivery client and passes them as the *Next.js* `props` to the Next.js processing.
 
 Static props returned from `getPageStaticPropsForPath`:
 
@@ -228,39 +228,7 @@ Static props returned from `getPageStaticPropsForPath`:
 
 ```
 
-The data passed as **static Next.js** `props` are then transformed in `_app.js` by `hydrateContentItemSingleResponse/hydrateContentItemListingResponse` methods into the Kontent Javascript SDK `ContentItem` objects and then passed down as the React props:
-
-```jsx
-const configObject = hydrateContentItemSingleResponse(pageProps.data.config);
-const pageObject = hydrateContentItemSingleResponse(pageProps.data.page);
-const listingSections = Object.fromEntries(
-  Object.entries(pageProps.data.listingSections).map(([key, value]) => [
-    key,
-    hydrateContentItemListingResponse(value),
-  ])
-);
-const listingItems = Object.fromEntries(
-  Object.entries(pageProps.data.listingItems).map(([key, value]) => [
-    key,
-    hydrateContentItemListingResponse(value),
-  ])
-);
-
-// ...
-
-<Component
-  {...pageProps}
-  configObject={configObject}
-  pageObject={pageObject}
-  listingSections={listingSections}
-  listingItems={listingItems}
-/>;
-```
-
-- `configObject: ContentItem` - data for layout (font, header logo, color palette, ...) stored in [HomePage content type](#structural-types)
-- `pageObject: ContentItem` - **main content of the page** - item based on one of the [Layout types](#layout-types) linked in "Content" linked item element in Home page/Navigation item.
-- `listingItems: ContentItem[]` - if the `pageObject` is a `listing_page` - this object linked items are configured to be displayed (via `content_type`, `order` and `limit` element stored in the listing page item)
-- `listingSections: { [listing_section_codename] : ContentItem[] }` - if the `pageObject` is a `landing_page` and contains `listing_section` section(s) - this object contains linked items configured to be displayed in the `listing_section` (via `content_type`, `order` and `limit` element stored in the listing section item).
+The data passed as **Next.js** `props` are then populated in `_app.js` and other components in the component tree.
 
 > Currently, the sitemap is reloaded for every request. The following approach was selected because there is currently no way to pass more information than just a path from `getStaticPaths` to `getStaticProps`. See [the official Next.js GitHub discussion comment](https://github.com/vercel/next.js/issues/10933#issuecomment-598297975) for more information.
 > It is possible to extend the implementation with the caching, this approach is about to be application specific, so it is not part of the starter.
