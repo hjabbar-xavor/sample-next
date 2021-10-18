@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Post(props) {
   const classes = useStyles();
-  const post = get(props, "pageObject.item", null);
+  const post = get(props, "data.page.item", null);
 
   if (!post) {
     return (
@@ -26,37 +26,37 @@ function Post(props) {
   return (
     <Layout {...props}>
       <Container className={classes.root} maxWidth="md">
-        {get(post, "title.value", null) && (
-          <Typography variant="h1">{get(post, "title.value", null)}</Typography>
+        {get(post, "elements.title.value", null) && (
+          <Typography variant="h1">{get(post, "elements.title.value", null)}</Typography>
         )}
-        {get(post, "subtitle.value", null) && (
+        {get(post, "elements.subtitle.value", null) && (
           <Typography variant="subtitle1" >
             <RichText
               {...props}
-              richTextElement={get(post, "subtitle", null)}
+              richTextElement={get(post, "elements.subtitle", null)}
             />
           </Typography>
         )}
 
-        {get(post, "image.value[0]", null) && (
+        {get(post, "elements.image.value[0]", null) && (
           <div>
             <Image
               sizes={imageSizes}
-              asset={get(post, "image.value[0]", null)}
-              alt={get(post, "image.value[0].description") || get(post, "image.value[0].name", null)} />
+              asset={get(post, "elements.image.value[0]", null)}
+              alt={get(post, "elements.image.value[0].description") || get(post, "elements.image.value[0].name", null)} />
           </div>
         )}
         <Typography component="div">
           <RichText
             {...props}
-            richTextElement={get(post, "content", null)}
+            richTextElement={get(post, "elements.content", null)}
           />
         </Typography>
 
         <footer>
-          <time>{get(post, "publishing_date.value", null) && new Date(get(post, "publishing_date.value", null)).toDateString()}</time>
-          {get(post, "author.value[0]", null) &&
-            (", by " + get(post, "author.value[0].first_name.value", null) + " " + get(post, "author.value[0].last_name.value", null))}
+          <time>{get(post, "elements.publishing_date.value", null) && new Date(get(post, "elements.publishing_date.value", null)).toDateString()}</time>
+          {get(post, "elements.author.value[0]", null) &&
+            (", by " + get(post, "elements.author.value[0].first_name.value", null) + " " + get(post, "elements.author.value[0].last_name.value", null))}
         </footer>
       </Container>
     </Layout>
