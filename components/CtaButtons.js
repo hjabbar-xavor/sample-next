@@ -4,6 +4,7 @@ import get from "lodash.get";
 import Action from "./Action";
 
 function CtaButtons(props) {
+    debugger;
     const actions = get(props, "actions", []);
 
     return (actions.map((action, action_idx) => {

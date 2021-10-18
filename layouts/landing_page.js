@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPage(props) {
   const classes = useStyles();
-  const page = get(props, "pageObject.item", null);
+  const page = get(props, "data.page.item", null);
 
   if (!page) {
     return (

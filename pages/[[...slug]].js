@@ -19,11 +19,12 @@ function Page(props) {
     }
 
     // every page can have different layout, pick the layout based on content type
-    const contentType = get(props, "pageObject.item.system.type");
+    const contentType = get(props, "data.page.item.system.type");
 
     const PageLayout = pageLayouts[contentType];
 
     if (process.env.NODE_ENV === "development" && !PageLayout) {
+        console.log(props);
         console.error(`Unknown Layout component for page content type: ${contentType}`);
         return (
             <UnknownComponent {...props} useLayout={true}>
@@ -36,6 +37,7 @@ function Page(props) {
 }
 
 export async function getStaticPaths(ctx) {
+    debugger;
     console.log("Page [[...slug]].js getStaticPaths", ctx);
     const paths = await getSitemapMappings();
 
@@ -50,6 +52,7 @@ export async function getStaticPaths(ctx) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
+    debugger;
     console.log("Page [[...slug]].js getStaticProps, params: ", params);
     const props = await getPageStaticPropsForPath(params, preview);
 
