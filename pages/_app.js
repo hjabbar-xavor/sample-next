@@ -8,19 +8,6 @@ import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const configObject = get(pageProps, "data.config", null);
-  const pageObject = get(pageProps, "data.page", null)
-  // TODO - might be possible to simplify
-  const listingSections = get(pageProps, "data.listingSections") && Object.fromEntries(
-    Object.entries(pageProps.data.listingSections)
-      .map(([key, value]) => [key, value])
-  );
-  
-  // TODO - might be possible to simplify
-  const listingItems = get(pageProps, "data.listingItems") && Object.fromEntries(
-    Object.entries(pageProps.data.listingItems)
-      .map(([key, value]) => [key, value])
-  );
-
 
   const font = get(configObject, "item.elements.font.value[0].codename", null);
   const fontName = font === "nunito_sans"
