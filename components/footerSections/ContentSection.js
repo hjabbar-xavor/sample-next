@@ -13,35 +13,35 @@ function ContentSection(props) {
   const section = get(props, "section", null);
   const classes = useStyles();
 
-  return (
+    return (
     <section id={get(section, "system.codename", null)} className={classes.section}>
-      {get(section, "title", null) && (
-        <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+      {get(section, "elements.title", null) && (
+        <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
       )}
 
-      {get(section, "image.value[0]", null) && (
+      {get(section, "elements.image.value[0]", null) && (
         <div>
           <Image
             width="160"
             height="80"
-            asset={(get(section, "image.value[0]", null))}
-            alt={get(section, "image.value[0].description") || get(section, "image.value[0].name", null)}
+            asset={(get(section, "elements.image.value[0]", null))}
+            alt={get(section, "elements.image.value[0].description") || get(section, "elements.image.value[0].name", null)}
             sizes="160px" />
         </div>
       )}
 
-      {get(section, "content.value", null) && (
+      {get(section, "elements.content.value", null) && (
         <Typography component="div" className={classes.content} >
           <RichText
             {...props}
-            richTextElement={get(section, "content", null)}
+            richTextElement={get(section, "elements.content", null)}
           />
         </Typography>
       )}
 
-      {get(section, "actions", null) && (
+      {get(section, "elements.actions.linkedItems", null) && (
         <div className={classes.actions}>
-          <CtaButtons {...props} actions={get(section, "actions.value", null)} />
+          <CtaButtons {...props} actions={get(section, "elements.actions.linkedItems", null)} />
         </div>
       )}
     </section>

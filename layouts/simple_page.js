@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SimplePage(props) {
   const classes = useStyles();
-  const page = get(props, "pageObject.item", null);
+  const page = get(props, "data.page.item", null);
 
   const theme = useTheme();
   const imageSizes = `${theme.breakpoints.values.md}px`;
@@ -18,7 +18,7 @@ function SimplePage(props) {
   if (!page) {
     return (
       <UnknownComponent>
-        Page {get(page, "system.codename", null)} does not have any content!
+        Page {get(page, "elements.system.codename", null)} does not have any content!
       </UnknownComponent>
     );
   }
@@ -26,27 +26,27 @@ function SimplePage(props) {
   return (
     <Layout {...props}>
       <Container className={classes.root} maxWidth="md">
-        {get(page, "title.value", null) && (
-          <Typography variant="h1">{get(page, "title.value", null)}</Typography>
+        {get(page, "elements.title.value", null) && (
+          <Typography variant="h1">{get(page, "elements.title.value", null)}</Typography>
         )}
-        {get(page, "subtitle.value", null) && (
+        {get(page, "elements.subtitle.value", null) && (
           <Typography variant="subtitle1" >
-            {get(page, "subtitle.value")}
+            {get(page, "elements.subtitle.value")}
           </Typography>
         )}
 
-        {get(page, "image.value[0]", null) && (
+        {get(page, "elements.image.value[0]", null) && (
           <div>
             <Image
               sizes={imageSizes}
-              asset={(get(page, "image.value[0]", null))}
-              alt={get(page, "image.value[0].description") || get(page, "image.value[0].name", null)} />
+              asset={(get(page, "elements.image.value[0]", null))}
+              alt={get(page, "elements.image.value[0].description") || get(page, "elements.image.value[0].name", null)} />
           </div>
         )}
         <Typography component="div">
           <RichText
             {...props}
-            richTextElement={get(page, "content", null)}
+            richTextElement={get(page, "elements.content", null)}
           />
         </Typography>
       </Container>

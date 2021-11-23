@@ -17,13 +17,13 @@ function Menu(props) {
 
   return (
     <section id={get(section, "system.codename", null)} className={classes.section}>
-      {get(section, "label", null) && (
-        <h2>{get(section, "label.value", null)}</h2>
+      {get(section, "elements.label", null) && (
+        <h2>{get(section, "elements.label.value", null)}</h2>
       )}
 
-      {get(section, "actions.value[0]", null) && (
+      {get(section, "elements.actions.linkedItems[0]", null) && (
         <ul className={classes.noListStyle}>
-          {get(section, "actions.value", []).map((action, action_idx) => {
+          {get(section, "elements.actions.linkedItems", []).map((action, action_idx) => {
             return (
               <li key={action_idx}>
                 <Action {...props} action={action} size="small" />

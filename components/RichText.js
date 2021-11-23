@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function RichText(props) {
-  const richTextElement = get(props, "richTextElement", "");
-  const linkedItems = get(props, "pageObject.linkedItems", []);
+    const richTextElement = get(props, "richTextElement", "");
+  const linkedItems = get(props, "data.page.linkedItems", []);
   const mappings = get(props, "mappings");
 
   const classes = useStyles();
@@ -57,7 +57,7 @@ function RichText(props) {
           case "quote":
             return (
               <blockquote className={classes.quote}>
-                &ldquo;{linkedItem.quote_text.value}&rdquo;
+                &ldquo;{linkedItem.elements.quote_text.value}&rdquo;
               </blockquote>
             );
           case "code_block":
@@ -65,7 +65,7 @@ function RichText(props) {
               <Typography component="div" className={classes.code}>
                 <RichText
                   {...props}
-                  richTextElement={get(linkedItem, "code", null)}
+                  richTextElement={get(linkedItem, "elements.code", null)}
                 />
               </Typography>
             );

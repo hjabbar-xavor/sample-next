@@ -12,22 +12,22 @@ const useStyles = makeStyles((theme) => ({
 
 function ContactSection(props) {
   const section = get(props, "section", null);
-  const form = get(props, "section.form.value[0]", null);
+  const form = get(section, "elements.form.linkedItems[0]", null);
   const classes = useStyles();
 
 
   return (
-    <section id={get(section, "system.codename", null)} className={classes.section}>
+    <section id={get(section, "elements.system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, "title.value", null) && (
-            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+          {get(section, "elements.title.value", null) && (
+            <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
           )}
-          {get(section, "subtitle.value", null) && (
+          {get(section, "elements.subtitle.value", null) && (
             <Typography variant="subtitle1" >
               <RichText
                 {...props}
-                richTextElement={get(section, "subtitle", null)}
+                richTextElement={get(section, "elements.subtitle", null)}
               />
             </Typography>
           )}
@@ -36,26 +36,26 @@ function ContactSection(props) {
         <Typography component="div">
           <RichText
             {...props}
-            richTextElement={get(section, "content", null)}
+            richTextElement={get(section, "elements.content", null)}
           />
         </Typography>
 
         {form && (
           <form
-            name={get(form, "form_id.value", null)}
-            id={get(form, "form_id.value", null)}
-            action={get(form, "form_id.form_action.value", null)}
+            name={get(form, "elements.form_id.value", null)}
+            id={get(form, "elements.form_id.value", null)}
+            action={get(form, "elements.form_id.form_action.value", null)}
             method="POST"
 
           >
 
-            {get(form, "fields.value", []).map((field, field_idx) => (
+            {get(form, "elements.fields.linkedItems", []).map((field, field_idx) => (
               <FormField field={field} key={field_idx} />
             ))
             }
 
             <Button variant="contained" color="primary" className={classes.formSubmission}>
-              {get(form, "submit_label.value", null)}
+              {get(form, "elements.submit_label.value", null)}
             </Button>
           </form>
         )}

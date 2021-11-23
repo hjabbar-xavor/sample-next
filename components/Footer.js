@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Footer(props) {
-  const footerSections = get(props, "configObject.item.footer_sections.value", []);
+    const footerSections = get(props, "data.config.item.elements.footer_sections.linkedItems", []);
   const classes = useStyles();
 
   return (

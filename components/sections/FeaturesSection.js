@@ -31,46 +31,46 @@ function FeaturesSection(props) {
   const imageSizes = `(min-width: ${theme.breakpoints.values.sm}px) 40vw, 100vw`;
 
   return (
-    <section id={get(section, "system.codename", null)} className={classes.section}>
+    <section id={get(section, "elements.system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, "title.value", null) && (
-            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+          {get(section, "elements.title.value", null) && (
+            <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
           )}
 
-          {get(section, "subtitle.value", null) && (
+          {get(section, "elements.subtitle.value", null) && (
             <Typography variant="subtitle1">
               <RichText
                 {...props}
-                richTextElement={get(section, "subtitle", null)}
+                richTextElement={get(section, "elements.subtitle", null)}
               />
             </Typography>)}
         </div>
 
-        {get(section, "features.value[0]", null) && (
-          get(section, "features.value", []).map((feature, index) => (
+        {get(section, "elements.features.linkedItems[0]", null) && (
+          get(section, "elements.features.linkedItems", []).map((feature, index) => (
             <Grid container spacing={2} alignItems="center" key={index} direction={index % 2 ? "row-reverse" : "row"} className={classes.row}>
-              {get(feature, "image.value[0]", null) && (
+              {get(feature, "elements.image.value[0]", null) && (
                 <Grid item xs={12} sm={6} className={`${classes.column}, ${classes.image}`}>
                   <Image
                     sizes={imageSizes}
-                    asset={(get(feature, "image.value[0]", null))}
-                    alt={get(feature, "image.value[0].description") || get(feature, "image.value[0].name")} />
+                    asset={(get(feature, "elements.image.value[0]", null))}
+                    alt={get(feature, "elements.image.value[0].description") || get(feature, "elements.image.value[0].name")} />
                 </Grid>
               )}
 
               <Grid item xs={12} sm={4} className={`${classes.column} ${index % 2 ? classes.alignRight : undefined}`}>
-                <Typography variant="h3">{get(feature, "title.value", null)}</Typography>
+                <Typography variant="h3">{get(feature, "elements.title.value", null)}</Typography>
 
                 <RichText
                   component="div"
                   {...props}
-                  richTextElement={get(feature, "content", null)}
+                  richTextElement={get(feature, "elements.content", null)}
                 />
 
                 {
-                  get(feature, "actions.value[0]", null) && (
-                    <CtaButtons {...props} actions={get(feature, "actions.value", null)} />
+                  get(feature, "elements.actions.linkedItems[0]", null) && (
+                    <CtaButtons {...props} actions={get(feature, "elements.actions.linkedItems", null)} />
                   )
                 }
               </Grid>

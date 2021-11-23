@@ -36,51 +36,51 @@ function FeaturesSection(props) {
   const classes = useStyles();
 
   return (
-    <section id={get(section, "system.codename", null)} className={classes.section}>
+    <section id={get(section, "elements.system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, "title.value", null) && (
-            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+          {get(section, "elements.title.value", null) && (
+            <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
           )}
-          {get(section, "subtitle.value", null) && (
+          {get(section, "elements.subtitle.value", null) && (
             <Typography variant="subtitle1">
               <RichText
                 {...props}
-                richTextElement={get(section, "subtitle", null)}
+                richTextElement={get(section, "elements.subtitle", null)}
               />
             </Typography>)}
         </div>
 
-        {get(section, "pricing_plans.value[0]", null) && (
+        {get(section, "elements.pricing_plans.linkedItems[0]", null) && (
           <Grid container spacing={2} alignItems="stretch">
-            {get(section, "pricing_plans.value", []).map((plan, plan_idx) => {
+            {get(section, "elements.pricing_plans.linkedItems", []).map((plan, plan_idx) => {
 
-              const highlight = plan.options.value.some(option => option.codename === "highlight");
+              const highlight = plan.elements.options.value.some(option => option.codename === "highlight");
               return (
                 <Grid item xs={12} sm={4} className={classes.column} key={plan_idx}>
                   <Card variant='outlined' className={`${classes.priceCard} ${highlight ? classes.highlight : ""}`}>
                     <CardContent>
-                      {get(plan, "title.value", null) && (
-                        <Typography variant="h3" >{get(plan, "title.value", null)}</Typography>
+                      {get(plan, "elements.title.value", null) && (
+                        <Typography variant="h3" >{get(plan, "elements.title.value", null)}</Typography>
                       )}
-                      {get(plan, "subtitle.value", null) && (
-                        <Typography variant="subtitle1" >{get(plan, "subtitle.value", null)}</Typography>
+                      {get(plan, "elements.subtitle.value", null) && (
+                        <Typography variant="subtitle1" >{get(plan, "elements.subtitle.value", null)}</Typography>
                       )}
-                      {get(plan, "price.value", null) && (
-                        <Typography variant="h4" >{get(plan, "price.value", null)}</Typography>
+                      {get(plan, "elements.price.value", null) && (
+                        <Typography variant="h4" >{get(plan, "elements.price.value", null)}</Typography>
                       )}
-                      {get(plan, "details.value", null) && (
+                      {get(plan, "elements.details.value", null) && (
                         <RichText
                           component="div"
                           {...props}
-                          richTextElement={get(plan, "details", null)}
+                          richTextElement={get(plan, "elements.details", null)}
                         />
                       )}
                     </CardContent>
                     <CardActions className={classes.cardActions}>
-                      {get(plan, "actions.value[0]", null) && (
+                      {get(plan, "elements.actions.linkedItems[0]", null) && (
                         <div className="plan-footer block-buttons">
-                          <CtaButtons {...props} size="large" actions={get(plan, "actions.value", null)} />
+                          <CtaButtons {...props} size="large" actions={get(plan, "elements.actions.linkedItems", null)} />
                         </div>
                       )}
                     </CardActions>

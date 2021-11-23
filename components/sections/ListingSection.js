@@ -20,21 +20,21 @@ const useStyles = makeStyles((theme) => ({
 
 function ListingSection(props) {
   const section = get(props, "section", null);
-  const relatedItemsData = get(props, `listingSections[${section.system.codename}]`, []);
+  const relatedItemsData = get(props, `data.listingSections[${section.system.codename}]`, []);
   const classes = useStyles();
 
   return (
-    <section id={get(section, "system.codename", null)} className={classes.section}>
+    <section id={get(section, "elements.system.codename", null)} className={classes.section}>
       <Container>
         <div className={classes.intro}>
-          {get(section, "title.value", null) && (
-            <Typography variant="h2">{get(section, "title.value", null)}</Typography>
+          {get(section, "elements.title.value", null) && (
+            <Typography variant="h2">{get(section, "elements.title.value", null)}</Typography>
           )}
-          {get(section, "subtitle.value", null) && (
+          {get(section, "elements.subtitle.value", null) && (
             <Typography variant="subtitle1">
               <RichText
                 {...props}
-                richTextElement={get(section, "subtitle", null)}
+                richTextElement={get(section, "elements.subtitle", null)}
               />
             </Typography>
           )}

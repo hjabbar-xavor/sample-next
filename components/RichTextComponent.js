@@ -48,7 +48,7 @@ function replaceNode(domNode, richTextElement, linkedItems, mappings, resolveLin
 }
 
 function RichTextComponent({ richTextElement, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode, className }) {
-  const cleanedValue = richTextElement.value.replace(/(\n|\r)+/, "");
+    const cleanedValue = richTextElement.value.replace(/(\n|\r)+/, "");
   const result = parseHTML(cleanedValue, {
     replace: (domNode) => replaceNode(domNode, richTextElement, linkedItems, mappings, resolveLinkedItem, resolveImage, resolveLink, resolveDomNode),
   });

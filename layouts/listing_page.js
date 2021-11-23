@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ListingPage(props) {
   const classes = useStyles();
-  const page = get(props, "pageObject.item", null);
+  const page = get(props, "data.page.item", null);
   if (!page) {
     return (
       <UnknownComponent>
@@ -28,7 +28,7 @@ function ListingPage(props) {
     );
   }
 
-  const relatedItemsData = get(props, `listingItems[${page.system.codename}]`, []);
+  const relatedItemsData = get(props, `data.listingItems[${page.system.codename}]`, []);
 
   return (
     <Layout {...props}>

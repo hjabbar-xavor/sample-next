@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPage(props) {
   const classes = useStyles();
-  const page = get(props, "pageObject.item", null);
+  const page = get(props, "data.page.item", null);
 
   if (!page) {
     return (
@@ -29,7 +29,7 @@ function LandingPage(props) {
   return (
     <Layout {...props}>
       <Box className={classes.sections}>
-        {get(page, "sections.value", []).map((section, index) => {
+        {get(page, "elements.sections.linkedItems", []).map((section, index) => {
           const contentType = upperFirst(camelCase(get(section, "system.type", null)));
           const Component = sections[contentType];
 

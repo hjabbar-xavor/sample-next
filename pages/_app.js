@@ -5,37 +5,24 @@ import { createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Head from "next/head";
-import { hydrateContentItemListingResponse, hydrateContentItemSingleResponse } from "../lib/api";
-
 
 function MyApp({ Component, pageProps }) {
+  const configObject = get(pageProps, "data.config", null);
 
-  const configObject = get(pageProps, "data.config") && hydrateContentItemSingleResponse(pageProps.data.config);
-  const pageObject = get(pageProps, "data.page") && hydrateContentItemSingleResponse(pageProps.data.page);
-  const listingSections = get(pageProps, "data.listingSections") && Object.fromEntries(
-    Object.entries(pageProps.data.listingSections)
-      .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
-  );
-  const listingItems = get(pageProps, "data.listingItems") && Object.fromEntries(
-    Object.entries(pageProps.data.listingItems)
-      .map(([key, value]) => [key, hydrateContentItemListingResponse(value)])
-  );
-
-
-  const font = get(configObject, "item.font.value[0].codename", null);
+  const font = get(configObject, "item.elements.font.value[0].codename", null);
   const fontName = font === "nunito_sans"
     ? "Nunito Sans"
     : font === "fira_sans"
       ? "Fira Sans"
       : "Arial";
 
-  let title = get(configObject, "item.title.value", "");
+  let title = get(configObject, "item.elements.title.value", "");
   if (title) {
     title += " | ";
   }
   title += get(pageProps, "seo.title", null);
 
-  const palette = (get(configObject, "item.palette.value[0].codename", null));
+  const palette = (get(configObject, "item.elements.palette.value[0].codename", null));
   const colors = {
     primary: "#F05A22",
     secondary: "#B72929"
@@ -101,8 +88,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google" content="notranslate" />
 
-        {get(configObject, "item.favicon.value[0]", null) && (
-          <link rel="icon" href={get(configObject, "item.favicon.value[0].url", null)} />
+        {get(configObject, "item.elements.favicon.value[0]", null) && (
+          <link rel="icon" href={get(configObject, "item.elements.favicon.value[0].url", null)} />
         )}
 
         <meta name="description" content={get(pageProps, "seo.description", null)} />
@@ -142,7 +129,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} configObject={configObject} pageObject={pageObject} listingSections={listingSections} listingItems={listingItems} />
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
