@@ -66,19 +66,17 @@ yarn create next-app --example https://github.com/Kentico/kontent-starter-corpor
 3. Go to the "Project Settings", select API keys and copy the following keys for further reference
    - Project ID
    - Management API key
-4. Use the [Template Manager UI](https://kentico.github.io/kontent-template-manager/import) for importing the content from [`kontent-backup.zip`](./kontent-backup.zip) file and API keys from the previous step. Check _Publish language variants after import_ option before import.
-
-   > Alternatively, you can use the [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to the newly created project from [`kontent-backup.zip`](./kontent-backup.zip) file via command line:
-   >
-   > ```sh
-   >  npm i -g @kentico/kontent-backup-manager
-   >  # or
-   >  yarn global add @kentico/kontent-backup-manager
-   >
-   >  kbm --action=restore --projectId=<Project ID> --apiKey=<Management API key> --zipFilename=kontent-backup
-   > ```
-   >
-   > Go to your Kontent project and [publish the imported items](https://docs.kontent.ai/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
+4. Use the [Kontent Backup Manager](https://github.com/Kentico/kontent-backup-manager-js) and import data to the newly created project from [`kontent-backup.zip`](./kontent-backup.zip) file via command line:
+   
+    ```sh
+     npm i -g @kentico/kontent-backup-manager@3.0.1
+     # or
+     yarn global add @kentico/kontent-backup-manager@3.0.1
+   
+     kbm --action=restore --projectId=<Project ID> --apiKey=<Management API key> --zipFilename=kontent-backup
+    ```
+   
+5. Go to your Kontent project and [publish the imported items](https://docs.kontent.ai/tutorials/write-and-collaborate/publish-your-work/publish-content-items).
 
 ### Connect Kontent project with code base
 
