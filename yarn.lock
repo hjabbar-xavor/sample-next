@@ -119,19 +119,19 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@kentico/kontent-core@9.3.0":
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/@kentico/kontent-core/-/kontent-core-9.3.0.tgz#c84a16ec1e30f8147cfb73850aba89e28ae31571"
-  integrity sha512-1+XjR5JaQv9yEFu9XUPtM4VphVLR04LuT5hgczYxlaYwHFbnYdi192YaGJF3ffdrIxfTbCbuJyH47eVzYLfcoA==
+"@kentico/kontent-core@9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@kentico/kontent-core/-/kontent-core-9.4.0.tgz#6c5162ca50fefc29bc44ca2bcd387c453e2202d6"
+  integrity sha512-xVmeYIkfmIMEOviv/fjURHHvkO7HsjZRHqVjd508b4EJ4v//l60o7GhwIDbpdiA9B8WUpJhZJMhg7Qr8RqGm0g==
   dependencies:
-    axios "0.21.4"
+    axios "0.24.0"
 
-"@kentico/kontent-delivery@11.0.0":
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/@kentico/kontent-delivery/-/kontent-delivery-11.0.0.tgz#666d25ddc41e9f047a5e8bf4e624c41be7fb6b5a"
-  integrity sha512-YSH40GL7t1VI5G4J4TslnBN/jYjHL4NdLnVo+BBPi5RwLWx7l+3ZrqRVvqjkRk1PRPd/hzMuH98LNSWP1WQJpA==
+"@kentico/kontent-delivery@11.1.0":
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/@kentico/kontent-delivery/-/kontent-delivery-11.1.0.tgz#b988cc710911a124636261b78e14f70402333b55"
+  integrity sha512-QkEd3LUjHudxUw1fg+Rb4sWq/V+t1GZjuHBq2KBtoKyjatXABYKL583L2/6AZUgCcmN4Pioh7XcB8aFD+BLo3g==
   dependencies:
-    "@kentico/kontent-core" "9.3.0"
+    "@kentico/kontent-core" "9.4.0"
     uuid "8.3.2"
 
 "@material-ui/core@^4.12.1":
@@ -544,12 +544,12 @@ axe-core@^4.0.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.3.tgz#b55cd8e8ddf659fe89b064680e1c6a4dceab0325"
   integrity sha512-/lqqLAmuIPi79WYfRpy2i8z+x+vxU3zX2uAm0gs1q52qTuKwolOj1P8XbufpXcsydrpKx2yGn2wzAnxCMV86QA==
 
-axios@0.21.4:
-  version "0.21.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
-  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+axios@0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
+  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
   dependencies:
-    follow-redirects "^1.14.0"
+    follow-redirects "^1.14.4"
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -1514,7 +1514,7 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
   integrity sha512-JaTY/wtrcSyvXJl4IMFHPKyFur1sE9AUqc0QnhOaJ0CxHtAoIV8pYDzeEfAaNEtGkOfq4gr3LBFmdXW5mOQFnA==
 
-follow-redirects@^1.14.0:
+follow-redirects@^1.14.4:
   version "1.14.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.6.tgz#8cfb281bbc035b3c067d6cd975b0f6ade6e855cd"
   integrity sha512-fhUl5EwSJbbl8AR+uYL2KQDxLkdSjZGR36xy46AO7cOMTrCMON6Sa28FmAnC2tRTDbd/Uuzz3aJBv7EBN7JH8A==
