@@ -126,10 +126,10 @@
   dependencies:
     axios "0.24.0"
 
-"@kentico/kontent-delivery@11.1.0":
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/@kentico/kontent-delivery/-/kontent-delivery-11.1.0.tgz#b988cc710911a124636261b78e14f70402333b55"
-  integrity sha512-QkEd3LUjHudxUw1fg+Rb4sWq/V+t1GZjuHBq2KBtoKyjatXABYKL583L2/6AZUgCcmN4Pioh7XcB8aFD+BLo3g==
+"@kentico/kontent-delivery@^11.2.1":
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/@kentico/kontent-delivery/-/kontent-delivery-11.2.1.tgz#7ba8e4db1c51e262f45a1b0ca6b646d0eda7a407"
+  integrity sha512-G6xAM/J+r4oKCH2LZ+LLd9ZgbICszROKHyrvXO5iOzFyuwkW7YtgIgyHaeO+FmSp0YwptZaWv9SbCDRxjJvj3g==
   dependencies:
     "@kentico/kontent-core" "9.4.0"
     uuid "8.3.2"
