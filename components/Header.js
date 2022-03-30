@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import get from "lodash.get";
 import { Action, Image, Link, SideDrawer } from ".";
 import { Container, Hidden } from "@material-ui/core";
+import {useEffect, useState} from "react";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,22 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles();
+  const [nav, setNav] = useState(null);
+
+  useEffect(() => {
+
+    const getNav = async () => {
+      await fetch("https://deliver.kontent.ai/603f25ad-2b6d-008d-b5f3-5ca77371d45a/items/main_menu").then((response) => response.json()).then((results) => {
+        const keys = Object.keys(results.modular_content);
+        const tmp = Object.values(keys).map((value, key) => {
+          return value.split('_').length > 2 ? value.split('_')[0]+' '+value.split('_')[1] : value.split('_')[0];
+        });
+        setNav(tmp);
+      });
+    };
+    getNav();
+
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -45,9 +62,10 @@ function Header(props) {
             </Link>
             <Hidden smDown>
               <div className={classes.mainMenu}>
-                {get(props, "data.config.item.elements.main_menu.linkedItems[0].elements.actions.linkedItems", []).map((navigationItem, index) => (
-                  <Action key={index} action={navigationItem} {...props} />
-                ))}
+                {nav
+                  ? Object.values(nav).map((value, key) => { return <Link href={value.replace(' ', '-')} key={key}>{value}</Link>})
+                  : 'loading...'
+                }
               </div>
             </Hidden>
             <Hidden mdUp>
