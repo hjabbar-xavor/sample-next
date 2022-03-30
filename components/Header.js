@@ -3,7 +3,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import get from "lodash.get";
-import { Action, Image, Link, SideDrawer } from ".";
+import { Image, Link, SideDrawer } from ".";
 import { Container, Hidden } from "@material-ui/core";
 import {useEffect, useState} from "react";
 
@@ -34,8 +34,8 @@ function Header(props) {
     const getNav = async () => {
       await fetch("https://deliver.kontent.ai/603f25ad-2b6d-008d-b5f3-5ca77371d45a/items/main_menu").then((response) => response.json()).then((results) => {
         const keys = Object.keys(results.modular_content);
-        const tmp = Object.values(keys).map((value, key) => {
-          return value.split('_').length > 2 ? value.split('_')[0]+' '+value.split('_')[1] : value.split('_')[0];
+        const tmp = Object.values(keys).map((value) => {
+          return value.split("_").length > 2 ? value.split("_")[0]+" "+value.split("_")[1] : value.split("_")[0];
         });
         setNav(tmp);
       });
@@ -63,8 +63,8 @@ function Header(props) {
             <Hidden smDown>
               <div className={classes.mainMenu}>
                 {nav
-                  ? Object.values(nav).map((value, key) => { return <Link href={value.replace(' ', '-')} key={key}>{value}</Link>})
-                  : 'loading...'
+                  ? Object.values(nav).map((value, key) => { return <Link href={value.replace(" ", "-")} key={key}>{value}</Link>;})
+                  : "loading..."
                 }
               </div>
             </Hidden>
